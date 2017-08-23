@@ -26,7 +26,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     protected void loadData() {
-
+        //黄振通
     }
 
     @Override
