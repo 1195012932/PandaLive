@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton rb_video;
     private RadioButton rb_broad;
     private RadioButton rb_china;
-
+    //方清正
     @Override
     protected void loadData() {
 
