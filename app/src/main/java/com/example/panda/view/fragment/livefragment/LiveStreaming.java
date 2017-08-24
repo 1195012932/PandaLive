@@ -77,9 +77,6 @@ public class LiveStreaming extends BaseFragment implements LiveView {
                 if(flag==true){
                     live_text.setVisibility(View.VISIBLE);
                     live_text.setText(liveBeen.get(0).getBrief());
-
-
-
                     live_img.setImageResource(ints[0]);
                     flag=false;
                 }else{
