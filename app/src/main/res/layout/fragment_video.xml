@@ -27,8 +27,6 @@
             android:layout_marginRight="10dp"
             android:src="@mipmap/person_sign" />
     </android.support.v7.widget.Toolbar>
-
-
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"

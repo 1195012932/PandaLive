@@ -73,7 +73,7 @@ public class LiveStreaming extends BaseFragment implements LiveView {
             @Override
             public void onClick(View v) {
 
-                int[] ints = {R.drawable.com_facebook_tooltip_blue_topnub,R.drawable.com_facebook_tooltip_blue_bottomnub};
+                int[] ints = {R.mipmap.com_facebook_tooltip_blue_topnub,R.mipmap.com_facebook_tooltip_blue_bottomnub};
                 if(flag==true){
                     live_text.setVisibility(View.VISIBLE);
                     live_text.setText(liveBeen.get(0).getBrief());
