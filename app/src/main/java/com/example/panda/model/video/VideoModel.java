@@ -5,4 +5,5 @@ package com.example.panda.model.video;
  */
 
 public interface VideoModel {
+
 }
