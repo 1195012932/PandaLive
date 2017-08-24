@@ -2,18 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
-    <RelativeLayout
+
+    <ImageView
+        android:id="@+id/video_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp" />
-    </RelativeLayout>
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="2"
+        android:src="@mipmap/panda_sign" />
+
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="《熊猫TOP榜》"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="第二季第十期：滚滚的幸福生活"
+            android:textSize="15sp" />
+    </LinearLayout>
 </LinearLayout>

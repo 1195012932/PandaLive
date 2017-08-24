@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="200dp"
     android:orientation="vertical">
 
-    <com.youth.banner.Banner
+    <ImageView
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"></com.youth.banner.Banner>
-</LinearLayout>
+        android:layout_marginTop="10dp"
+        android:src="@color/colorAccent"></ImageView>
+
+    <TextView
+        android:id="@+id/tv_videoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:background="@color/transparent_half"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="旅游熊猫"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+</RelativeLayout>
