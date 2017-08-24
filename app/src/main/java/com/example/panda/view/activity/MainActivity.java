@@ -1,8 +1,10 @@
 package com.example.panda.view.activity;
 
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.panda.R;
 import com.example.panda.base.BaseActivity;
@@ -21,6 +23,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton rb_video;
     private RadioButton rb_broad;
     private RadioButton rb_china;
+
     //方清正
     @Override
     protected void loadData() {
@@ -40,19 +43,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void select(int i) {
         switch (i) {
             case 0:
-                FragmentBuilder.startFragment(HomeFragment.class,R.id.frame,null,true,true);
+                FragmentBuilder.startFragment(HomeFragment.class, R.id.frame, null, true, true);
                 break;
             case 1:
-                FragmentBuilder.startFragment(LiveFragment.class,R.id.frame,null,true,true);
+                FragmentBuilder.startFragment(LiveFragment.class, R.id.frame, null, true, true);
                 break;
             case 2:
-                FragmentBuilder.startFragment(VideoFragment.class,R.id.frame,null,true,true);
+                FragmentBuilder.startFragment(VideoFragment.class, R.id.frame, null, true, true);
                 break;
             case 3:
-                FragmentBuilder.startFragment(BroadcastFragment.class,R.id.frame,null,true,true);
+                FragmentBuilder.startFragment(BroadcastFragment.class, R.id.frame, null, true, true);
                 break;
             case 4:
-                FragmentBuilder.startFragment(ChinaFragment.class,R.id.frame,null,true,true);
+                FragmentBuilder.startFragment(ChinaFragment.class, R.id.frame, null, true, true);
                 break;
         }
     }
@@ -97,5 +100,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 select(4);
                 break;
         }
+    }
+    private long firstTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        long secondTime = System.currentTimeMillis();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (secondTime - firstTime < 2000) {
+                System.exit(0);
+            } else {
+                Toast.makeText(MainActivity.this, "连续点击两次退出应用!", Toast.LENGTH_SHORT).show();
+                firstTime = System.currentTimeMillis();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

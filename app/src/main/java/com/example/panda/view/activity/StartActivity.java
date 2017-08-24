@@ -26,6 +26,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(StartActivity.this,MainActivity.class));
+                finish();
             }
         }, 4000);
     }

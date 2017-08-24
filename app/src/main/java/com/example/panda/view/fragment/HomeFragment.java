@@ -58,10 +58,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
         for (Bean.TabBean bean : been) {
             title = bean.getTitle();
             Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
         }
     }
 
