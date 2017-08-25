@@ -24,6 +24,11 @@ public interface RetrofitService {
     @GET("PAGE1450172284887217/index.json")
     Observable<Bean> getDataGet();
 
+    /**
+     * 熊猫直播
+     * @param map
+     * @return
+     */
     @FormUrlEncoded
     @POST()
     Observable<LiveStreaing> getLive(@FieldMap Map<String, String> map);
@@ -31,6 +36,9 @@ public interface RetrofitService {
     @GET("PAGE14501769230331752/index.json")
     Observable<LiveStreaing> getLiveStreaing();
 
+    /**
+     * 滚滚视频
+     */
     @FormUrlEncoded
     @POST()
     Observable<VideoBean> getVideo(@FieldMap Map<String, String> map);
