@@ -11,6 +11,7 @@ import com.example.panda.base.BaseActivity;
 public class MyApp extends Application {
     public static BaseActivity activity;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
