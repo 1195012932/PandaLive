@@ -48,15 +48,18 @@ public class RetrofitUtils {
         Observable<Bean> observable = service.getData(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     public void getGet(Observer observer) {
         Observable<Bean> observable = service.getDataGet();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    //熊猫直播
     public void getLive(Map<String, String> map, Observer observer) {
         Observable<LiveStreaing> observable = service.getLive(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     public void getLives(Observer observer) {
         Observable<LiveStreaing> observable = service.getLiveStreaing();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
@@ -73,4 +76,5 @@ public class RetrofitUtils {
         Observable<VideoBean> observable = service.getVideo();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
 }
