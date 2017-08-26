@@ -16,16 +16,15 @@ import io.reactivex.disposables.Disposable;
  * Created by lenovo on 2017/8/23.
  */
 
-public class LivePreImpl implements LivePresenter,Observer<LiveStreaing> {
-        private LiveView liveView;
-        private LiveModel liveModel;
-List<LiveStreaing.LiveBean> list = new ArrayList<>();
+public class LivePreImpl implements LivePresenter, Observer<LiveStreaing> {
+    private LiveView liveView;
+    private LiveModel liveModel;
+    List<LiveStreaing.LiveBean> list = new ArrayList<>();
+
     public LivePreImpl(LiveView liveView) {
         this.liveView = liveView;
-        liveModel=new LiveModelImpl();
+        liveModel = new LiveModelImpl();
     }
-
-
 
 
     @Override
@@ -35,8 +34,8 @@ List<LiveStreaing.LiveBean> list = new ArrayList<>();
 
     @Override
     public void onNext(LiveStreaing value) {
-            LiveStreaing liveStreaing=value;
-        list=liveStreaing.getLive();
+        LiveStreaing liveStreaing = value;
+        list = liveStreaing.getLive();
         liveView.LiveStreaming(list);
     }
 
