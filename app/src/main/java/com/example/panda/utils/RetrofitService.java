@@ -3,6 +3,7 @@ package com.example.panda.utils;
 import com.example.panda.model.entity.Bean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.live.bean.LiveStreaing;
+import com.example.panda.model.live.bean.NotBean;
 
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public interface RetrofitService {
 
     /**
      * 熊猫直播
+     *
      * @param map
      * @return
      */
@@ -42,8 +44,13 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST()
     Observable<VideoBean> getVideo(@FieldMap Map<String, String> map);
-
     @GET("video/index.json")
     Observable<VideoBean> getVideo();
+//精彩一刻
+    @FormUrlEncoded
+    @POST()
+    Observable<NotBean> getNot(@FieldMap Map<String, String> map);
+    @GET(" videolistById?vsid=VSET100237714751&n=7&serviceId=panda&o=desc&of=time&p=1")
+    Observable<NotBean> getNots();
 
 }
