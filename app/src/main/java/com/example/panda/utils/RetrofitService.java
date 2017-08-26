@@ -1,6 +1,7 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.Bean;
+import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.live.bean.LiveStreaing;
 
 import java.util.Map;
@@ -18,14 +19,31 @@ import retrofit2.http.POST;
 public interface RetrofitService {
     @FormUrlEncoded
     @POST()
-    Observable<Bean> getData(@FieldMap Map<String,String> map);
+    Observable<Bean> getData(@FieldMap Map<String, String> map);
+
     @GET("PAGE1450172284887217/index.json")
     Observable<Bean> getDataGet();
 
+    /**
+     * 熊猫直播
+     * @param map
+     * @return
+     */
     @FormUrlEncoded
     @POST()
-    Observable<LiveStreaing> getLive(@FieldMap Map<String,String> map);
+    Observable<LiveStreaing> getLive(@FieldMap Map<String, String> map);
+
     @GET("PAGE14501769230331752/index.json")
     Observable<LiveStreaing> getLiveStreaing();
+
+    /**
+     * 滚滚视频
+     */
+    @FormUrlEncoded
+    @POST()
+    Observable<VideoBean> getVideo(@FieldMap Map<String, String> map);
+
+    @GET("video/index.json")
+    Observable<VideoBean> getVideo();
 
 }

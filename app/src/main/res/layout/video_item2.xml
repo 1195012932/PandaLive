@@ -2,18 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="160dp"
+        android:layout_height="80dp">
+
         <ImageView
+            android:id="@+id/video_icon"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="match_parent"
+            android:src="@mipmap/panda_sign" />
+
+        <TextView
+            android:id="@+id/video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:background="@color/transparent_half_up"
+            android:drawableLeft="@mipmap/play"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:text="04:30"
+            android:textColor="#fff"
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/video_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="《熊猫TOP榜》"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/video_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="第二季第十期：滚滚的幸福生活"
+            android:textSize="12sp" />
+    </LinearLayout>
 </LinearLayout>

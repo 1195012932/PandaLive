@@ -1,6 +1,7 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.Bean;
+import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.live.bean.LiveStreaing;
 
 import java.util.Map;
@@ -51,12 +52,25 @@ public class RetrofitUtils {
         Observable<Bean> observable = service.getDataGet();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     public void getLive(Map<String, String> map, Observer observer) {
         Observable<LiveStreaing> observable = service.getLive(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getLives(Observer observer) {
         Observable<LiveStreaing> observable = service.getLiveStreaing();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //滚滚视频
+
+    public void getVideo(Map<String, String> map, Observer observer) {
+        Observable<VideoBean> observable = service.getVideo(map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getVideos(Observer observer) {
+        Observable<VideoBean> observable = service.getVideo();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }
