@@ -1,7 +1,6 @@
 package com.example.panda.view.fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -87,6 +86,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         title = list.get(0).getTitle();
         tv_videoTitle.setText(title);
         Glide.with(getActivity()).load(list.get(0).getImage()).error(R.mipmap.panda_sign).into(banner);
+        list.get(0).getPid();
     }
 
     @Override
@@ -123,7 +123,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), PlayActivity.class);
+                Intent intent = new Intent(getActivity(), PlayActivity.class);
                 startActivity(intent);
             }
         });
@@ -131,17 +131,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void onError(String e) {
-
-    }
-
-    public static void start(Context context) {
-        Intent starter = new Intent(context, VideoItActivity.class);
-        //starter.putExtra();
-        context.startActivity(starter);
+        Toast.makeText(getActivity(), e, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void click(View v, int position) {
-        start(getActivity());
+        Intent starter = new Intent(getActivity(), VideoItActivity.class);
+        startActivity(starter);
     }
 }
