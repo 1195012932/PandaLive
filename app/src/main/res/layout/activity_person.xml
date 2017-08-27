@@ -146,32 +146,4 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/personal_callback_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:drawableLeft="@drawable/personal_set_img"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:text="用户调查"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/personal_enter_img" />
-
-    </RelativeLayout>
 </LinearLayout>
