@@ -1,14 +1,7 @@
 package com.example.panda.utils;
 
-import com.example.panda.model.live.bean.NotBean;
-
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -34,18 +27,21 @@ public class LiveUtils {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitService.class);
     }
+
     public static LiveUtils getRetrofitUtils() {
         if (liveutils == null) {
             liveutils = new LiveUtils();
         }
         return liveutils;
     }
-    public void getNot(Map<String, String> map, Observer observer) {
+
+    /*public void getNot(Map<String, String> map, Observer observer) {
         Observable<NotBean> observable = service.getNot(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getNots(Observer observer) {
         Observable<NotBean> observable = service.getNots();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
+    }*/
+
 }
