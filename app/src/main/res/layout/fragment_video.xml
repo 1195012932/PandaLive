@@ -31,5 +31,7 @@
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/xrecy"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+        android:layout_height="fill_parent">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 </LinearLayout>

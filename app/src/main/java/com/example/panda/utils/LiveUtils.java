@@ -1,7 +1,13 @@
 package com.example.panda.utils;
 
+import com.example.panda.model.entity.BroadBean2;
+
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -34,8 +40,7 @@ public class LiveUtils {
         }
         return liveutils;
     }
-
-    /*public void getNot(Map<String, String> map, Observer observer) {
+  /*  public void getNot(Map<String, String> map, Observer observer) {
         Observable<NotBean> observable = service.getNot(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
@@ -44,4 +49,8 @@ public class LiveUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }*/
 
+    public void getBroads2(Observer observer) {
+        Observable<BroadBean2> observable = service.getBroad2();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 }

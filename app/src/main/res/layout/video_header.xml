@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp">
@@ -12,24 +11,20 @@
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@color/colorAccent"></ImageView>
+            android:src="@mipmap/tab_panda_live_pressed" />
 
         <TextView
             android:id="@+id/tv_videoTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:background="@color/transparent_half"
-            android:gravity="center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:text="旅游熊猫"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
+            android:text="uahbfwlisnbosgos"
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
     </RelativeLayout>
 </LinearLayout>
