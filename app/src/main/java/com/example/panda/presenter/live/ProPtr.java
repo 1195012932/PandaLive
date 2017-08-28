@@ -28,7 +28,6 @@ public class ProPtr implements LivePresenter,Observer<ProBean> {
     public void url(Map<String, String> map) {
         liveModel.Proget(this);
     }
-
     @Override
     public void onSubscribe(Disposable d) {
 

@@ -22,7 +22,7 @@ public class OriPtr implements LivePresenter,Observer<OriBean> {
     List<OriBean.VideoBean> list = new ArrayList<>();
     public OriPtr(OriginView originView) {
         this.originView = originView;
-        liveModel=new LiveModelImpl();
+        liveModel = new LiveModelImpl();
     }
     @Override
     public void url(Map<String, String> map) {

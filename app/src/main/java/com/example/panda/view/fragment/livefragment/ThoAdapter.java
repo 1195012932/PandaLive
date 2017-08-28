@@ -22,6 +22,7 @@ class ThoAdapter extends BaseAdapter{
     private Context context;
     List<ThoBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;
+
     public ThoAdapter(Context context, List<ThoBean.VideoBean> list) {
         this.context = context;
         this.list = list;

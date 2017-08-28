@@ -83,6 +83,7 @@ public class LiveUtils {
         Observable<TopBean> observable = service.getTop(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     public void getTops(Observer observer) {
         Observable<TopBean> observable = service.getTops();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);

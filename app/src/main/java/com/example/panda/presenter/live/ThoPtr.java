@@ -24,6 +24,7 @@ public class ThoPtr implements LivePresenter,Observer<ThoBean> {
         this.thoseView = thoseView;
         liveModel=new LiveModelImpl();
     }
+
     @Override
     public void url(Map<String, String> map) {
         liveModel.Thoget(this);

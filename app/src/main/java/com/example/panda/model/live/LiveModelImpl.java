@@ -21,6 +21,7 @@ import io.reactivex.Observer;
  */
 
 public class LiveModelImpl implements LiveModel{
+
     @Override
     public void liveget(Observer<LiveStreaing> observer) {
         RetrofitUtils.getRetrofitUtils().getLives(observer);

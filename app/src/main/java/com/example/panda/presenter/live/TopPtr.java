@@ -24,6 +24,7 @@ public class TopPtr implements LivePresenter,Observer<TopBean> {
         this.topView = topView;
         liveModel=new LiveModelImpl();
     }
+
     @Override
     public void url(Map<String, String> map) {
         liveModel.Topget(this);

@@ -33,5 +33,4 @@ public interface LiveModel {
     void Thoget(Observer<ThoBean> observer);
     void Wonget(Observer<WonBean> observer);
     void Rollget(Observer<RollBean> observer);
-
 }

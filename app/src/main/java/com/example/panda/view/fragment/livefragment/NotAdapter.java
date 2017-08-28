@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 class NotAdapter extends BaseAdapter{
+
     private Context context;
     List<NotBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;

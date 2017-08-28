@@ -63,6 +63,7 @@ public class TOP extends BaseFragment implements TopView {
     protected int getLayout() {
         return R.layout.top;
     }
+
     @Override
     public void TopView(final List<TopBean.VideoBean> TopBeen) {
         list.addAll(TopBeen);

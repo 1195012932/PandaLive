@@ -18,7 +18,6 @@ import io.reactivex.disposables.Disposable;
 
 public class NotPtr implements LivePresenter, Observer<NotBean> {
     private NotView notView;
-
     private LiveModel liveModel;
     List<NotBean.VideoBean> list = new ArrayList<>();
 

@@ -24,6 +24,7 @@ public class WonPtr implements LivePresenter,Observer<WonBean> {
         this.wonView = wonView;
         liveModel=new LiveModelImpl();
     }
+
     @Override
     public void url(Map<String, String> map) {
         liveModel.Wonget(this);
