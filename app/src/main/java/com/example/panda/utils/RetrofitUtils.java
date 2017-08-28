@@ -1,6 +1,6 @@
 package com.example.panda.utils;
 
-import com.example.panda.model.entity.Bean;
+import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.BroadBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.live.bean.LiveStreaing;
@@ -16,6 +16,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 /**
  * Created by lenovo on 2017/8/23.
@@ -35,7 +36,8 @@ public class RetrofitUtils {
                 .client(client)
                 .baseUrl("http://www.ipanda.com/kehuduan/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitService.class);
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(RetrofitService.class);
     }
 
     public static RetrofitUtils getRetrofitUtils() {
@@ -46,21 +48,23 @@ public class RetrofitUtils {
     }
 
     public void getPost(Map<String, String> map, Observer observer) {
-        Observable<Bean> observable = service.getData(map);
+        Observable<HomeBean> observable = service.getData(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     public void getGet(Observer observer) {
-        Observable<Bean> observable = service.getDataGet();
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+        Observable<HomeBean> observable = service.getDataGet();
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
-
 
     //熊猫直播
     public void getLive(Map<String, String> map, Observer observer) {
         Observable<LiveStreaing> observable = service.getLive(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     public void getLives(Observer observer) {
         Observable<LiveStreaing> observable = service.getLiveStreaing();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
@@ -77,13 +81,19 @@ public class RetrofitUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    /**
-     * 熊猫播报
-     */
-
     public void getBroads(Observer observer) {
         Observable<BroadBean> observable = service.getBroad();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    /**
+     * 首页
+     */
+
+    public void getHome(Observer observable) {
+        Observable<HomeBean> homeObservable = service.getHomeBean();
+        homeObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observable);
+    }
 }
