@@ -28,56 +28,10 @@
             android:src="@mipmap/person_sign" />
     </android.support.v7.widget.Toolbar>
 
-    <com.chanven.lib.cptr.PtrFrameLayout
-        android:id="@+id/ptr"
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xrecy"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp">
-
-                    <ImageView
-                        android:id="@+id/banner"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:scaleType="fitXY"
-                        android:src="@color/colorAccent"></ImageView>
-
-                    <TextView
-                        android:id="@+id/tv_videoTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/transparent_half"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:text="旅游熊猫"
-                        android:textColor="#fff"
-                        android:textSize="18sp" />
-                </RelativeLayout>
-
-                <ListView
-                    android:id="@+id/video_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="1200dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"></ListView>
-            </LinearLayout>
-        </ScrollView>
-    </com.chanven.lib.cptr.PtrFrameLayout>
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 </LinearLayout>

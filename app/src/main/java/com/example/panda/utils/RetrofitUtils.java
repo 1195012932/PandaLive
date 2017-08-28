@@ -1,6 +1,7 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.Bean;
+import com.example.panda.model.entity.BroadBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.live.bean.LiveStreaing;
 
@@ -54,12 +55,12 @@ public class RetrofitUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+
     //熊猫直播
     public void getLive(Map<String, String> map, Observer observer) {
         Observable<LiveStreaing> observable = service.getLive(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
-
     public void getLives(Observer observer) {
         Observable<LiveStreaing> observable = service.getLiveStreaing();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
@@ -73,6 +74,15 @@ public class RetrofitUtils {
 
     public void getVideos(Observer observer) {
         Observable<VideoBean> observable = service.getVideo();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    /**
+     * 熊猫播报
+     */
+
+    public void getBroads(Observer observer) {
+        Observable<BroadBean> observable = service.getBroad();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

@@ -24,6 +24,9 @@
         </activity>
         <activity android:name=".view.activity.PlayActivity" />
         <activity android:name=".view.activity.VideoItActivity"></activity>
+        <activity android:name=".view.activity.BroadActivity"></activity>
+        <activity android:name=".view.activity.HistoryActivity" />
+        <activity android:name=".view.activity.SetActivity"></activity>
     </application>
 
 </manifest>
