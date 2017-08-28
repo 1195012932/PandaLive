@@ -7,5 +7,5 @@ import java.util.Map;
  */
 
 public interface HomePresenter {
-    void getData(Map<String,String> map);
+    void homeurl(Map<String, String> map);
 }

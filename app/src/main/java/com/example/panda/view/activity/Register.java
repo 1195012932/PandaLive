@@ -15,7 +15,7 @@ import com.example.panda.R;
 import com.example.panda.view.fragment.person.EmailReg;
 import com.example.panda.view.fragment.person.PhoneRegi;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class Register extends AppCompatActivity  implements View.OnClickListener {
 
     private ImageView user_back;
     private TextView tvphonereg;
@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        Fragment tfragment=null;
+        Fragment tfragment;
         switch (view.getId()) {
             case R.id.user_back:
                 finish();

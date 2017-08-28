@@ -15,8 +15,4 @@ public class BroadModelImpl implements BroadModel {
     public void RequestGet(Observer<BroadBean> observer) {
         RetrofitUtils.getRetrofitUtils().getBroads(observer);
     }
-
-
-
-
 }

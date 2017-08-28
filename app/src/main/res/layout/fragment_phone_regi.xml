@@ -63,7 +63,7 @@
             android:textCursorDrawable="@null"
             android:textSize="14sp" />
 
-        <TextView
+        <ImageView
             android:id="@+id/personal_reg_imgcheck"
             android:layout_width="100dp"
             android:layout_height="match_parent"
