@@ -23,10 +23,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.PlayActivity" />
-        <activity android:name=".view.activity.VideoItActivity"></activity>
-        <activity android:name=".view.activity.BroadActivity"></activity>
+        <activity android:name=".view.activity.VideoItActivity" />
+        <activity android:name=".view.activity.BroadActivity" />
         <activity android:name=".view.activity.HistoryActivity" />
-        <activity android:name=".view.activity.SetActivity"></activity>
+        <activity android:name=".view.activity.SetActivity" />
+        <activity android:name=".view.activity.ShouCang"></activity>
     </application>
 
 </manifest>
