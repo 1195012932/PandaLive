@@ -27,7 +27,6 @@ import java.util.Map;
 public class NotLet extends BaseFragment implements NotView {
     private LivePresenter livePresenter;
     List<NotBean.VideoBean> list = new ArrayList<>();
-    List<String> lists = new ArrayList<>();
     private ListView not_list;
     private PtrClassicFrameLayout not_ptr;
     private NotAdapter adapter;

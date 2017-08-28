@@ -24,7 +24,6 @@ public class RollPtr implements LivePresenter,Observer<RollBean> {
         this.rollView = rollView;
         liveModel=new LiveModelImpl();
     }
-
     @Override
     public void url(Map<String, String> map) {
         liveModel.Rollget(this);

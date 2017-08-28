@@ -22,7 +22,6 @@ class OriAdapter extends BaseAdapter{
         private Context context;
         List<OriBean.VideoBean> list = new ArrayList<>();
         private ViewHoudler viewHoudler;
-
         public OriAdapter(Context context, List<OriBean.VideoBean> list) {
             this.context = context;
             this.list = list;

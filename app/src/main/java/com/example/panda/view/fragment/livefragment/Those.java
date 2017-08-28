@@ -39,7 +39,6 @@ public class Those extends BaseFragment implements ThoseView {
 
     @Override
     protected void initListener() {
-
     }
 
     @Override

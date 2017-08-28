@@ -76,7 +76,6 @@ public class Wonderful extends BaseFragment implements WonView {
         won_ptr.setPtrHandler(new PtrDefaultHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
                 handler.post(new Runnable() {
                     @Override
                     public void run() {

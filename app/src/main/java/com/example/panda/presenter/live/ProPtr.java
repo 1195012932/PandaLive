@@ -24,7 +24,6 @@ public class ProPtr implements LivePresenter,Observer<ProBean> {
         this.proView = proView;
         liveModel=new LiveModelImpl();
     }
-
     @Override
     public void url(Map<String, String> map) {
         liveModel.Proget(this);

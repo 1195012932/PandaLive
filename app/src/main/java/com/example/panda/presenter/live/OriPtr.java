@@ -24,7 +24,6 @@ public class OriPtr implements LivePresenter,Observer<OriBean> {
         this.originView = originView;
         liveModel=new LiveModelImpl();
     }
-
     @Override
     public void url(Map<String, String> map) {
         liveModel.Origet(this);

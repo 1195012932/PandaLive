@@ -101,5 +101,4 @@ public interface RetrofitService {
     Observable<RollBean> getRoll(@FieldMap Map<String, String> map);
     @GET("videolistById?vsid=VSET100219009515&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<RollBean> getRolls();
-
 }

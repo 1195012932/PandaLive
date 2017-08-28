@@ -31,7 +31,6 @@ public class Original extends BaseFragment implements OriginView {
     private PtrClassicFrameLayout ori_ptr;
     Handler handler=new Handler();
     private OriAdapter adapter;
-
     @Override
     protected void loadData() {
 

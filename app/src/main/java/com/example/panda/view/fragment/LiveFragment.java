@@ -79,7 +79,6 @@ public class LiveFragment extends BaseFragment {
     protected int getLayout() {
         return R.layout.fragment_live;
     }
-
     public List<Fragment> getlist() {
         list.add(new LiveStreaming());
         list.add(new NotLet());
