@@ -1,6 +1,7 @@
 package com.example.panda.view.fragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -41,6 +42,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     private XRecyclerView xrecy;
     private View view2;
+    private ProgressDialog dialog;
 
 
     @Override
@@ -60,6 +62,8 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     protected void initView(View view) {
+        dialog = new ProgressDialog(getActivity());
+        dialog.setMax(100);
         vp = new VideoPreImpl(this);
         preson_sign = (ImageView) view.findViewById(R.id.preson_sign);
         xrecy = (XRecyclerView) view.findViewById(R.id.xrecy);
@@ -99,9 +103,11 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
+                dialog.show();
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         myAdapter.notifyDataSetChanged();
+                        dialog.cancel();
                         xrecy.refreshComplete();
                         xrecy.setLoadingMoreEnabled(true);
                     }
