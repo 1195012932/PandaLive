@@ -31,7 +31,6 @@ public class Programs extends BaseFragment implements ProView {
     private ListView pro_list;
     private PtrClassicFrameLayout pro_ptr;
     private ProAdapter adapter;
-
     @Override
     protected void loadData() {
 

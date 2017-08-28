@@ -58,7 +58,6 @@ public class Wonderful extends BaseFragment implements WonView {
         adapter = new WonAdapter(getActivity(), list);
         won_list.setAdapter(adapter);
     }
-
     @Override
     protected int getLayout() {
         return R.layout.wonderful;

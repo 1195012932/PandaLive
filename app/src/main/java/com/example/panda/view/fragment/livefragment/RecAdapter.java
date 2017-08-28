@@ -22,7 +22,6 @@ class RecAdapter extends BaseAdapter{
     private Context context;
     List<RecBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;
-
     public RecAdapter(Context context, List<RecBean.VideoBean> list) {
         this.context = context;
         this.list = list;

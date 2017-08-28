@@ -31,7 +31,6 @@ public class Record extends BaseFragment implements RecView {
     private ListView rec_list;
     private PtrClassicFrameLayout rec_ptr;
     private RecAdapter adapter;
-
     @Override
     protected void loadData() {
 

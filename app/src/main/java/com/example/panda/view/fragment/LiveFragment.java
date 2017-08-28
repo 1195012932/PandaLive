@@ -109,6 +109,7 @@ public class LiveFragment extends BaseFragment {
             return list.size();
         }
 
+
         @Override
         public CharSequence getPageTitle(int position) {
             return lists.get(position);

@@ -9,5 +9,6 @@ import java.util.List;
  */
 
 public interface TopView {
+
     void TopView(List<TopBean.VideoBean> TopBeen);
 }

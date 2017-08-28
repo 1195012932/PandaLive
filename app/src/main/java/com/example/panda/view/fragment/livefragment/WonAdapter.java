@@ -22,7 +22,6 @@ class WonAdapter extends BaseAdapter{
     private Context context;
     List<WonBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;
-
     public WonAdapter(Context context, List<WonBean.VideoBean> list) {
         this.context = context;
         this.list = list;

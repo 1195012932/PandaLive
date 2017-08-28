@@ -9,5 +9,6 @@ import java.util.List;
  */
 
 public interface ProView {
+
     void ProView(List<ProBean.VideoBean> ProBeen);
 }

@@ -22,7 +22,6 @@ class RollAdapter extends BaseAdapter{
     private Context context;
     List<RollBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;
-
     public RollAdapter(Context context, List<RollBean.VideoBean> list) {
         this.context = context;
         this.list = list;

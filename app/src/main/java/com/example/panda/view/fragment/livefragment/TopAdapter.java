@@ -22,7 +22,6 @@ class TopAdapter extends BaseAdapter{
     private Context context;
     List<TopBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;
-
     public TopAdapter(Context context, List<TopBean.VideoBean> list) {
         this.context = context;
         this.list = list;

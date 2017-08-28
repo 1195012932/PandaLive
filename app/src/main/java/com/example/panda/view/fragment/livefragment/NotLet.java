@@ -31,7 +31,6 @@ public class NotLet extends BaseFragment implements NotView {
     private PtrClassicFrameLayout not_ptr;
     private NotAdapter adapter;
     Handler handler=new Handler();
-
     @Override
     protected void loadData() {
 

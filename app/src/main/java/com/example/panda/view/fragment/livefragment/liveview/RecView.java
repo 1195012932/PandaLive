@@ -9,5 +9,6 @@ import java.util.List;
  */
 
 public interface RecView {
+
     void RecView(List<RecBean.VideoBean> RecBeen);
 }

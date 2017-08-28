@@ -9,5 +9,6 @@ import java.util.List;
  */
 
 public interface WonView {
+
     void WonView(List<WonBean.VideoBean> WonBeen);
 }

@@ -31,7 +31,6 @@ public class TOP extends BaseFragment implements TopView {
     private PtrClassicFrameLayout top_ptr;
     Handler handler=new Handler();
     private TopAdapter adapter;
-
     @Override
     protected void loadData() {
 
