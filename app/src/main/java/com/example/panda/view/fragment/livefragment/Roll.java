@@ -31,6 +31,7 @@ public class Roll extends BaseFragment implements RollView {
     private ListView roll_list;
     private PtrClassicFrameLayout roll_ptr;
     private RollAdapter adapter;
+
     @Override
     protected void loadData() {
 

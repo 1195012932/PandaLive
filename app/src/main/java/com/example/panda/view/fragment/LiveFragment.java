@@ -30,7 +30,6 @@ import java.util.List;
 public class LiveFragment extends BaseFragment {
     private Toolbar toolbar;
     private TabLayout tab;
-
     List<Fragment> list = new ArrayList<>();
     List<String> lists = new ArrayList<>();
     private NoScrollViewPager pager;

@@ -28,7 +28,6 @@ public class RollPtr implements LivePresenter,Observer<RollBean> {
     public void url(Map<String, String> map) {
         liveModel.Rollget(this);
     }
-
     @Override
     public void onSubscribe(Disposable d) {
 

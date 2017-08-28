@@ -28,7 +28,6 @@ public class RecPtr implements LivePresenter,Observer<RecBean> {
     public void url(Map<String, String> map) {
         liveModel.Recget(this);
     }
-
     @Override
     public void onSubscribe(Disposable d) {
 

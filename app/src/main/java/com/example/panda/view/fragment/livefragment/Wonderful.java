@@ -31,7 +31,6 @@ public class Wonderful extends BaseFragment implements WonView {
     private PtrClassicFrameLayout won_ptr;
     Handler handler=new Handler();
     private WonAdapter adapter;
-
     @Override
     protected void loadData() {
 

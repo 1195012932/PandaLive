@@ -25,7 +25,6 @@ public class RollBean {
     public void setVideoset(VideosetBean videoset) {
         this.videoset = videoset;
     }
-
     public List<VideoBean> getVideo() {
         return video;
     }

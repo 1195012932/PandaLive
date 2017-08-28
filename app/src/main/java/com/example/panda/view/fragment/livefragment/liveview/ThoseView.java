@@ -9,6 +9,5 @@ import java.util.List;
  */
 
 public interface ThoseView {
-
     void ThoView(List<ThoBean.VideoBean> ThoBeen);
 }

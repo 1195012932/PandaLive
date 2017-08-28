@@ -33,7 +33,6 @@ public class WonPtr implements LivePresenter,Observer<WonBean> {
     public void onSubscribe(Disposable d) {
 
     }
-
     @Override
     public void onNext(WonBean value) {
 WonBean wonBean=value;

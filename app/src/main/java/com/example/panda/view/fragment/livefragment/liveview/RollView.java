@@ -9,6 +9,5 @@ import java.util.List;
  */
 
 public interface RollView {
-
     void RollView(List<RollBean.VideoBean> RollBeen);
 }

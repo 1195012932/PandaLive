@@ -19,7 +19,6 @@ import io.reactivex.Observer;
  */
 
 public interface LiveModel {
-
     void liveget(Observer<LiveStreaing> observer);
     void livestreaming(Map<String,String> map,Observer<LiveStreaing> observer);
     void Notget(Observer<NotBean> observer);

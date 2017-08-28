@@ -26,6 +26,7 @@ import java.util.Map;
 
 public class Original extends BaseFragment implements OriginView {
     private LivePresenter livePresenter;
+
     List<OriBean.VideoBean> list = new ArrayList<>();
     private ListView ori_list;
     private PtrClassicFrameLayout ori_ptr;

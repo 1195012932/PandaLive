@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface OriginView {
 
-
     void OriView(List<OriBean.VideoBean> NotBeen);
 }

@@ -22,6 +22,7 @@ class ProAdapter extends BaseAdapter{
     private Context context;
     List<ProBean.VideoBean> list = new ArrayList<>();
     private ViewHoudler viewHoudler;
+
     public ProAdapter(Context context, List<ProBean.VideoBean> list) {
         this.context = context;
         this.list = list;

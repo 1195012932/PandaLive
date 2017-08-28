@@ -31,6 +31,7 @@ public class Those extends BaseFragment implements ThoseView {
     private PtrClassicFrameLayout tho_ptr;
     Handler handler=new Handler();
     private ThoAdapter adapter;
+
     @Override
     protected void loadData() {
 

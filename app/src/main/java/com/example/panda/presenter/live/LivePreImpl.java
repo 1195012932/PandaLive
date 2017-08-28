@@ -20,7 +20,6 @@ public class LivePreImpl implements LivePresenter, Observer<LiveStreaing> {
     private LiveView liveView;
     private LiveModel liveModel;
     List<LiveStreaing.LiveBean> list = new ArrayList<>();
-
     public LivePreImpl(LiveView liveView) {
         this.liveView = liveView;
         liveModel = new LiveModelImpl();
