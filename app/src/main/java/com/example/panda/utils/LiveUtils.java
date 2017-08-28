@@ -1,5 +1,6 @@
 package com.example.panda.utils;
 
+
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.model.live.bean.ProBean;
@@ -9,7 +10,7 @@ import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
 
-import java.util.Map;
+import com.example.panda.model.entity.BroadBean2;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -41,18 +42,24 @@ public class LiveUtils {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitService.class);
     }
+
     public static LiveUtils getRetrofitUtils() {
         if (liveutils == null) {
             liveutils = new LiveUtils();
         }
         return liveutils;
     }
-    public void getNot(Map<String, String> map, Observer observer) {
+  /*  public void getNot(Map<String, String> map, Observer observer) {
         Observable<NotBean> observable = service.getNot(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getNots(Observer observer) {
         Observable<NotBean> observable = service.getNots();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }*/
+
+    public void getBroads2(Observer observer) {
+        Observable<BroadBean2> observable = service.getBroad2();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getOri(Map<String, String> map, Observer observer) {

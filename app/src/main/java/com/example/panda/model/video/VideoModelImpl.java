@@ -1,6 +1,5 @@
 package com.example.panda.model.video;
 
-import com.example.panda.model.entity.VideoBean;
 import com.example.panda.utils.RetrofitUtils;
 
 import io.reactivex.Observer;
@@ -11,8 +10,13 @@ import io.reactivex.Observer;
 
 public class VideoModelImpl implements VideoModel {
 
+  /*  @Override
+    public void RequestGet(Observer<T> observer) {
+        RetrofitUtils.getRetrofitUtils().getVideos(observer);
+    }*/
+
     @Override
-    public void RequestGet(Observer<VideoBean> observer) {
+    public void RequestGet(Observer observer) {
         RetrofitUtils.getRetrofitUtils().getVideos(observer);
     }
 }
