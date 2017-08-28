@@ -87,9 +87,5 @@ public class LiveStreaming extends BaseFragment implements LiveView {
 
             }
         });
-
     }
-
-
-
 }
