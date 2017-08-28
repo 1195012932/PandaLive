@@ -1,9 +1,13 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
+import com.chanven.lib.cptr.PtrDefaultHandler;
+import com.chanven.lib.cptr.PtrFrameLayout;
+import com.chanven.lib.cptr.loadmore.OnLoadMoreListener;
 import com.example.panda.R;
 import com.example.panda.base.BaseFragment;
 import com.example.panda.model.live.bean.RecBean;
@@ -21,10 +25,12 @@ import java.util.Map;
  */
 
 public class Record extends BaseFragment implements RecView {
+    Handler handler=new Handler();
     private LivePresenter livePresenter;
     List<RecBean.VideoBean> list = new ArrayList<>();
     private ListView rec_list;
     private PtrClassicFrameLayout rec_ptr;
+    private RecAdapter adapter;
 
     @Override
     protected void loadData() {
@@ -49,7 +55,7 @@ public class Record extends BaseFragment implements RecView {
         livePresenter.url(map);
         rec_ptr= (PtrClassicFrameLayout) view.findViewById(R.id.rec_ptr);
         rec_list= (ListView) view.findViewById(R.id.rec_list);
-        RecAdapter adapter = new RecAdapter(getActivity(), list);
+        adapter = new RecAdapter(getActivity(), list);
         rec_list.setAdapter(adapter);
     }
 
@@ -59,8 +65,46 @@ public class Record extends BaseFragment implements RecView {
     }
 
     @Override
-    public void RecView(List<RecBean.VideoBean> RecBeen) {
+    public void RecView(final List<RecBean.VideoBean> RecBeen) {
         list.addAll(RecBeen);
+        rec_ptr.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rec_ptr.autoRefresh(true);
+            }
+        },1000);
+        rec_ptr.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.addAll(RecBeen);
+                        adapter.notifyDataSetChanged();
+                        rec_ptr.refreshComplete();
+                        if(!rec_ptr.isLoadMoreEnable()){
+                            rec_ptr.setLoadMoreEnable(true);
+
+                        }
+                    }
+                });
+            }
+        });
+        rec_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void loadMore() {
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.addAll(RecBeen);
+                        adapter.notifyDataSetChanged();
+                        rec_ptr.loadMoreComplete(true);
+                    }
+                });
+            }
+        });
     }
 
 

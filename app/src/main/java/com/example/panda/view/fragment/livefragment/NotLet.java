@@ -27,6 +27,7 @@ import java.util.Map;
 public class NotLet extends BaseFragment implements NotView {
     private LivePresenter livePresenter;
     List<NotBean.VideoBean> list = new ArrayList<>();
+    List<String> lists = new ArrayList<>();
     private ListView not_list;
     private PtrClassicFrameLayout not_ptr;
     private NotAdapter adapter;
@@ -44,38 +45,16 @@ public class NotLet extends BaseFragment implements NotView {
 
     @Override
     protected void initData() {
-        not_ptr.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                not_ptr.autoRefresh(true);
-            }
-        },1000);
-        not_ptr.setPtrHandler(new PtrDefaultHandler() {
-            @Override
-            public void onRefreshBegin(PtrFrameLayout frame) {
-                xiahua();
-            }
-        });
-        not_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void loadMore() {
-                shangla();
-            }
-        });
+
     }
 
     private void shangla() {
+
+
     }
 
     private void xiahua() {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i <4; i++) {
 
-                }
-            }
-        });
 
 
     }
@@ -98,10 +77,48 @@ public class NotLet extends BaseFragment implements NotView {
     }
 
     @Override
-    public void NotView(List<NotBean.VideoBean> NotBeen) {
+    public void NotView(final List<NotBean.VideoBean> NotBeen) {
         String img = NotBeen.get(0).getImg();
         System.out.println("1111111" + img);
         list.addAll(NotBeen);
+        not_ptr.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                not_ptr.autoRefresh(true);
+            }
+        },1000);
+        not_ptr.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                xiahua();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.addAll(NotBeen);
+                        adapter.notifyDataSetChanged();
+                        not_ptr.refreshComplete();
+                        if(!not_ptr.isLoadMoreEnable()){
+                            not_ptr.setLoadMoreEnable(true);
+
+                        }
+                    }
+                });
+            }
+        });
+        not_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void loadMore() {
+                shangla();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.addAll(NotBeen);
+                        adapter.notifyDataSetChanged();
+                        not_ptr.loadMoreComplete(true);
+                    }
+                });
+            }
+        });
     }
 
 

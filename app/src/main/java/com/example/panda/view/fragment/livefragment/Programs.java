@@ -1,9 +1,13 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
+import com.chanven.lib.cptr.PtrDefaultHandler;
+import com.chanven.lib.cptr.PtrFrameLayout;
+import com.chanven.lib.cptr.loadmore.OnLoadMoreListener;
 import com.example.panda.R;
 import com.example.panda.base.BaseFragment;
 import com.example.panda.model.live.bean.ProBean;
@@ -21,10 +25,12 @@ import java.util.Map;
  */
 
 public class Programs extends BaseFragment implements ProView {
+    Handler handler=new Handler();
     private LivePresenter livePresenter;
     List<ProBean.VideoBean> list = new ArrayList<>();
     private ListView pro_list;
     private PtrClassicFrameLayout pro_ptr;
+    private ProAdapter adapter;
 
     @Override
     protected void loadData() {
@@ -49,7 +55,7 @@ public class Programs extends BaseFragment implements ProView {
         livePresenter.url(map);
         pro_ptr= (PtrClassicFrameLayout) view.findViewById(R.id.pro_ptr);
         pro_list= (ListView) view.findViewById(R.id.pro_list);
-        ProAdapter adapter = new ProAdapter(getActivity(), list);
+        adapter = new ProAdapter(getActivity(), list);
         pro_list.setAdapter(adapter);
     }
 
@@ -59,8 +65,46 @@ public class Programs extends BaseFragment implements ProView {
     }
 
     @Override
-    public void ProView(List<ProBean.VideoBean> ProBeen) {
+    public void ProView(final List<ProBean.VideoBean> ProBeen) {
         list.addAll(ProBeen);
+        pro_ptr.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pro_ptr.autoRefresh(true);
+            }
+        },1000);
+        pro_ptr.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.addAll(ProBeen);
+                        adapter.notifyDataSetChanged();
+                        pro_ptr.refreshComplete();
+                        if(!pro_ptr.isLoadMoreEnable()){
+                            pro_ptr.setLoadMoreEnable(true);
+
+                        }
+                    }
+                });
+            }
+        });
+        pro_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void loadMore() {
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.addAll(ProBeen);
+                        adapter.notifyDataSetChanged();
+                        pro_ptr.loadMoreComplete(true);
+                    }
+                });
+            }
+        });
     }
 
 
