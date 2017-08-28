@@ -86,10 +86,10 @@ public class LiveFragment extends BaseFragment {
         list.add(new Original());
         list.add(new Programs());
         list.add(new Record());
-        list.add(new Roll());
-        list.add(new Those());
         list.add(new TOP());
+        list.add(new Those());
         list.add(new Wonderful());
+        list.add(new Roll());
         return list;
     }
 
