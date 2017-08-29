@@ -1,5 +1,6 @@
 package com.example.panda.model.live;
 
+import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
@@ -20,6 +21,7 @@ import io.reactivex.Observer;
 
 public interface LiveModel {
     void liveget(Observer<LiveStreaing> observer);
+    void brodget(Observer<Brod> observer);
     void livestreaming(Map<String,String> map,Observer<LiveStreaing> observer);
     void Notget(Observer<NotBean> observer);
     void Notsget(Map<String,String> map,Observer<NotBean> observer);

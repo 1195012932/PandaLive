@@ -14,11 +14,19 @@ import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.NotPtr;
 import com.example.panda.view.fragment.livefragment.liveview.NotView;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by admin on 2017/8/24.
@@ -31,7 +39,8 @@ public class NotLet extends BaseFragment implements NotView {
     private PtrClassicFrameLayout not_ptr;
     private NotAdapter adapter;
     Handler handler=new Handler();
-
+    int i=2;
+    String url="http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=";
     @Override
     protected void loadData() {
 
@@ -48,13 +57,66 @@ public class NotLet extends BaseFragment implements NotView {
     }
 
     private void shangla() {
+        final String string=url+i;
+        OkHttpClient client=new OkHttpClient();
+        final Request request=new Request.Builder().url(string).build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
 
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final  String string1 = response.body().string();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson=new Gson();
+                        NotBean notBean=gson.fromJson(string1,NotBean.class);
+                        list.addAll(notBean.getVideo());
+                        adapter.notifyDataSetChanged();
+                        not_ptr.loadMoreComplete(true);
+                        i++;
+                }
+                });
+            }
+        });
 
     }
 
     private void xiahua() {
+        i=2;
+        final String string=url+i;
+        OkHttpClient client=new OkHttpClient();
+        final Request request=new Request.Builder().url(string).build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
 
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+            final  String string1 = response.body().string();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson=new Gson();
+                        NotBean notBean=gson.fromJson(string1,NotBean.class);
+                        list.addAll(notBean.getVideo());
+                        adapter.notifyDataSetChanged();
+                        not_ptr.refreshComplete();
+                        if(!not_ptr.isLoadMoreEnable()){
+                            not_ptr.setLoadMoreEnable(true);
+                            i=3;
+                        }
+                    }
+                });
+                    }
+                });
 
     }
 
@@ -90,32 +152,29 @@ public class NotLet extends BaseFragment implements NotView {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 xiahua();
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        list.addAll(NotBeen);
-                        adapter.notifyDataSetChanged();
-                        not_ptr.refreshComplete();
-                        if(!not_ptr.isLoadMoreEnable()){
-                            not_ptr.setLoadMoreEnable(true);
-
-                        }
-                    }
-                });
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        list.clear();
+//                        list.addAll(NotBeen);
+//                        adapter.notifyDataSetChanged();
+//
+//                    }
+//                });
             }
         });
         not_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void loadMore() {
                 shangla();
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        list.addAll(NotBeen);
-                        adapter.notifyDataSetChanged();
-                        not_ptr.loadMoreComplete(true);
-                    }
-                });
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        list.addAll(NotBeen);
+//                        adapter.notifyDataSetChanged();
+//                        not_ptr.loadMoreComplete(true);
+//                    }
+//                });
             }
         });
     }

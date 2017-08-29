@@ -33,7 +33,8 @@
         <activity android:name=".view.activity.HistoryActivity" />
         <activity android:name=".view.activity.SetActivity" />
         <activity android:name=".view.activity.ShouCang" />
-        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:name=".view.activity.PersonActivity" />
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.RegisterActivity" />

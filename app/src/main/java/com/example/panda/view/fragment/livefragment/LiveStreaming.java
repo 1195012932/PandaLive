@@ -1,6 +1,9 @@
 package com.example.panda.view.fragment.livefragment;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +16,7 @@ import com.example.panda.presenter.live.LivePreImpl;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.view.LiveView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +32,8 @@ public class LiveStreaming extends BaseFragment implements LiveView {
     private TextView live_text;
     private ImageView live_img;
     boolean flag=true;
-
+    List<Fragment> list = new ArrayList<>();
+    List<String> lists=new ArrayList<>();
     @Override
     protected void loadData() {
 
@@ -56,7 +61,13 @@ public class LiveStreaming extends BaseFragment implements LiveView {
         live_text = (TextView) view.findViewById(R.id.live_text);
         live_img = (ImageView) view.findViewById(R.id.live_img);
         live_text.setVisibility(View.GONE);
-
+        getlist();
+        getlists();
+        live_tab.addTab(live_tab.newTab().setText(lists.get(0)));
+        live_tab.addTab(live_tab.newTab().setText(lists.get(1)));
+        LivePagerAdapter pager=new LivePagerAdapter(getActivity().getSupportFragmentManager());
+        live_pager.setAdapter(pager);
+        live_tab.setupWithViewPager(live_pager);
     }
 
     @Override
@@ -67,8 +78,7 @@ public class LiveStreaming extends BaseFragment implements LiveView {
 
     @Override
     public void LiveStreaming(final List<LiveStreaing.LiveBean> liveBeen) {
-        String brief = liveBeen.get(0).getBrief();
-        System.out.println("1111111" + brief);
+
         live_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,5 +97,44 @@ public class LiveStreaming extends BaseFragment implements LiveView {
 
             }
         });
+
     }
+
+    public List<Fragment> getlist() {
+//        list.clear();
+        list.add(new BrodCast());
+        list.add(new Look());
+
+        return list;
+    }
+
+    public List<String> getlists() {
+//        lists.clear();
+        lists.add("多视角直播");
+        lists.add("边看边聊");
+        return lists;
+    }
+
+    class LivePagerAdapter extends FragmentPagerAdapter {
+
+    public LivePagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return list.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return list.size();
+    }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return lists.get(position);
+        }
+    }
+
+
 }

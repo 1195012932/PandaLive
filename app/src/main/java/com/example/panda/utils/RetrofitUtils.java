@@ -1,8 +1,8 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
-import com.example.panda.model.entity.BroadBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
 
 import java.util.Map;
@@ -47,16 +47,11 @@ public class RetrofitUtils {
         return retrofitUtils;
     }
 
+
+
     public void getPost(Map<String, String> map, Observer observer) {
         Observable<HomeBean> observable = service.getData(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-
-    public void getGet(Observer observer) {
-        Observable<HomeBean> observable = service.getDataGet();
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
     }
 
     //熊猫直播
@@ -82,7 +77,7 @@ public class RetrofitUtils {
     }
 
     public void getBroads(Observer observer) {
-        Observable<BroadBean> observable = service.getBroad();
+        Observable<Brod> observable = service.getBrods();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
@@ -91,7 +86,7 @@ public class RetrofitUtils {
      */
 
     public void getHome(Observer observable) {
-        Observable<HomeBean> homeObservable = service.getHomeBean();
+        Observable<HomeBean> homeObservable = service.getDataGet();
         homeObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observable);
