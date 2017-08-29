@@ -1,10 +1,11 @@
 package com.example.panda.utils;
 
-import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.BroadBean;
 import com.example.panda.model.entity.BroadBean2;
+import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.live.bean.LiveStreaing;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 
@@ -80,4 +81,9 @@ public interface RetrofitService {
     @GET("shouye/index.json")
     Observable<HomeBean> getHomeBean();
 
+    /**
+     * 滚滚视频顶部的图片
+     */
+    @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
+    Observable<VideoTopBean> getVideoTop();
 }

@@ -10,13 +10,10 @@ import io.reactivex.Observer;
 
 public class VideoModelImpl implements VideoModel {
 
-  /*  @Override
-    public void RequestGet(Observer<T> observer) {
-        RetrofitUtils.getRetrofitUtils().getVideos(observer);
-    }*/
-
     @Override
     public void RequestGet(Observer observer) {
         RetrofitUtils.getRetrofitUtils().getVideos(observer);
     }
+
+
 }

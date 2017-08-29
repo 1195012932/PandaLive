@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.PlayActivity"
+            android:name=".view.activity.VideoTop"
             android:screenOrientation="landscape" /> <!-- 使屏幕处于横屏 -->
         <activity android:name=".view.activity.VideoItActivity" />
         <activity android:name=".view.activity.BroadActivity" />

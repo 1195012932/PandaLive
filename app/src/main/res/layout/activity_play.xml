@@ -5,21 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.PlayActivity">
-    <!--<fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard-->
-    <!--android:id="@+id/jiecaovideo_detail"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--app:layout_heightPercent="30%"-->
-    <!--app:layout_widthPercent="100%"-->
-    <!--/>-->
-    <!--<WebView-->
-    <!--android:id="@+id/webview_top"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--app:layout_heightPercent="60%"-->
-    <!--app:layout_widthPercent="100%"-->
-    <!--/>-->
+    tools:context=".view.activity.VideoTop">
+
     <io.vov.vitamio.widget.VideoView
         android:id="@+id/videoview_top"
         android:layout_width="0dp"
@@ -164,7 +151,5 @@
                 app:layout_heightPercent="100%"
                 app:layout_widthPercent="20%" />
         </com.zhy.android.percent.support.PercentLinearLayout>
-
-
     </com.zhy.android.percent.support.PercentRelativeLayout>
 </com.zhy.android.percent.support.PercentFrameLayout>
