@@ -27,7 +27,7 @@ public class LiveStreaming extends BaseFragment implements LiveView {
     private ViewPager live_pager;
     private TextView live_text;
     private ImageView live_img;
-    boolean flag = true;
+    boolean flag=true;
 
     @Override
     protected void loadData() {
@@ -73,22 +73,23 @@ public class LiveStreaming extends BaseFragment implements LiveView {
             @Override
             public void onClick(View v) {
 
-                int[] ints = {R.mipmap.com_facebook_tooltip_blue_topnub, R.mipmap.com_facebook_tooltip_blue_bottomnub};
-                if (flag == true) {
+                int[] ints = {R.mipmap.com_facebook_tooltip_blue_topnub,R.mipmap.com_facebook_tooltip_blue_bottomnub};
+                if(flag==true){
                     live_text.setVisibility(View.VISIBLE);
                     live_text.setText(liveBeen.get(0).getBrief());
                     live_img.setImageResource(ints[0]);
-                    flag = false;
-                } else {
+                    flag=false;
+                }else{
                     live_img.setImageResource(ints[1]);
                     live_text.setVisibility(View.GONE);
-                    flag = true;
+                    flag=true;
                 }
 
             }
         });
 
     }
+
 
 
 }
