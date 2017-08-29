@@ -35,7 +35,7 @@ dependencies {
     compile name: 'SMSSDK-3.0.0', ext: 'aar'
     compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
     compile project(':vitamio2')
-
+    compile files('libs/MobileAppTracker.jar')
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.3.1'
@@ -54,6 +54,8 @@ dependencies {
     compile 'com.zhy:percent-support-extends:1.0.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'in.srain.cube:ptr-load-more:1.0.6'
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:percent:26.0.0-alpha1'
+    compile 'com.squareup.okhttp3:okhttp:3.3.0'
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+    testCompile 'junit:junit:4.12'
 }

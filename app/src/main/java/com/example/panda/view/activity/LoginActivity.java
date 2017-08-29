@@ -54,6 +54,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initListener() {
         loding_btn.setOnClickListener(this);
         tv_zhuce.setOnClickListener(this);
+
+        personal_login_forget_pwd.setOnClickListener(this);
+
     }
 
     @Override
@@ -64,6 +67,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_zhuce:
                 startActivity(new Intent(LoginActivity.this, Register.class));
+                break;
+            case R.id.personal_login_forget_pwd:
+                startActivity(new Intent(LoginActivity.this, Forget.class));
                 break;
         }
     }

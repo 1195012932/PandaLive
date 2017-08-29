@@ -128,7 +128,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30px"
-            android:background="@color/white"
+            android:background="@color/colorGray"
             android:gravity="center"
             android:text="@string/forget_image_yanzhengma" />
     </RelativeLayout>

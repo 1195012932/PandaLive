@@ -64,7 +64,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case 4:
                 FragmentBuilder.startFragment(ChinaFragment.class, R.id.frame, null, true, true);
-                break;
+
+
         }
     }
 

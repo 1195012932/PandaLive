@@ -27,7 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.PlayActivity" />
+        <activity
+            android:name=".view.activity.PlayActivity"
+            android:screenOrientation="landscape" /> <!-- 使屏幕处于横屏 -->
         <activity android:name=".view.activity.VideoItActivity" />
         <activity android:name=".view.activity.BroadActivity" />
         <activity android:name=".view.activity.HistoryActivity" />
@@ -37,7 +39,13 @@
         <activity android:name=".view.activity.PersonActivity" />
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.RegisterActivity" />
-        <activity android:name=".view.activity.Register"></activity>
+        <activity android:name=".view.activity.Register" />
+        <activity
+            android:name=".view.activity.PersonalAgreePostActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".view.activity.Forget"></activity>
     </application>
 
 </manifest>
