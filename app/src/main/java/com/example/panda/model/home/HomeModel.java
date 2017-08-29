@@ -12,5 +12,9 @@ import io.reactivex.Observer;
 
 public interface HomeModel {
     void RequestGet(Observer<HomeBean> observer);
+
     void RequestPost(Map<String, String> map, Observer<HomeBean> observer);
+
+
+
 }

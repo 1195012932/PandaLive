@@ -1,6 +1,6 @@
 package com.example.panda.model.broadcast;
 
-import com.example.panda.model.entity.BroadBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.utils.RetrofitUtils;
 
 import io.reactivex.Observer;

@@ -3,7 +3,7 @@ package com.example.panda.presenter.home;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.home.HomeModel;
 import com.example.panda.model.home.HomeModelImpl;
-import com.example.panda.view.HomeView;
+import com.example.panda.view.home.HomeView;
 
 import java.util.Map;
 
@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
  * Created by lenovo on 2017/8/23.
  */
 
-public class HomePreImpl implements HomePresenter, Observer<HomeBean> {
+public class HomePreImpl implements HomePresenter, Observer<HomeBean>{
     private HomeModel homeModel;
     private HomeView homeView;
 

@@ -1,8 +1,10 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
-import com.example.panda.model.entity.BroadBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.MarvellousBean;
+import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.LiveStreaing;
 
 import java.util.Map;
@@ -96,5 +98,21 @@ public class RetrofitUtils {
         homeObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observable);
+    }
+
+    //精彩一刻
+    public void getmarvell(Observer observable) {
+        Observable<MarvellousBean> marvellousBeanObservable = service.getMarvellous();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observable);
+    }
+
+    //首页滚滚视频
+    public void getvitmio(Observer observables) {
+        Observable<VitmioBean> marvellousBeanObservable = service.getvio();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observables);
     }
 }

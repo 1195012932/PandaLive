@@ -1,9 +1,11 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
-import com.example.panda.model.entity.BroadBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.MarvellousBean;
+import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.LiveStreaing;
 
 import java.util.Map;
@@ -37,7 +39,7 @@ public interface RetrofitService {
     @POST()
     Observable<LiveStreaing> getLive(@FieldMap Map<String, String> map);
 
-    @GET("shouye/index.json")
+    @GET("PAGE14501769230331752/index.json")
     Observable<LiveStreaing> getLiveStreaing();
 
     /**
@@ -79,5 +81,10 @@ public interface RetrofitService {
      */
     @GET("shouye/index.json")
     Observable<HomeBean> getHomeBean();
-
+    //首页精彩一刻
+    @GET("shipinliebieye/jingcaiyike/index.json")
+    Observable<MarvellousBean> getMarvellous();
+    //首页滚滚视频
+    @GET("shipinliebieye/video/index.json")
+    Observable<VitmioBean> getvio();
 }

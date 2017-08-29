@@ -1,4 +1,4 @@
-package com.example.panda.adapter;
+package com.example.panda.adapter.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,11 +16,11 @@ import java.util.List;
  * Created by XXASUS on 2017/8/28.
  */
 
-public class LivebroadcastAdapter extends BaseAdapter {
+public class PandabroadcastAdapter extends BaseAdapter {
     private List<HomeBean.DataBean.PandaeyeBean.ItemsBean> mlist;
     private Context context;
 
-    public LivebroadcastAdapter(List<HomeBean.DataBean.PandaeyeBean.ItemsBean> mlist, Context context) {
+    public PandabroadcastAdapter(List<HomeBean.DataBean.PandaeyeBean.ItemsBean> mlist, Context context) {
         this.mlist = mlist;
         this.context = context;
     }
