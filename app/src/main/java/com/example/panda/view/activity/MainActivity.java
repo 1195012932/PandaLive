@@ -20,7 +20,7 @@ import com.example.panda.view.fragment.BroadcastFragment;
 import com.example.panda.view.fragment.ChinaFragment;
 import com.example.panda.view.fragment.HomeFragment;
 import com.example.panda.view.fragment.LiveFragment;
-import com.example.panda.view.fragment.VideoFragment;
+import com.example.panda.view.fragment.video.VideoFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -46,6 +46,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rb_broad.setOnClickListener(this);
         rb_china.setOnClickListener(this);
         select(0);
+
     }
 
     private void select(int i) {

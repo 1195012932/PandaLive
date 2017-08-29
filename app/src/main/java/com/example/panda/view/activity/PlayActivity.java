@@ -1,6 +1,7 @@
 package com.example.panda.view.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private PercentLinearLayout down;
     private AudioManager am;
     private boolean state_shouchang = true;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         Vitamio.isInitialized(this);
 
         setContentView(R.layout.activity_play);
+        Intent intent = getIntent();
+        title = intent.getStringExtra("title");
         initView();
         initListener();
     }
@@ -79,7 +83,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         image_player_yinliang = (ImageView) findViewById(R.id.image_player_yinliang);
         progress_player_yinliang = (SeekBar) findViewById(R.id.progress_player_yinliang);
         down = (PercentLinearLayout) findViewById(R.id.down);
-
+        tv_broadtop_title.setText(title);
         progressBar_yinliang();
     }
 
@@ -132,10 +136,10 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.image_player_yinliang:
-                if (progress_player_yinliang.getProgress() > 0){
+                if (progress_player_yinliang.getProgress() > 0) {
                     progress_player_yinliang.setProgress(0);
                     image_player_yinliang.setImageResource(R.drawable.ic_volume_off_white_36dp);
-                    am.setStreamVolume(AudioManager.STREAM_MUSIC,0,0);
+                    am.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
                 }
                 break;
         }

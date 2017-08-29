@@ -1,7 +1,6 @@
-package com.example.panda.view.fragment;
+package com.example.panda.view.fragment.video;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -42,7 +41,6 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     private XRecyclerView xrecy;
     private View view2;
-    private ProgressDialog dialog;
 
 
     @Override
@@ -62,9 +60,9 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     protected void initView(View view) {
-        dialog = new ProgressDialog(getActivity());
-        dialog.setMax(100);
+
         vp = new VideoPreImpl(this);
+
         preson_sign = (ImageView) view.findViewById(R.id.preson_sign);
         xrecy = (XRecyclerView) view.findViewById(R.id.xrecy);
         Map<String, String> map = new HashMap<>();
@@ -80,7 +78,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onClick(View view) {
         startActivity(new Intent(getActivity(), PersonActivity.class));
-    }
+}
 
     @Override
     public void onShowBigImage(List<VideoBean.BigImgBean> list) {
@@ -103,11 +101,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                dialog.show();
+                showLoadingDialog();
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
+
                         myAdapter.notifyDataSetChanged();
-                        dialog.cancel();
+                        dismissLoadDialog();
                         xrecy.refreshComplete();
                         xrecy.setLoadingMoreEnabled(true);
                     }
@@ -118,8 +117,10 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             public void onLoadMore() {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
+                        showLoadingDialog();
                         Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
                         xrecy.refreshComplete();
+                        dismissLoadDialog();
                         xrecy.setLoadingMoreEnabled(false);
                     }
                 }, 1);
@@ -130,6 +131,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PlayActivity.class);
+                intent.putExtra("title", title);
                 startActivity(intent);
             }
         });
