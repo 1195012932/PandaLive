@@ -193,7 +193,6 @@ public class HomeFragment extends BaseFragment implements HomeView, View.OnClick
                 Toast.makeText(getActivity(), "原创互动", Toast.LENGTH_SHORT).show();
                 Intent intent_interaction = new Intent(getActivity(), Interaction.class);
                 startActivity(intent_interaction);
-
                 break;
             case R.id.frame_home_preson_sign:
                 Toast.makeText(getActivity(), "个人中心", Toast.LENGTH_SHORT).show();

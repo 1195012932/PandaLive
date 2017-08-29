@@ -27,6 +27,7 @@
         <activity android:name=".view.activity.BroadActivity"></activity>
         <activity android:name=".view.activity.HistoryActivity" />
         <activity android:name=".view.activity.SetActivity"></activity>
+        <activity android:name=".view.activity.home.Interaction" />
     </application>
 
 </manifest>
