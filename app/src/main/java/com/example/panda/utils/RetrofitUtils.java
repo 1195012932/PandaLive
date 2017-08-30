@@ -2,8 +2,6 @@ package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.home.BroadBean;
-import com.example.panda.model.entity.BroadBean;
-import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;

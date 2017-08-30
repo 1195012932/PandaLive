@@ -67,7 +67,7 @@ public class Interaction extends BaseActivity implements InteraView {
                     @Override
                     public void run() {
                         mRecyclerView.refreshComplete();
-                        mRecyclerView.setLoadingMoreEnabled(true);
+                        mRecyclerView.setLoadingMoreEnabled(false);
                     }
                 }, 1000);
             }
@@ -116,8 +116,8 @@ public class Interaction extends BaseActivity implements InteraView {
             @Override
             public void onitemclickListerner(int pos) {
                 Intent intent = new Intent(Interaction.this, InteracationWeb.class);
-                String url = interactive.get(pos).getUrl();
-                String title = interactive.get(pos).getTitle();
+                String url = interactive.get(pos-1).getUrl();
+                String title = interactive.get(pos-1).getTitle();
                 intent.putExtra("url", url);
                 intent.putExtra("title", title);
                 startActivity(intent);
