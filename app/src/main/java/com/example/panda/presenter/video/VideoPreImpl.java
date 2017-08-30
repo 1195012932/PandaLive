@@ -3,7 +3,7 @@ package com.example.panda.presenter.video;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.video.VideoModel;
 import com.example.panda.model.video.VideoModelImpl;
-import com.example.panda.view.VideoView;
+import com.example.panda.view.fragment.video.VideoView;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +29,7 @@ public class VideoPreImpl implements VideoPresenter, Observer<VideoBean> {
     @Override
     public void getData(Map<String, String> map) {
         vm.RequestGet(this);
+
     }
 
     @Override

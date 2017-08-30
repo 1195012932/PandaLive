@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.panda.R;
 import com.example.panda.adapter.MyBroadAdapter;
 import com.example.panda.base.BaseFragment;
-import com.example.panda.model.entity.BroadBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.presenter.broadcast.BroadPreImpl;
 import com.example.panda.presenter.broadcast.BroadPreImpl2;
@@ -139,7 +139,7 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
             public void onLoadMore() {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-                        Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "铲屎君正在全力录制····", Toast.LENGTH_SHORT).show();
                         xrecy.refreshComplete();
                         xrecy.setLoadingMoreEnabled(false);
                     }

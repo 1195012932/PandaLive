@@ -1,13 +1,78 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.panda.view.fragment.ChinaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="直播中国" />
+        android:layout_height="0dp">
 
-</FrameLayout>
+    </View>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="直播中国"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/china_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/person_sign" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/live_china_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cctv_space"
+        android:paddingTop="6dp">
+
+        <com.example.panda.view.livechinview.LiveChinaTab2PageIndicator
+            android:id="@+id/live_china_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_marginRight="41dp"
+            android:background="#fff"
+            app:tabMode="scrollable" />
+
+        <ImageView
+            android:id="@+id/live_china_add_channel"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/live_china_add" />
+
+        <!--<View
+            android:layout_width="10dp"
+            android:layout_height="41dp"
+            android:layout_toLeftOf="@id/live_china_add_channel"
+            android:background="@drawable/litter_hide" />-->
+    </RelativeLayout>
+
+    <com.example.panda.model.live.NoScrollViewPager
+        android:id="@+id/live_china_viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/live_china_tab_layout" />
+
+</LinearLayout>
