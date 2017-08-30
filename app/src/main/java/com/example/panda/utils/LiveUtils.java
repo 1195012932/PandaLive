@@ -48,7 +48,6 @@ public class LiveUtils {
         }
         return liveutils;
     }
-
     public void getNot(Map<String, String> map, Observer observer) {
         Observable<NotBean> observable = service.getNot(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
