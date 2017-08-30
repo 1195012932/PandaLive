@@ -35,18 +35,17 @@ import cn.smssdk.SMSSDK;
 
 import static android.content.ContentValues.TAG;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PhoneRegi extends Fragment implements View.OnClickListener {
     //随机数数组
     private static final char[] CHARS = {
-            '1','2','3','4','5','6','7','8','9','0',
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm','i','l',
-            'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','o',
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'i', 'l',
+            'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'o',
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-            'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','O'
+            'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'O'
     };
     private static PhoneRegi bmpCode;
     //default settings

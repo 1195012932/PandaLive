@@ -5,6 +5,7 @@ import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.BroadBean;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.LiveStreaing;
@@ -126,5 +127,12 @@ public class RetrofitUtils {
         marvellousBeanObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observables);
+    }
+    //原创互动
+    public void getintera(Observer observa) {
+        Observable<InteraBean> marvellousBeanObservable = service.getintera();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observa);
     }
 }

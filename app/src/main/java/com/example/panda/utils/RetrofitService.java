@@ -6,6 +6,7 @@ import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.LiveStreaing;
@@ -84,12 +85,19 @@ public interface RetrofitService {
      */
     @GET("shouye/index.json")
     Observable<HomeBean> getHomeBean();
+
     //首页精彩一刻
     @GET("shipinliebieye/jingcaiyike/index.json")
     Observable<MarvellousBean> getMarvellous();
+
     //首页滚滚视频
     @GET("shipinliebieye/video/index.json")
     Observable<VitmioBean> getvio();
+    //原创互动
+    //http://www.ipanda.com/kehuduan/PAGE14501767715521482/index.json
+
+    @GET("PAGE14501767715521482/index.json")
+    Observable<InteraBean> getintera();
 
     /**
      * 滚滚视频顶部的图片

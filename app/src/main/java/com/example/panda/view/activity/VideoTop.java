@@ -24,14 +24,11 @@ import com.example.panda.view.fragment.video.entity.VideoTopBean;
 import com.zhy.android.percent.support.PercentLinearLayout;
 import com.zhy.android.percent.support.PercentRelativeLayout;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 
-public class VideoTop extends AppCompatActivity implements View.OnClickListener, VideoTopView {
+
+public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
 
     private VideoView videoview_top;
     private ImageView image_fanhui;
@@ -50,9 +47,6 @@ public class VideoTop extends AppCompatActivity implements View.OnClickListener,
     private AudioManager am;
     private boolean state_shouchang = true;
     private String title;
-
-    private String urls;
-    private VideoTopPre videoTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
