@@ -32,8 +32,16 @@ public class BroadActivity extends AppCompatActivity {
         settings.setDefaultTextEncodingName("utf-8");
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);
+
+        // 设置出现缩放工具
+        broadcast_web.getSettings().setBuiltInZoomControls(true);
+        settings.setUseWideViewPort(true);
+        settings.setSupportZoom(true);
+        settings.setLoadWithOverviewMode(true);
+
         broadcast_web.setWebChromeClient(new WebChromeClient());
         broadcast_web.loadUrl(name);
+
 
     }
 

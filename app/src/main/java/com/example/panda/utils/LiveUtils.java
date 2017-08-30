@@ -1,5 +1,6 @@
 package com.example.panda.utils;
 
+
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.model.live.bean.ProBean;
@@ -9,7 +10,9 @@ import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
 
-import java.util.Map;
+import com.example.panda.model.entity.BroadBean2;
+ Temporary merge branch 2
+
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -26,10 +29,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class LiveUtils {
-
     private static LiveUtils liveutils;
     private RetrofitService service;
-    int i=0;
+
     public LiveUtils() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(50, TimeUnit.SECONDS)
@@ -42,6 +44,7 @@ public class LiveUtils {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitService.class);
     }
+
     public static LiveUtils getRetrofitUtils() {
         if (liveutils == null) {
             liveutils = new LiveUtils();
@@ -53,8 +56,12 @@ public class LiveUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getNots(Observer observer) {
-
         Observable<NotBean> observable = service.getNots();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getBroads2(Observer observer) {
+        Observable<BroadBean2> observable = service.getBroad2();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getOri(Map<String, String> map, Observer observer) {
