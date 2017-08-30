@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#1D539D">
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#1D539D"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
 
         <ImageView
             android:id="@+id/user_back"
@@ -32,11 +34,13 @@
             android:text="注册"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
-    </RelativeLayout>
+    </com.zhy.android.percent.support.PercentRelativeLayout>
 
-    <LinearLayout
+    <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
         android:layout_height="132px"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%"
         android:layout_marginTop="21px">
 
         <RelativeLayout
@@ -89,11 +93,13 @@
                 android:background="@color/cctv_tab_sel"
                 android:visibility="invisible" />
         </RelativeLayout>
-    </LinearLayout>
+    </com.zhy.android.percent.support.PercentLinearLayout>
 
-    <FrameLayout
+    <com.zhy.android.percent.support.PercentFrameLayout
         android:id="@+id/framelayout_register_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="100%"
+        app:layout_widthPercent="100%"></com.zhy.android.percent.support.PercentFrameLayout>
 
-</LinearLayout>
+</com.zhy.android.percent.support.PercentLinearLayout>

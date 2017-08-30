@@ -1,6 +1,7 @@
 package com.example.panda.view.fragment.person;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.panda.R;
+import com.example.panda.view.activity.PersonalAgreePostActivity;
 import com.mob.MobSDK;
 
 import org.json.JSONObject;
@@ -33,17 +35,17 @@ import cn.smssdk.SMSSDK;
 
 import static android.content.ContentValues.TAG;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PhoneRegi extends Fragment implements View.OnClickListener {
     //随机数数组
     private static final char[] CHARS = {
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm',
-            'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'i', 'l',
+            'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'o',
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-            'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+            'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'O'
     };
     private static PhoneRegi bmpCode;
     //default settings
@@ -154,6 +156,13 @@ public class PhoneRegi extends Fragment implements View.OnClickListener {
                 myHandler.sendMessage(message);
             }
         };
+        personal_reg_xieyi_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent xieIntent = new Intent(getActivity(), PersonalAgreePostActivity.class);
+                startActivity(xieIntent);
+            }
+        });
         SMSSDK.registerEventHandler(eventHandler);
     }
 

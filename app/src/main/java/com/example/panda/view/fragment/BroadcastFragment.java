@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.panda.R;
 import com.example.panda.adapter.MyBroadAdapter;
 import com.example.panda.base.BaseFragment;
-import com.example.panda.model.entity.BroadBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.presenter.broadcast.BroadPreImpl;
 import com.example.panda.presenter.broadcast.BroadPreImpl2;

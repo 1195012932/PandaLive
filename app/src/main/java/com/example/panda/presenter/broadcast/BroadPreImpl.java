@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.panda.model.broadcast.BroadModel;
 import com.example.panda.model.broadcast.BroadModelImpl;
-import com.example.panda.model.entity.BroadBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.view.BroadView;
 
 import java.util.Map;
