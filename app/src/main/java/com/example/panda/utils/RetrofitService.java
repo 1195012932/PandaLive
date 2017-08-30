@@ -24,7 +24,6 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 /**
  * Created by lenovo on 2017/8/23.
@@ -69,8 +68,8 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST()
     Observable<NotBean> getNot(@FieldMap Map<String, String> map);
-    @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&")
-    Observable<NotBean> getNots(@Query("p")String ip);
+    @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
+    Observable<NotBean> getNots();
     //当熊不让
     @FormUrlEncoded
     @POST()

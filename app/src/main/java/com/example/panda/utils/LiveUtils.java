@@ -26,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class LiveUtils {
+
     private static LiveUtils liveutils;
     private RetrofitService service;
     int i=0;
@@ -53,8 +54,8 @@ public class LiveUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getNots(Observer observer) {
-        i++;
-        Observable<NotBean> observable = service.getNots(i+"");
+
+        Observable<NotBean> observable = service.getNots();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     public void getOri(Map<String, String> map, Observer observer) {
