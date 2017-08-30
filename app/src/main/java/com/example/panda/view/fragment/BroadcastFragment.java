@@ -139,7 +139,7 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
             public void onLoadMore() {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-                        Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "铲屎君正在全力录制····", Toast.LENGTH_SHORT).show();
                         xrecy.refreshComplete();
                         xrecy.setLoadingMoreEnabled(false);
                     }
