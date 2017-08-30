@@ -17,10 +17,9 @@ import com.example.panda.base.BaseFragment;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.presenter.video.VideoPreImpl;
 import com.example.panda.presenter.video.VideoPresenter;
-import com.example.panda.view.VideoView;
 import com.example.panda.view.activity.PersonActivity;
-import com.example.panda.view.activity.PlayActivity;
 import com.example.panda.view.activity.VideoItActivity;
+import com.example.panda.view.activity.VideoTop;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.HashMap;
@@ -41,6 +40,8 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
     private XRecyclerView xrecy;
     private View view2;
+    private String pid;
+    private String urls;
 
 
     @Override
@@ -85,7 +86,9 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         view2 = View.inflate(getActivity(), R.layout.video_header, null);
         banner = view2.findViewById(R.id.banner);
         tv_videoTitle = (TextView) view2.findViewById(R.id.tv_videoTitle);
+        pid = list.get(0).getPid();
         title = list.get(0).getTitle();
+        urls = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid="+pid;
         tv_videoTitle.setText(title);
         Glide.with(getActivity()).load(list.get(0).getImage()).error(R.mipmap.panda_sign).into(banner);
         list.get(0).getPid();
@@ -130,8 +133,10 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlayActivity.class);
+
+                Intent intent = new Intent(getActivity(), VideoTop.class);
                 intent.putExtra("title", title);
+                intent.putExtra("url_top", urls);
                 startActivity(intent);
             }
         });

@@ -1,6 +1,7 @@
-package com.example.panda.view;
+package com.example.panda.view.fragment.video;
 
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.List;
 
@@ -11,5 +12,6 @@ import java.util.List;
 public interface VideoView {
     void onShowBigImage(List<VideoBean.BigImgBean> list);
     void OnShowList(List<VideoBean.ListBean> been);
+
     void onError(String e);
 }

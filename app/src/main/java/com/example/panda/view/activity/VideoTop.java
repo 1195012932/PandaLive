@@ -16,13 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.panda.R;
+import com.example.panda.model.entity.VideoBean;
+import com.example.panda.presenter.video.VideoTopPre;
+import com.example.panda.presenter.video.VideoTopPreImpl;
+import com.example.panda.view.fragment.video.VideoTopView;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 import com.zhy.android.percent.support.PercentLinearLayout;
 import com.zhy.android.percent.support.PercentRelativeLayout;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 
-public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
+public class VideoTop extends AppCompatActivity implements View.OnClickListener, VideoTopView {
 
     private VideoView videoview_top;
     private ImageView image_fanhui;
@@ -42,6 +51,9 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private boolean state_shouchang = true;
     private String title;
 
+    private String urls;
+    private VideoTopPre videoTop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +68,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_play);
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
+        urls = intent.getStringExtra("url_top");
         initView();
         initListener();
     }
@@ -69,6 +82,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
+        videoTop = new VideoTopPreImpl(this);
         videoview_top = (VideoView) findViewById(R.id.videoview_top);
         image_fanhui = (ImageView) findViewById(R.id.image_fanhui);
         tv_broadtop_title = (TextView) findViewById(R.id.tv_broadtop_title);
@@ -84,6 +98,12 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         progress_player_yinliang = (SeekBar) findViewById(R.id.progress_player_yinliang);
         down = (PercentLinearLayout) findViewById(R.id.down);
         tv_broadtop_title.setText(title);
+        Map<String, String> map = new HashMap<>();
+        map.put("param", "http://115.182.35.91/api/");
+        videoTop.getData(map);
+
+        Toast.makeText(VideoTop.this, urls, Toast.LENGTH_SHORT).show();
+        System.out.println(urls);
         progressBar_yinliang();
     }
 
@@ -154,15 +174,29 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             image_broadtop_shouchang.setImageResource(R.drawable.play_fullsrcee_collect_true);
             state_shouchang = false;
 //                    Toast.makeText(BroadDetail_TopActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT).show();
-            Toast toast = Toast.makeText(PlayActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(VideoTop.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         } else {
             image_broadtop_shouchang.setImageResource(R.drawable.play_fullsrcee_collect);
             state_shouchang = true;
-            Toast toast = Toast.makeText(PlayActivity.this, "已取消收藏", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(VideoTop.this, "已取消收藏", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
+    }
+
+
+    @Override
+    public void onShowTop(List<VideoTopBean.VideoBean> been) {
+        String mapurl = been.get(0).getChapters()
+                .get(0).getUrl();
+        Toast.makeText(this, mapurl, Toast.LENGTH_SHORT).show();
+        System.out.println(mapurl);
+    }
+
+    @Override
+    public void onError(String e) {
+        Toast.makeText(this, e, Toast.LENGTH_SHORT).show();
     }
 }

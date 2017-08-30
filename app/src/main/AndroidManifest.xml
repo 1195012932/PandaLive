@@ -20,10 +20,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".view.activity.PersonActivity" />
-        <activity android:name=".view.activity.LoginActivity" />
-        <activity android:name=".view.activity.RegisterActivity" />
         <activity android:name=".view.activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.PlayActivity" />
-        <activity android:name=".view.activity.VideoItActivity"></activity>
-        <activity android:name=".view.activity.BroadActivity"></activity>
+        <activity
+            android:name=".view.activity.VideoTop"
+            android:screenOrientation="landscape" /> <!-- 使屏幕处于横屏 -->
+        <activity android:name=".view.activity.VideoItActivity" />
+        <activity android:name=".view.activity.BroadActivity" />
         <activity android:name=".view.activity.HistoryActivity" />
         <activity android:name=".view.activity.SetActivity" />
         <activity android:name=".view.activity.ShouCang" />
