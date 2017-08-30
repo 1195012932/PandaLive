@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import java.util.Map;
  * Created by admin on 2017/8/24.
  */
 
-public class LiveStreaming extends BaseFragment implements LiveView {
+public class LiveStreaming extends BaseFragment implements LiveView{
     private LivePresenter livePresenter;
     private TabLayout live_tab;
     private ViewPager live_pager;
@@ -46,21 +47,10 @@ public class LiveStreaming extends BaseFragment implements LiveView {
 
     @Override
     protected void initData() {
-
-    }
-
-    @Override
-    protected void initView(View view) {
-
         livePresenter = new LivePreImpl(this);
         Map<String, String> map = new HashMap<>();
         map.put("param", "http://www.ipanda.com/kehuduan/");
         livePresenter.url(map);
-        live_tab = (TabLayout) view.findViewById(R.id.live_tab);
-        live_pager = (ViewPager) view.findViewById(R.id.live_pager);
-        live_text = (TextView) view.findViewById(R.id.live_text);
-        live_img = (ImageView) view.findViewById(R.id.live_img);
-        live_text.setVisibility(View.GONE);
         getlist();
         getlists();
         live_tab.addTab(live_tab.newTab().setText(lists.get(0)));
@@ -71,6 +61,20 @@ public class LiveStreaming extends BaseFragment implements LiveView {
     }
 
     @Override
+    protected void initView(View view) {
+
+        live_tab = (TabLayout) view.findViewById(R.id.live_tab);
+        live_pager = (ViewPager) view.findViewById(R.id.live_pager);
+        live_text = (TextView) view.findViewById(R.id.live_text);
+        live_img = (ImageView) view.findViewById(R.id.live_img);
+        live_text.setVisibility(View.GONE);
+        Log.i("s","wwwwwwwwwwwwwwww");
+//        live_pager.setOffscreenPageLimit(5);
+
+
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.livestreaming;
     }
@@ -78,7 +82,6 @@ public class LiveStreaming extends BaseFragment implements LiveView {
 
     @Override
     public void LiveStreaming(final List<LiveStreaing.LiveBean> liveBeen) {
-
         live_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +104,7 @@ public class LiveStreaming extends BaseFragment implements LiveView {
     }
 
     public List<Fragment> getlist() {
+        System.out.println("aaaaaaaaaaaaaaaa");
 //        list.clear();
         list.add(new BrodCast());
         list.add(new Look());
@@ -121,7 +125,12 @@ public class LiveStreaming extends BaseFragment implements LiveView {
         super(fm);
     }
 
-    @Override
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
     public Fragment getItem(int position) {
         return list.get(position);
     }
@@ -135,6 +144,5 @@ public class LiveStreaming extends BaseFragment implements LiveView {
             return lists.get(position);
         }
     }
-
 
 }
