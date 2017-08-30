@@ -68,7 +68,8 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
     protected void initView(View view) {
         bp = new BroadPreImpl(this);
         bp2 = new BroadPreImpl2(this);
-
+        sign = view.findViewById(R.id.broadcast_sign);
+        xrecy = view.findViewById(R.id.broad_xrecy);
         Map<String, String> map = new HashMap<>();
         Map<String, String> map2 = new HashMap<>();
         map.put("param", "http://www.ipanda.com/kehuduan/");

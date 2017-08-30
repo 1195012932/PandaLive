@@ -2,6 +2,9 @@ package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.InteraBean;
+import com.example.panda.model.entity.home.MarvellousBean;
+import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
 import com.example.panda.model.live.bean.NotBean;
@@ -12,6 +15,7 @@ import com.example.panda.model.live.bean.RollBean;
 import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 
@@ -109,5 +113,23 @@ public interface RetrofitService {
     Observable<RollBean> getRoll(@FieldMap Map<String, String> map);
     @GET("videolistById?vsid=VSET100219009515&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<RollBean> getRolls();
+    //首页精彩一刻
+    @GET("shipinliebieye/jingcaiyike/index.json")
+    Observable<MarvellousBean> getMarvellous();
+
+    //首页滚滚视频
+    @GET("shipinliebieye/video/index.json")
+    Observable<VitmioBean> getvio();
+//原创互动
+//http://www.ipanda.com/kehuduan/PAGE14501767715521482/index.json
+
+    @GET("PAGE14501767715521482/index.json")
+    Observable<InteraBean> getintera();
+
+    /**
+     * 滚滚视频顶部的图片
+     */
+    @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
+    Observable<VideoTopBean> getVideoTop();
 
 }

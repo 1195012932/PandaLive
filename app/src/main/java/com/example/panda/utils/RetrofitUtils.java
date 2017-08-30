@@ -2,8 +2,12 @@ package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.InteraBean;
+import com.example.panda.model.entity.home.MarvellousBean;
+import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -80,6 +84,14 @@ public class RetrofitUtils {
         Observable<Brod> observable = service.getBrods();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+    /**
+     * 滚滚视频顶部
+     * @param observer
+     */
+    public void getVideoTop(Observer observer) {
+        Observable<VideoTopBean> observable = service.getVideoTop();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 
     /**
      * 首页
@@ -90,5 +102,27 @@ public class RetrofitUtils {
         homeObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observable);
+    }
+    //精彩一刻
+    public void getmarvell(Observer observable) {
+        Observable<MarvellousBean> marvellousBeanObservable = service.getMarvellous();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observable);
+    }
+
+    //首页滚滚视频
+    public void getvitmio(Observer observables) {
+        Observable<VitmioBean> marvellousBeanObservable = service.getvio();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observables);
+    }
+    //原创互动
+    public void getintera(Observer observa) {
+        Observable<InteraBean> marvellousBeanObservable = service.getintera();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observa);
     }
 }
