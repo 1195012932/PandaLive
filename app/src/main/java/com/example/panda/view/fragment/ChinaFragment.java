@@ -4,13 +4,15 @@ package com.example.panda.view.fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -20,7 +22,6 @@ import com.example.panda.base.BaseFragment;
 import com.example.panda.model.live.NoScrollViewPager;
 import com.example.panda.view.activity.PersonActivity;
 import com.example.panda.view.fragment.chinafragment.BaDaLingFeagment;
-import com.example.panda.view.livechinview.LiveChinaTab2PageIndicator;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 public class ChinaFragment extends BaseFragment {
     private ArrayList<Fragment> list = new ArrayList<Fragment>();
     private ArrayList<String> list1 = new ArrayList<>();
-    private LiveChinaTab2PageIndicator live_china_indicator;
+    private TabLayout live_china_indicator;
     private NoScrollViewPager live_china_viewPager;
     private int lastPosition;
     private ChinaAdapter adapter;
@@ -48,35 +49,20 @@ public class ChinaFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 4; i++) {
             BaDaLingFeagment bdl = new BaDaLingFeagment();
             list.add(bdl);
-            list1.add("  八达岭  |");
-            live_china_viewPager.setOffscreenPageLimit(list1.size());
+            list1.add("八达岭");
+            live_china_indicator.addTab(live_china_indicator.newTab().setText(list1.get(i)));
         }
-
+        LinearLayout linearLayout = (LinearLayout) live_china_indicator.getChildAt(0);
+        linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+        linearLayout.setDividerDrawable(ContextCompat.getDrawable(getActivity(),
+                R.drawable.layout_divider_vertical));
         adapter = new ChinaAdapter(getActivity().getSupportFragmentManager(), list, list1);
         live_china_viewPager.setAdapter(adapter);
 
-        live_china_indicator.setViewPager(live_china_viewPager);
-        live_china_indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                destoryPLay();
-                lastPosition = position;
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
+        live_china_indicator.setupWithViewPager(live_china_viewPager);
     }
 
     @Override
@@ -127,12 +113,7 @@ public class ChinaFragment extends BaseFragment {
         return R.layout.fragment_china;
     }
 
-    public void destoryPLay() {
-        Fragment item = adapter.getItem(lastPosition);
-        if (item != null) {
-            item.onDestroy();
-        }
-    }
+
 
 
 }

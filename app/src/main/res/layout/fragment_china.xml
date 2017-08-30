@@ -44,13 +44,15 @@
         android:background="@color/cctv_space"
         android:paddingTop="6dp">
 
-        <com.example.panda.view.livechinview.LiveChinaTab2PageIndicator
+        <android.support.design.widget.TabLayout
             android:id="@+id/live_china_indicator"
             android:layout_width="match_parent"
             android:layout_height="41dp"
-            android:layout_marginRight="41dp"
+            android:layout_marginRight="51dp"
             android:background="#fff"
-            app:tabMode="scrollable" />
+            app:tabMode="scrollable" >
+
+            </android.support.design.widget.TabLayout>
 
         <ImageView
             android:id="@+id/live_china_add_channel"
@@ -62,11 +64,11 @@
             android:scaleType="centerCrop"
             android:src="@drawable/live_china_add" />
 
-        <!--<View
+        <View
             android:layout_width="10dp"
             android:layout_height="41dp"
             android:layout_toLeftOf="@id/live_china_add_channel"
-            android:background="@drawable/litter_hide" />-->
+            android:background="@drawable/litter_hide" />
     </RelativeLayout>
 
     <com.example.panda.model.live.NoScrollViewPager

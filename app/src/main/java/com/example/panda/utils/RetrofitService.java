@@ -138,7 +138,7 @@ public interface RetrofitService {
     @GET("apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336")
     Observable<BroadBean2> getBroad2();
 
- 修改了熊猫直播
+ //修改了熊猫直播
 
     /**
      * 首页
