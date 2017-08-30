@@ -75,7 +75,6 @@ public class RetrofitUtils {
     }
 
     //滚滚视频
-
     public void getVideo(Map<String, String> map, Observer observer) {
         Observable<VideoBean> observable = service.getVideo(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
