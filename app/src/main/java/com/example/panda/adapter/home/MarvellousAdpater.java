@@ -1,10 +1,10 @@
 package com.example.panda.adapter.home;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by XXASUS on 2017/8/29.
  */
 
-public class MarvellousAdpater extends BaseAdapter {
+public class MarvellousAdpater extends RecyclerView.Adapter {
     private List<MarvellousBean.ListBean> mlist;
     private Context context;
 
@@ -28,45 +28,55 @@ public class MarvellousAdpater extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return mlist.size();
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.marvell_grid, null);
+
+        MarvellousHolder myHolder = new MarvellousHolder(view);
+        return myHolder;
     }
 
     @Override
-    public Object getItem(int position) {
-        return mlist.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View concertview, ViewGroup viewGroup) {
-        MarvellousHolder myHolder;
-        if (concertview == null) {
-            myHolder = new MarvellousHolder();
-            concertview = LayoutInflater.from(context).inflate(R.layout.marvell_grid, null);
-            myHolder.imageView = concertview.findViewById(R.id.marvell_images);
-            myHolder.title = concertview.findViewById(R.id.marvell_title);
-            myHolder.playtime = concertview.findViewById(R.id.marvell_playtimes);
-            myHolder.time = concertview.findViewById(R.id.marvell_times);
-            concertview.setTag(myHolder);
-        } else {
-            myHolder = (MarvellousHolder) concertview.getTag();
-        }
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        MarvellousHolder myHolder = (MarvellousHolder) holder;
         Glide.with(context).load(mlist.get(position).getImage()).into(myHolder.imageView);
         myHolder.title.setText(mlist.get(position).getTitle());
         myHolder.playtime.setText(mlist.get(position).getVideoLength());
         myHolder.time.setText(mlist.get(position).getDaytime());
-        return concertview;
     }
 
-    class MarvellousHolder {
+    @Override
+    public int getItemCount() {
+        return mlist.size();
+    }
+
+    class MarvellousHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView title;
         private TextView time;
         private TextView playtime;
+
+        public MarvellousHolder(View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.marvell_images);
+            title = itemView.findViewById(R.id.marvell_title);
+            playtime = itemView.findViewById(R.id.marvell_playtimes);
+            time = itemView.findViewById(R.id.marvell_times);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickListeners.onClickLiseteners(getAdapterPosition());
+                }
+            });
+        }
+    }
+    private OnClickListeners onClickListeners;
+
+    public interface OnClickListeners {
+        void onClickLiseteners(int pos);
+    }
+
+    public void setOnClickListeners(OnClickListeners onClickListener) {
+        this.onClickListeners = onClickListener;
+
     }
 }
