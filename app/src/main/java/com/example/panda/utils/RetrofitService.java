@@ -1,5 +1,6 @@
 package com.example.panda.utils;
 
+
 import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
@@ -7,8 +8,9 @@ import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
-import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
+
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.model.live.bean.ProBean;
@@ -17,7 +19,6 @@ import com.example.panda.model.live.bean.RollBean;
 import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
-import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 
@@ -32,6 +33,7 @@ import retrofit2.http.POST;
  */
 
 public interface RetrofitService {
+
     @FormUrlEncoded
     @POST()
     Observable<HomeBean> getData(@FieldMap Map<String, String> map);
@@ -63,6 +65,7 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST()
     Observable<VideoBean> getVideo(@FieldMap Map<String, String> map);
+
     @GET("video/index.json")
     Observable<VideoBean> getVideo();
     @FormUrlEncoded
@@ -118,6 +121,40 @@ public interface RetrofitService {
     Observable<RollBean> getRoll(@FieldMap Map<String, String> map);
     @GET("videolistById?vsid=VSET100219009515&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<RollBean> getRolls();
+
+
+/*    //精彩一刻
+    @FormUrlEncoded
+    @POST()
+    Observable<NotBean> getNot(@FieldMap Map<String, String> map);
+    @GET(" videolistById?vsid=VSET100237714751&n=7&serviceId=panda&o=desc&of=time&p=1")
+    Observable<NotBean> getNots();*/
+
+    /**
+     * 熊猫播报
+     */
+    @FormUrlEncoded
+    @POST()
+    Observable<BroadBean> getBroad(@FieldMap Map<String, String> map);
+
+    @GET("PAGE14503485387528442/index.json")
+    Observable<BroadBean> getBroad();
+
+    @FormUrlEncoded
+    @POST()
+    Observable<BroadBean2> getBroad2(@FieldMap Map<String, String> map);
+
+    @GET("apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336")
+    Observable<BroadBean2> getBroad2();
+
+ //修改了熊猫直播
+
+    /**
+     * 首页
+     */
+    @GET("shouye/index.json")
+    Observable<HomeBean> getHomeBean();
+
     //首页精彩一刻
     @GET("shipinliebieye/jingcaiyike/index.json")
     Observable<MarvellousBean> getMarvellous();
@@ -125,8 +162,8 @@ public interface RetrofitService {
     //首页滚滚视频
     @GET("shipinliebieye/video/index.json")
     Observable<VitmioBean> getvio();
-//原创互动
-//http://www.ipanda.com/kehuduan/PAGE14501767715521482/index.json
+    //原创互动
+    //http://www.ipanda.com/kehuduan/PAGE14501767715521482/index.json
 
     @GET("PAGE14501767715521482/index.json")
     Observable<InteraBean> getintera();
@@ -136,6 +173,13 @@ public interface RetrofitService {
      */
     @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
     Observable<VideoTopBean> getVideoTop();
+
+    /**
+     *直播中国
+     */
+    @GET("PAGE14501775094142282/index.json")
+    Observable<ChianBean> getChian();
+
 
     @FormUrlEncoded
     @POST()

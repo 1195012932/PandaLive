@@ -1,10 +1,7 @@
 package com.example.panda.model.home.intera;
 
-import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.utils.RetrofitUtils;
-
-import java.util.Map;
 
 import io.reactivex.Observer;
 
@@ -19,8 +16,5 @@ public class InteraModelImpl implements InteraModel {
         RetrofitUtils.getRetrofitUtils().getintera(observer);
     }
 
-    @Override
-    public void RequestPost(Map<String, String> map, Observer<HomeBean> observer) {
-        RetrofitUtils.getRetrofitUtils().getPost(map, observer);
-    }
+
 }

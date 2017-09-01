@@ -82,7 +82,6 @@
 
 
                 <com.example.panda.view.livechinview.DragGrid
-
                     android:layout_marginTop="10dp"
                     android:id="@+id/userGridView"
                     android:layout_width="fill_parent"
