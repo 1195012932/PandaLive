@@ -2,6 +2,7 @@ package com.example.panda.utils;
 
 
 import com.example.panda.model.entity.BroadBean2;
+import com.example.panda.model.entity.ChianBean;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.entity.home.BroadBean;
@@ -164,4 +165,11 @@ public interface RetrofitService {
      */
     @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
     Observable<VideoTopBean> getVideoTop();
+
+    /**
+     *直播中国
+     */
+    @GET("PAGE14501775094142282/index.json")
+    Observable<ChianBean> getChian();
+
 }

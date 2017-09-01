@@ -1,5 +1,6 @@
 package com.example.panda.utils;
 
+import com.example.panda.model.entity.ChianBean;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.VideoBean;
@@ -92,6 +93,7 @@ public class RetrofitUtils {
 
     /**
      * 滚滚视频顶部
+     *
      * @param observer
      */
     public void getVideoTop(Observer observer) {
@@ -125,9 +127,18 @@ public class RetrofitUtils {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observables);
     }
+
     //原创互动
     public void getintera(Observer observa) {
         Observable<InteraBean> marvellousBeanObservable = service.getintera();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observa);
+    }
+
+    //直播中国
+    public void getChian(Observer observa) {
+        Observable<ChianBean> marvellousBeanObservable = service.getChian();
         marvellousBeanObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observa);
