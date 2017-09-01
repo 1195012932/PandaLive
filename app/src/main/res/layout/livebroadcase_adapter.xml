@@ -3,22 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
+<<<<<<< HEAD
         android:padding="5dp">
+=======
+        android:padding="10dp">
+>>>>>>> origin/master
 
         <TextView
             android:id="@+id/frame_hometext_follow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
             android:background="@drawable/home_text"
             android:text="关注"
             android:textColor="#FF276E"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/frame_follow"

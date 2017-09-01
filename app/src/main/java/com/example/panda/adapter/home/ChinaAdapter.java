@@ -1,10 +1,10 @@
 package com.example.panda.adapter.home;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by XXASUS on 2017/8/29.
  */
 
-public class ChinaAdapter extends BaseAdapter {
+public class ChinaAdapter extends RecyclerView.Adapter {
     private List<HomeBean.DataBean.ChinaliveBean.ListBean> mlist;
     private Context context;
 
@@ -28,40 +28,49 @@ public class ChinaAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.china_grid, null);
+        ChinaHolder chinaHolder = new ChinaHolder(view);
+        return chinaHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ChinaHolder chinaHolder = (ChinaHolder) holder;
+        Glide.with(context).load(mlist.get(position).getImage()).into(chinaHolder.imageView);
+        chinaHolder.titletext.setText(mlist.get(position).getTitle());
+    }
+
+    @Override
+    public int getItemCount() {
         return mlist.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return mlist.get(position);
-    }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertview, ViewGroup viewGroup) {
-        ChinaHolder myHolder;
-        if (convertview == null) {
-            myHolder = new ChinaHolder();
-            convertview = LayoutInflater.from(context).inflate(R.layout.china_grid, null);
-            myHolder.imageView = convertview.findViewById(R.id.chinabase_image);
-            myHolder.titletext = convertview.findViewById(R.id.chinaitem_titler);
-            convertview.setTag(myHolder);
-        } else {
-            myHolder = (ChinaHolder) convertview.getTag();
-        }
-        Glide.with(context).load(mlist.get(position).getImage()).into(myHolder.imageView);
-        myHolder.titletext.setText(mlist.get(position).getTitle());
-        return convertview;
-    }
-
-    class ChinaHolder {
+    class ChinaHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView titletext;
+
+        public ChinaHolder(View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.chinabase_image);
+            titletext = itemView.findViewById(R.id.chinaitem_titler);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickListeners.onClickLiseteners(getAdapterPosition());
+                }
+            });
+        }
+    }
+    private OnClickListeners onClickListeners;
+
+    public interface OnClickListeners {
+        void onClickLiseteners(int pos);
+    }
+
+    public void setOnClickListeners(OnClickListeners onClickListener) {
+        this.onClickListeners = onClickListener;
 
     }
 }

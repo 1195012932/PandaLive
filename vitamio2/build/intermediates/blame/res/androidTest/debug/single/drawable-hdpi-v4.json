@@ -15,13 +15,19 @@
     {
         "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+<<<<<<< HEAD
 =======
         "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+=======
+>>>>>>> origin/master
     },
     {
         "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> origin/master
     }
 ]
