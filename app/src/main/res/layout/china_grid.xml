@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/rela"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <ImageView
             android:id="@+id/chinabase_image"
@@ -38,6 +39,5 @@
         android:text="name"
         android:padding="5dp"
         />
-
 
 </LinearLayout>
