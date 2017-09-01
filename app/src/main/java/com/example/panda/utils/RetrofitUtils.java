@@ -1,12 +1,13 @@
 package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
-import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.entity.home.BroadBean;
+import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.LiveStreaing;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -89,6 +90,14 @@ public class RetrofitUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    /**
+     * 滚滚视频顶部
+     * @param observer
+     */
+    public void getVideoTop(Observer observer) {
+        Observable<VideoTopBean> observable = service.getVideoTop();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 
     /**
      * 首页
@@ -116,9 +125,18 @@ public class RetrofitUtils {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observables);
     }
+
     //原创互动
     public void getintera(Observer observa) {
         Observable<InteraBean> marvellousBeanObservable = service.getintera();
+        marvellousBeanObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observa);
+    }
+
+    //直播中国
+    public void getChian(Observer observa) {
+        Observable<ChianBean> marvellousBeanObservable = service.getChian();
         marvellousBeanObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observa);

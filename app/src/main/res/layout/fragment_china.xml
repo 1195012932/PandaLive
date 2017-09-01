@@ -50,9 +50,9 @@
             android:layout_height="41dp"
             android:layout_marginRight="51dp"
             android:background="#fff"
-            app:tabMode="scrollable" >
+            app:tabMode="scrollable">
 
-            </android.support.design.widget.TabLayout>
+        </android.support.design.widget.TabLayout>
 
         <ImageView
             android:id="@+id/live_china_add_channel"

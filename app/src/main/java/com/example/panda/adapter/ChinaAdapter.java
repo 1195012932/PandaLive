@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ChinaAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> list;
     private ArrayList<String> list1;
+
     public ChinaAdapter(FragmentManager fm, ArrayList<Fragment> list, ArrayList<String> list1) {
         super(fm);
         this.list = list;
@@ -33,4 +34,5 @@ public class ChinaAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return list1.get(position);
     }
+
 }

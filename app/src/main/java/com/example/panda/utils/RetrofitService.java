@@ -154,7 +154,7 @@ public interface RetrofitService {
     @GET("apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336")
     Observable<BroadBean2> getBroad2();
 
-    //修改了熊猫直播
+ //修改了熊猫直播
 
     /**
      * 首页
@@ -189,4 +189,11 @@ public interface RetrofitService {
     Observable<VideoItemBean> getItem();
     @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<VideoItemBean> getItem2(@QueryMap Map<String,String> map);
+
+    /**
+     *直播中国
+     */
+    @GET("PAGE14501775094142282/index.json")
+    Observable<ChianBean> getChian();
+
 }
