@@ -151,6 +151,9 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
             public void click(View v, int position) {
                 Intent intent = new Intent(getActivity(), BroadActivity.class);
                 intent.putExtra("name", been.get(position).getUrl());
+                intent.putExtra("title", been.get(position).getTitle());
+                intent.putExtra("img", been.get(position).getPicurl());
+                intent.putExtra("data", been.get(position).getFocus_date());
                 startActivity(intent);
             }
         });

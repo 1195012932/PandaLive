@@ -1,7 +1,9 @@
 package com.example.panda.utils;
 
+import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
@@ -33,7 +35,6 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST()
     Observable<HomeBean> getData(@FieldMap Map<String, String> map);
-
     @GET("shouye/index.json")
     Observable<HomeBean> getDataGet();
 
@@ -64,6 +65,11 @@ public interface RetrofitService {
     Observable<VideoBean> getVideo(@FieldMap Map<String, String> map);
     @GET("video/index.json")
     Observable<VideoBean> getVideo();
+    @FormUrlEncoded
+    @POST()
+    Observable<BroadBean> getBroad(@FieldMap Map<String, String> map);
+    @GET("PAGE14503485387528442/index.json")
+    Observable<BroadBean> getBroad();
     //精彩一刻
     @FormUrlEncoded
     @POST()
@@ -130,5 +136,12 @@ public interface RetrofitService {
      */
     @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
     Observable<VideoTopBean> getVideoTop();
+
+    @FormUrlEncoded
+    @POST()
+    Observable<BroadBean2> getBroad2(@FieldMap Map<String, String> map);
+
+    @GET("apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336")
+    Observable<BroadBean2> getBroad2();
 
 }

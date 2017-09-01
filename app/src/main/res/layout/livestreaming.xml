@@ -5,18 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:background="@drawable/def_no_iv"
+        android:id="@+id/live_img1"
         android:layout_width="match_parent"
         android:layout_height="100dp" />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
+        android:text="[正在直播]"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000"
         android:layout_marginTop="2dp"
-        android:layout_marginLeft="15dp"
-        android:text="[正在直播]成都基地高清精切线路"/>
+        android:id="@+id/live_text1"
+        android:text="成都基地高清精切线路"/>
+</LinearLayout>
+   >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +39,7 @@
             android:layout_height="match_parent"
             android:text="简介"
             android:layout_marginLeft="15dp"
-            android:textColor="#eee" />
+            android:textColor="#969696" />
         <ImageView
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
@@ -36,15 +48,27 @@
             android:id="@+id/live_img"
             android:src="@mipmap/com_facebook_tooltip_blue_bottomnub" />
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#969696"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <TextView
+        android:text="wwwwwwwww"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000"
         android:id="@+id/live_text"/>
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#969696"
+        />
           <android.support.design.widget.TabLayout
               android:layout_width="match_parent"
               android:id="@+id/live_tab"
@@ -52,8 +76,11 @@
               app:tabSelectedTextColor="#00f"
               android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
           <android.support.v4.view.ViewPager
+              android:layout_weight="1"
               android:layout_width="match_parent"
               android:id="@+id/live_pager"
               android:layout_height="match_parent"></android.support.v4.view.ViewPager>
-      </LinearLayout>
+
+        </LinearLayout>
+
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.panda.utils;
 
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
@@ -84,6 +85,11 @@ public class RetrofitUtils {
         Observable<Brod> observable = service.getBrods();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+    public void getBroadss(Observer observer) {
+        Observable<BroadBean> observable = service.getBroad();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
     /**
      * 滚滚视频顶部
      * @param observer

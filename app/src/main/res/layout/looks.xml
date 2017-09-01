@@ -4,15 +4,21 @@
     android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="50dp">
     <EditText
+        android:layout_marginLeft="5dp"
         android:layout_weight="1"
         android:layout_width="0dp"
+        android:layout_marginTop="5dp"
+        android:hint="添加评论..."
+        android:background="@drawable/aa"
         android:id="@+id/look_edit"
-        android:layout_height="match_parent" />
+        android:layout_height="40dp" />
     <Button
+        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:text="发送"
         android:background="#00f"
         android:textSize="20dp"

@@ -1,6 +1,7 @@
 package com.example.panda.utils;
 
 
+import com.example.panda.model.entity.BroadBean2;
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.model.live.bean.ProBean;
@@ -10,9 +11,7 @@ import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
 
-import com.example.panda.model.entity.BroadBean2;
- Temporary merge branch 2
-
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
