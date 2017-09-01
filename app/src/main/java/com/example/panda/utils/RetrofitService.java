@@ -2,15 +2,15 @@ package com.example.panda.utils;
 
 
 import com.example.panda.model.entity.BroadBean2;
+import com.example.panda.model.entity.ChianBean;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
+import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
-import com.example.panda.view.fragment.video.entity.VideoTopBean;
-
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.model.live.bean.ProBean;
@@ -19,6 +19,7 @@ import com.example.panda.model.live.bean.RollBean;
 import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 
@@ -123,29 +124,11 @@ public interface RetrofitService {
     Observable<RollBean> getRolls();
 
 
-/*    //精彩一刻
-    @FormUrlEncoded
-    @POST()
-    Observable<NotBean> getNot(@FieldMap Map<String, String> map);
-    @GET(" videolistById?vsid=VSET100237714751&n=7&serviceId=panda&o=desc&of=time&p=1")
-    Observable<NotBean> getNots();*/
-
     /**
      * 熊猫播报
      */
     @FormUrlEncoded
-    @POST()
-    Observable<BroadBean> getBroad(@FieldMap Map<String, String> map);
 
-    @GET("PAGE14503485387528442/index.json")
-    Observable<BroadBean> getBroad();
-
-    @FormUrlEncoded
-    @POST()
-    Observable<BroadBean2> getBroad2(@FieldMap Map<String, String> map);
-
-    @GET("apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336")
-    Observable<BroadBean2> getBroad2();
 
  //修改了熊猫直播
 
