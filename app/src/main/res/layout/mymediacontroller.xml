@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/video_player_bg_color"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="#77000000">
+
+            <ImageButton
+                android:id="@+id/mediacontroller_top_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@null"
+                android:src="@drawable/ic_player_close_white" />
+
+            <TextView
+                android:id="@+id/mediacontroller_filename"
+                style="@style/MediaController_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="标题名" />
+
+            <ImageView
+                android:id="@+id/mediacontroller_share"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:src="@drawable/play_share" />
+
+            <ImageView
+                android:id="@+id/mediacontroller_favorite"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/mediacontroller_share"
+                android:layout_toStartOf="@+id/mediacontroller_share"
+                android:background="@null"
+                android:src="@drawable/play_fullsrcee_collect" />
+        </RelativeLayout>
+
+  <!--      <LinearLayout
+            android:id="@+id/custom_listener"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/custom_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_play_circle_outline_white_36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="再看一遍"
+                android:textColor="#fff" />
+        </LinearLayout>-->
+
+        <RelativeLayout
+            android:id="@+id/operation_volume_brightness"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/videobg"
+            android:orientation="horizontal"
+            android:padding="0dip"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/operation_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/video_volumn_bg" />
+
+            <TextView
+                android:id="@+id/operation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/operation_bg"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="32:22/45:00"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+<!--android:id="@+id/mediacontroller_time_current"-->
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#77000000"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/mediacontroller_play_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.5"
+                android:background="@null"
+                android:src="@drawable/paly_selector" />
+
+            <TextView
+                android:id="@+id/current"
+                style="@style/MediaController_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="00:00:00" />
+
+
+            <SeekBar
+                android:id="@+id/mediacontroller_seekbar"
+                style="@style/TextAppearance.StatusBar.EventContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:focusable="true"
+                android:max="100" />
+
+            <TextView
+                android:id="@+id/mediacontroller_time_total"
+                style="@style/MediaController_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:text="00:00:00" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="标清" />
+
+            <ImageView
+                android:id="@+id/shengying_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_volume_up_white_36dp" />
+
+            <SeekBar
+                android:id="@+id/Shengyin_seekbar"
+                style="@style/TextAppearance.StatusBar.EventContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:focusable="true"
+                android:max="100" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

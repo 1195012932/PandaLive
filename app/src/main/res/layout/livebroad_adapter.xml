@@ -7,11 +7,14 @@
     <RelativeLayout
         android:id="@+id/rela"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:id="@+id/livebase_image"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:src="@mipmap/panda_sign" />

@@ -65,7 +65,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
                 break;
             case R.id.personal_shoucang_layout:
-                startActivity(new Intent(PersonActivity.this, ShouCang.class));
+                startActivity(new Intent(PersonActivity.this, CollectActivity.class));
 
                 break;
             case R.id.personal_set_layout:

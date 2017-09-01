@@ -1,7 +1,6 @@
 package com.example.panda.model.video;
 
 import com.example.panda.model.entity.VideoBean;
-import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import io.reactivex.Observer;
 

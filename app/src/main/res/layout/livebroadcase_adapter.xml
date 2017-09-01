@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="20dp">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/frame_hometext_follow"
@@ -27,8 +27,5 @@
             android:layout_gravity="center_vertical"
             android:text="坐拥万千粉丝的手动阀发大发的发生大发  阿帆"
             android:textColor="#000000" />
-
     </LinearLayout>
-
-
 </RelativeLayout>

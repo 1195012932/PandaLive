@@ -22,6 +22,7 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
     VideoTopModel vm;
     private VideoTopBean.VideoBean video;
     List<VideoTopBean.VideoBean> been = new ArrayList<>();
+    private List<VideoTopBean.VideoBean.ChaptersBean> chapters;
 
     public VideoTopPreImpl(VideoTopView videoView) {
         this.videoView = videoView;
@@ -42,8 +43,10 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
     public void onNext(VideoTopBean value) {
         VideoTopBean top = value;
         video = top.getVideo();
-        been.add(video);
-        videoView.onShowTop(been);
+        chapters = video.getChapters();
+
+        videoView.onShowTop(chapters);
+        videoView.onShowTop2(top.getVideo());
     }
 
     @Override
