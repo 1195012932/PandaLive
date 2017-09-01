@@ -104,7 +104,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                 }
             }
         });
-
     }
 
     @Override
