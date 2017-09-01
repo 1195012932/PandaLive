@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,18 +19,20 @@ import com.example.panda.model.entity.VideoBean;
 import com.example.panda.presenter.video.VideoPreImpl;
 import com.example.panda.presenter.video.VideoPresenter;
 import com.example.panda.view.activity.PersonActivity;
-import com.example.panda.view.activity.VideoItActivity;
-import com.example.panda.view.activity.VideoTop;
+import com.example.panda.view.fragment.video.activity.VideoItActivity;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VideoFragment extends BaseFragment implements View.OnClickListener, VideoView, MyAdapter.Listener {
+public class VideoFragment extends BaseFragment implements View.OnClickListener, VideoView {
 
 
     private ImageView preson_sign;
@@ -88,6 +91,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         tv_videoTitle = (TextView) view2.findViewById(R.id.tv_videoTitle);
         pid = list.get(0).getPid();
         title = list.get(0).getTitle();
+
         urls = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid="+pid;
         tv_videoTitle.setText(title);
         Glide.with(getActivity()).load(list.get(0).getImage()).error(R.mipmap.panda_sign).into(banner);
@@ -95,7 +99,8 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override
-    public void OnShowList(List<VideoBean.ListBean> been) {
+    public void OnShowList(final List<VideoBean.ListBean> been) {
+
         final MyAdapter myAdapter = new MyAdapter(getActivity(), been);
         xrecy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         xrecy.setAdapter(myAdapter);
@@ -129,7 +134,16 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                 }, 1);
             }
         });
-        myAdapter.setOnItemClickListener(this);
+        myAdapter.setOnItemClickListener(new MyAdapter.Listener() {
+            @Override
+            public void click(View v, int position) {
+                String id=been.get(position).getId();
+                Intent starter = new Intent(getActivity(), VideoItActivity.class);
+               starter.putExtra("id",id);
+                startActivity(starter);
+                Log.e(TAG, "click: "+id);
+            }
+        });
         view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,9 +161,4 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         Toast.makeText(getActivity(), e, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void click(View v, int position) {
-        Intent starter = new Intent(getActivity(), VideoItActivity.class);
-        startActivity(starter);
-    }
 }

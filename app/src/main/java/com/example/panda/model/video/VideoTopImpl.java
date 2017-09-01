@@ -1,6 +1,6 @@
 package com.example.panda.model.video;
 
-import com.example.panda.utils.RetrofitUtils;
+import com.example.panda.utils.TopUtils;
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import io.reactivex.Observer;
@@ -12,6 +12,6 @@ import io.reactivex.Observer;
 public class VideoTopImpl implements VideoTopModel {
     @Override
     public void RequestTop(Observer<VideoTopBean> observer) {
-        RetrofitUtils.getRetrofitUtils().getVideoTop(observer);
+        TopUtils.getRetrofitUtils().getVideoTop(observer);
     }
 }

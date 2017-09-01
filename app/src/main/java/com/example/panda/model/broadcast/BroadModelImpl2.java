@@ -11,7 +11,6 @@ import io.reactivex.Observer;
 
 public class BroadModelImpl2 implements BroadModel2 {
 
-
     @Override
     public void RequestGet2(Observer<BroadBean2> observer) {
         LiveUtils.getRetrofitUtils().getBroads2(observer);

@@ -1,155 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.android.percent.support.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/home_tab_back"
     android:orientation="vertical"
-    tools:context=".view.activity.VideoTop">
+    tools:context=".view.fragment.video.activity.VideoTop">
 
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/videoview_top"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        app:layout_heightPercent="100%"
-        app:layout_widthPercent="100%" />
-
-    <com.zhy.android.percent.support.PercentRelativeLayout
+    <io.vov.vitamio.widget.CenterLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.zhy.android.percent.support.PercentRelativeLayout
-            android:id="@+id/top"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#66ffffff"
-            app:layout_heightPercent="11%"
-            app:layout_widthPercent="100%">
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/buffer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </io.vov.vitamio.widget.CenterLayout>
 
-            <ImageView
-                android:id="@+id/image_fanhui"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/personal_back_img" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_broadtop_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:text="大熊猫让海峡两岸越走越亲"
-                android:textSize="22dp" />
+        <ProgressBar
+            android:id="@+id/probar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
 
-            <com.zhy.android.percent.support.PercentLinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp">
+        <TextView
+            android:id="@+id/download_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="#FFFFFF" />
 
-                <ImageView
-                    android:id="@+id/image_broadtop_shouchang"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/play_fullsrcee_collect" />
+        <TextView
+            android:id="@+id/load_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/image_broadtop_fenxiang"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/play_fullsrcee_share" />
-            </com.zhy.android.percent.support.PercentLinearLayout>
+    <LinearLayout
+        android:id="@+id/custom_listener2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        </com.zhy.android.percent.support.PercentRelativeLayout>
+        <ImageView
+            android:id="@+id/custom_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play_circle_outline_white_36dp" />
 
-        <com.zhy.android.percent.support.PercentLinearLayout
-            android:id="@+id/down"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentBottom="true"
-            android:background="#66ffffff"
-            app:layout_heightPercent="11%"
-            app:layout_widthPercent="100%">
-
-            <ImageView
-                android:id="@+id/image_broadtop_startAndstop"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/pla_continue"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="5%" />
-
-            <TextView
-                android:id="@+id/tv_timerplayer_timer"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="4dp"
-                android:gravity="center"
-                android:text="00:00:04"
-                android:textColor="#ffffff"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="10%" />
-
-            <SeekBar
-                android:id="@+id/progredd_player_jindu"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginLeft="5dp"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="25%" />
-
-            <TextView
-                android:id="@+id/tv_player_timers"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:text="00:02:14"
-                android:textColor="#ffffff"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="10%" />
-
-            <Button
-                android:id="@+id/btn_player_fenbianlv"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:text="高清"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="15%" />
-
-            <ImageView
-                android:id="@+id/image_player_yinliang"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/ic_volume_up_white_36dp"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="5%" />
-
-            <SeekBar
-                android:id="@+id/progress_player_yinliang"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="20%" />
-        </com.zhy.android.percent.support.PercentLinearLayout>
-    </com.zhy.android.percent.support.PercentRelativeLayout>
-</com.zhy.android.percent.support.PercentFrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="再看一遍"
+            android:textColor="#fff" />
+    </LinearLayout>
+</RelativeLayout>
