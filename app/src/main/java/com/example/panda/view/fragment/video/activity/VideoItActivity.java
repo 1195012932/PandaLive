@@ -101,7 +101,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                     lpanda_show.setImageResource(R.drawable.lpanda_off);
                     item_info.setVisibility(View.GONE);
                     item_info.setText("");
-
                 }
             }
         });
