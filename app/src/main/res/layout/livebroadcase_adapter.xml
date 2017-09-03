@@ -8,11 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-<<<<<<< HEAD
         android:padding="5dp">
-=======
-        android:padding="10dp">
->>>>>>> origin/master
 
         <TextView
             android:id="@+id/frame_hometext_follow"

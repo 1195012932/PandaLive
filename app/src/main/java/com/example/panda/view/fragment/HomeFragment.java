@@ -98,6 +98,7 @@ public class HomeFragment extends BaseFragment implements HomeView,
 
     @Override
     protected void initView(View view) {
+        showLoadingDialog();
         homePresenter = new HomePreImpl(this);
         marvellPresenter = new MarvellPreImpl(this);
         vitmioPresenter = new VitmioPreImpl(this);
@@ -175,9 +176,6 @@ public class HomeFragment extends BaseFragment implements HomeView,
         preson_sign.setOnClickListener(this);
         //
         frame_home_banner.setOnClickListener(this);
-        //
-
-        //
 
     }
 
@@ -239,11 +237,7 @@ public class HomeFragment extends BaseFragment implements HomeView,
         xRecyclerView.setLayoutManager(manager);
         chinaAdapter.notifyDataSetChanged();
         liveBroadcastAdapter.setOnClickListenerss(this);
-        //
 
-        //
-
-        //
         chinaAdapter.setOnClickListeners(new ChinaAdapter.OnClickListeners() {
             @Override
             public void onClickLiseteners(int pos) {
@@ -251,6 +245,7 @@ public class HomeFragment extends BaseFragment implements HomeView,
                 startActivity(chinaintent);
             }
         });
+        dismissLoadDialog();
     }
 
     @Override

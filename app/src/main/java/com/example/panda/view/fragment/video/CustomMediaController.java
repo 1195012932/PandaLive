@@ -116,7 +116,7 @@ public class CustomMediaController extends MediaController {
     private boolean mDragging;
     private TextView mCurrentTime;
     private long currentPosition;
-    private Handler mHandler=new Handler();
+    private Handler mHandler = new Handler();
     private TextView current;
 
     //videoview 用于对视频进行控制的等，activity为了退出
@@ -148,7 +148,7 @@ public class CustomMediaController extends MediaController {
         share = v.findViewById(getResources().getIdentifier("mediacontroller_share", "id", context.getPackageName()));
         //缩放控件
         //mIvScale = (ImageView) v.findViewById(getResources().getIdentifier("mediacontroller_scale", "id", context.getPackageName()));
-        current = v.findViewById(getResources().getIdentifier("current","id",context.getPackageName()));
+        current = v.findViewById(getResources().getIdentifier("current", "id", context.getPackageName()));
 
         //PopupWindo位置
         byId = v.findViewById(getResources().getIdentifier("view", "id", context.getPackageName()));
@@ -158,7 +158,7 @@ public class CustomMediaController extends MediaController {
         currentPosition = videoView.getCurrentPosition();
         //获取总时长
         mDuration = (int) videoView.getDuration();
-        current.setText(currentPosition+"");
+        current.setText(currentPosition + "");
         if (mFileName != null) {
 
             mFileName.setText(videoname);
@@ -201,11 +201,12 @@ public class CustomMediaController extends MediaController {
 
             }
         });
-       // videoView.setOnCompletionListener(dismiss);
+        // videoView.setOnCompletionListener(dismiss);
         return v;
     }
+
     //注册在媒体文件播放完毕时调用的回调函数。
-    private MediaPlayer.OnCompletionListener dismiss=new MediaPlayer.OnCompletionListener() {
+    private MediaPlayer.OnCompletionListener dismiss = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
             custom_listener.setVisibility(VISIBLE);
@@ -220,8 +221,8 @@ public class CustomMediaController extends MediaController {
         public void onClick(View view) {
             View view1 = View.inflate(activity, R.layout.pop_share_fullscreen, null);
             final PopupWindow window = new PopupWindow(view1, controllerWidth, height);
-            window.showAsDropDown(byId);
             final TextView cancelTv = view1.findViewById(R.id.cancelTv);
+            window.showAsDropDown(view1);
             cancelTv.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -52,9 +52,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void select(int i) {
         switch (i) {
             case 0:
+
                 FragmentBuilder.startFragment(HomeFragment.class, R.id.frame, null, true, true);
+
                 break;
             case 1:
+
                 FragmentBuilder.startFragment(LiveFragment.class, R.id.frame, null, true, true);
                 break;
             case 2:
