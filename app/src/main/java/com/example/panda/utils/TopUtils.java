@@ -2,6 +2,7 @@ package com.example.panda.utils;
 
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -45,8 +46,8 @@ public class TopUtils {
      * 滚滚视频顶部
      * @param observer
      */
-    public void getVideoTop(Observer observer) {
-        Observable<VideoTopBean> observable = service.getVideoTop();
+    public void getVideoTop(Map<String,String> map, Observer observer) {
+        Observable<VideoTopBean> observable = service.getVideoTop(map);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }

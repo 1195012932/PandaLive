@@ -123,12 +123,6 @@ public class LiveUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void getVideoItem(Observer observer) {
-
-        Observable<VideoItemBean> observable = service.getItem();
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-
     public void getVideoItem2(Map<String,String> map,Observer observer) {
 
         Observable<VideoItemBean> observable = service.getItem2(map);

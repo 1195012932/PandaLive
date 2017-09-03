@@ -219,8 +219,14 @@ public class CustomMediaController extends MediaController {
     private OnClickListener Share = new OnClickListener() {
         @Override
         public void onClick(View view) {
+
             View view1 = View.inflate(activity, R.layout.pop_share_fullscreen, null);
             final PopupWindow window = new PopupWindow(view1, controllerWidth, height);
+<<<<<<< Updated upstream
+=======
+            window.showAsDropDown(view1);
+
+>>>>>>> Stashed changes
             final TextView cancelTv = view1.findViewById(R.id.cancelTv);
             window.showAsDropDown(view1);
             cancelTv.setOnClickListener(new OnClickListener() {

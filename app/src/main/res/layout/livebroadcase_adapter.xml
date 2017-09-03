@@ -9,6 +9,11 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="5dp">
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 
         <TextView
             android:id="@+id/frame_hometext_follow"

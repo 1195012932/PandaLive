@@ -179,15 +179,13 @@ public interface RetrofitService {
     /**
      * 滚滚视频顶部的图片
      */
-    @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
-    Observable<VideoTopBean> getVideoTop();
+    @GET("getVideoInfoForCBox.do?pid=e6c80dae83884dc3a18bbf279b1815b0")
+    Observable<VideoTopBean> getVideoTop(@QueryMap Map<String,String> map);
 
     /**
      * 滚滚视频item
      * @return
      */
-    @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
-    Observable<VideoItemBean> getItem();
     @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<VideoItemBean> getItem2(@QueryMap Map<String,String> map);
 

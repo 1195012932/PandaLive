@@ -15,7 +15,8 @@ import io.reactivex.disposables.Disposable;
 /**
  * Created by lenovo on 2017/8/29.
  */
-
+//http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/08/31/e6c80dae83884dc3a18bbf279b1815b0_h264418000nero_aac32-1.mp4
+//http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/08/28/7d826d24b4e443ad88dd59ad03d50dfe_h264418000nero_aac32.mp4
 public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
 
     VideoTopView videoView;
@@ -31,7 +32,7 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
 
     @Override
     public void getData(Map<String, String> map) {
-        vm.RequestTop(this);
+        vm.RequestTop(map,this);
     }
 
     @Override
@@ -42,11 +43,11 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
     @Override
     public void onNext(VideoTopBean value) {
         VideoTopBean top = value;
-        video = top.getVideo();
+        video = value.getVideo();
         chapters = video.getChapters();
-
         videoView.onShowTop(chapters);
-        videoView.onShowTop2(top.getVideo());
+        videoView.onShowTop2(video);
+        videoView.OnShow(value);
     }
 
     @Override

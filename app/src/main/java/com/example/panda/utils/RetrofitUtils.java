@@ -8,7 +8,6 @@ import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
 import com.example.panda.model.live.bean.LiveStreaing;
-import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -91,14 +90,14 @@ public class RetrofitUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    /**
+   /* *//**
      * 滚滚视频顶部
      * @param observer
-     */
+     *//*
     public void getVideoTop(Observer observer) {
         Observable<VideoTopBean> observable = service.getVideoTop();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
+    }*/
 
     /**
      * 首页

@@ -3,6 +3,8 @@ package com.example.panda.model.video;
 import com.example.panda.utils.TopUtils;
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
+import java.util.Map;
+
 import io.reactivex.Observer;
 
 /**
@@ -11,7 +13,7 @@ import io.reactivex.Observer;
 
 public class VideoTopImpl implements VideoTopModel {
     @Override
-    public void RequestTop(Observer<VideoTopBean> observer) {
-        TopUtils.getRetrofitUtils().getVideoTop(observer);
+    public void RequestTop(Map<String,String> map, Observer<VideoTopBean> observer) {
+        TopUtils.getRetrofitUtils().getVideoTop(map,observer);
     }
 }
