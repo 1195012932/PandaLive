@@ -4,8 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.panda.R;
 import com.example.panda.view.fragment.video.entity.VideoItemBean;
 
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ public class MyAdapter extends BaseAdapter {
     private List<VideoItemBean.VideoBean> list = new ArrayList<>();
     private ViewHolder holder;
 
-    public MyAdapter(Context context, ArrayList<VideoItemBean.VideoBean> list) {
+    public MyAdapter(Context context, List<VideoItemBean.VideoBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -40,21 +43,24 @@ public class MyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             holder = new ViewHolder();
-        /*    convertView = View.inflate(context, R.layout.item, null);
-            holder.content = (TextView) convertView.findViewById(R.id.content);
-            holder.time = (TextView) convertView.findViewById(R.id.time);
-            convertView.setTag(holder);*/
+            convertView = View.inflate(context, R.layout.videoitem_item, null);
+            holder.name = (TextView) convertView.findViewById(R.id.videoitem_name);
+            holder.time = (TextView) convertView.findViewById(R.id.videoitem_time);
+            holder.icon=(ImageView) convertView.findViewById(R.id.videoitem_icon);
+            convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         VideoItemBean.VideoBean videoBean = list.get(position);
-     /*   holder.content.setText(videoBean.get());*/
-       // holder.time.setText(videoBean.getTime());
+        holder.name.setText(videoBean.getT());
+        holder.time.setText(videoBean.getLen());
+        Glide.with(context).load(videoBean.getImg()).error(R.drawable.def_no_play).into(holder.icon);
         return convertView;
     }
 
     static class ViewHolder {
-        TextView content;
+        TextView name;
         TextView time;
+        ImageView icon;
     }
 }

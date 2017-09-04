@@ -2,6 +2,8 @@ package com.example.panda.model.video;
 
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
 
+import java.util.Map;
+
 import io.reactivex.Observer;
 
 /**
@@ -9,5 +11,5 @@ import io.reactivex.Observer;
  */
 
 public interface VideoTopModel {
-    void RequestTop(Observer<VideoTopBean> observer);
+    void RequestTop(Map<String,String> map, Observer<VideoTopBean> observer);
 }

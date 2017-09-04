@@ -8,7 +8,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <include layout="@layout/common_title"></include>
 
         <TextView
@@ -18,7 +17,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="熊猫Top榜"
+            android:text=""
             android:textColor="#fff"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -38,10 +37,10 @@
         android:textSize="15sp" />
 
     <RelativeLayout
+        android:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="1"
         android:background="#fff"
         android:paddingLeft="20dp">
 
@@ -56,19 +55,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/lpanda_show" />
+            android:src="@drawable/lpanda_off" />
     </RelativeLayout>
 
     <TextView
         android:visibility="gone"
         android:id="@+id/item_info"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
-        android:textSize="14sp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_height="wrap_content" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,19 +95,19 @@
                 android:layout_height="1dp"
                 android:background="@color/cctv_grey2" />
 
-            <com.chanven.lib.cptr.PtrClassicFrameLayout
+            <!--<com.chanven.lib.cptr.PtrClassicFrameLayout
                 android:id="@+id/item_ptr"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent">-->
 
-                <ListView
+                <com.example.panda.view.fragment.xListview.MyXListView
                     android:id="@+id/item_listView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:divider="@color/cctv_grey2"
                     android:dividerHeight="1dp"
-                    android:scrollbars="none"></ListView>
-            </com.chanven.lib.cptr.PtrClassicFrameLayout>
+                    android:scrollbars="none"></com.example.panda.view.fragment.xListview.MyXListView>
+            <!--</com.chanven.lib.cptr.PtrClassicFrameLayout>-->
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

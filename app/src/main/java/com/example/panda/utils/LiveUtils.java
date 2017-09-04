@@ -10,6 +10,7 @@ import com.example.panda.model.live.bean.RollBean;
 import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.model.live.bean.WonBean;
+import com.example.panda.view.fragment.video.entity.VideoItemBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -119,5 +120,21 @@ public class LiveUtils {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    public void getNot(Map<String, String> map, Observer observer) {
+        Observable<NotBean> observable = service.getNot(map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getNots(Observer observer) {
+
+        Observable<NotBean> observable = service.getNots();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getVideoItem2(Map<String,String> map,Observer observer) {
+
+        Observable<VideoItemBean> observable = service.getItem2(map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 
 }

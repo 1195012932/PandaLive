@@ -86,7 +86,7 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
         videoTop = new VideoTopPreImpl(this);
         Map<String, String> map = new HashMap<>();
         map.put("param", "http://115.182.35.91/api/");
-        videoTop.getData(map);
+        map.put("pid", urls);
         mVideoView = (VideoView) findViewById(R.id.buffer);
         mCustomMediaController =new CustomMediaController(this, mVideoView,this);
         mCustomMediaController.setVideoName(title);
@@ -94,14 +94,18 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
         downloadRateView = (TextView) findViewById(R.id.download_rate);
         loadRateView = (TextView) findViewById(R.id.load_rate);
         custom_listener = (LinearLayout) findViewById(R.id.custom_listener2);
+        videoTop.getData(map);
         Toast.makeText(VideoTop.this, urls, Toast.LENGTH_SHORT).show();
-        System.out.println(urls);
+        System.out.println("12346789"+urls);
+
+        //http://115.182.35.91/api/getVideoInfoForCBox.do?pid=ddded68aa4c1430691ee0fb48c6118d1
 
     }
     //初始化数据
     private void initData(String url) {
-        Log.e(TAG, "initData: " );
+
         uri = Uri.parse(url);
+        Log.e(TAG, "initData: " +uri);
         mVideoView.setVideoURI(uri);//设置视频播放地址
         mCustomMediaController.show(5000);
         mVideoView.setMediaController(mCustomMediaController);
@@ -165,8 +169,15 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
     public void onShowTop2(VideoTopBean.VideoBean been) {
         mapurl = been.getChapters()
                 .get(0).getUrl();
+       // String duration = been.getChapters2().get(0).getDuration();
         Toast.makeText(this, mapurl, Toast.LENGTH_SHORT).show();
         Log.e(TAG, "视频地址2" + mapurl);
+    }
+
+    @Override
+    public void OnShow(VideoTopBean videoTopBean) {
+
+        Log.e("hahahahha------", "OnShow: "+videoTopBean.getTitle());
     }
 
     @Override

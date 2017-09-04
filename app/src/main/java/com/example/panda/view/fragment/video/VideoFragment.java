@@ -91,11 +91,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         tv_videoTitle = (TextView) view2.findViewById(R.id.tv_videoTitle);
         pid = list.get(0).getPid();
         title = list.get(0).getTitle();
-
+        System.out.println("6666660"+pid);
         urls = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid="+pid;
         tv_videoTitle.setText(title);
         Glide.with(getActivity()).load(list.get(0).getImage()).error(R.mipmap.panda_sign).into(banner);
         list.get(0).getPid();
+        Log.e(TAG, "onShowBigImage: "+pid);
     }
 
     @Override
@@ -150,7 +151,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
 
                 Intent intent = new Intent(getActivity(), VideoTop.class);
                 intent.putExtra("title", title);
-                intent.putExtra("url_top", urls);
+                intent.putExtra("url_top", pid);
                 startActivity(intent);
             }
         });

@@ -14,13 +14,13 @@
 
         <ImageView
             android:scaleType="fitXY"
-            android:id="@+id/video_icon"
+            android:id="@+id/videoitem_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/panda_sign" />
 
         <TextView
-            android:id="@+id/video_time"
+            android:id="@+id/videoitem_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -42,19 +42,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/video_name"
+            android:id="@+id/videoitem_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="《熊猫TOP榜》"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/video_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLength="12"
-            android:text="第二季第十期：滚滚的幸福生活"
             android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>
