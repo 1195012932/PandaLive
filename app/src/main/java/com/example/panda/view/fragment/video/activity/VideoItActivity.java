@@ -3,19 +3,26 @@ package com.example.panda.view.fragment.video.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
 import com.example.panda.R;
+import com.example.panda.model.entity.home.KanDianDao;
 import com.example.panda.presenter.video.VideoItemPre;
 import com.example.panda.presenter.video.VideoItemPreImpl;
 import com.example.panda.view.fragment.video.VideoItemView;
 import com.example.panda.view.fragment.video.adapter.MyAdapter;
 import com.example.panda.view.fragment.video.entity.VideoItemBean;
 import com.example.panda.view.fragment.xListview.MyXListView;
+import com.example.panda.view.home.KanDianUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +50,21 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private int page = 1;
     private Map<String, String> map;
     List<VideoItemBean.VideoBean> videoBeen = new ArrayList<>();
+    private TextView tv_search_btn;
+    private ImageView iv_search;
+    private EditText et_search;
+    private ImageView iv_clear_searchedit;
+    private RelativeLayout layout_search;
+    private TextView common_title_center;
+    private TextView cctv_common_title_center;
+    private TextView common_title_right;
+    private TextView common_title_right2;
+    private TextView jieshao;
+    private ImageView video_img;
+    private TextView video_img1;
+    private LinearLayout pe_listview_item_detail_bottom;
+    boolean flag=true;
+    private KanDianDao look;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +87,8 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
 
     private void initView() {
+        KanDianUtils ss = KanDianUtils.ss();
+        look = ss.look(VideoItActivity.this);
         itemPre = new VideoItemPreImpl(this);
         page++;
         map = new HashMap();
@@ -81,6 +105,42 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         lpanda_show = (ImageView) findViewById(R.id.lpanda_show);
         item_listView = (MyXListView) findViewById(R.id.item_listView);
         itemPre.getData(map);
+        tv_search_btn = (TextView) findViewById(R.id.tv_search_btn);
+        tv_search_btn.setOnClickListener(this);
+        iv_search = (ImageView) findViewById(R.id.iv_search);
+        iv_search.setOnClickListener(this);
+        et_search = (EditText) findViewById(R.id.et_search);
+        et_search.setOnClickListener(this);
+        iv_clear_searchedit = (ImageView) findViewById(R.id.iv_clear_searchedit);
+        iv_clear_searchedit.setOnClickListener(this);
+        layout_search = (RelativeLayout) findViewById(R.id.layout_search);
+        layout_search.setOnClickListener(this);
+        common_title_center = (TextView) findViewById(R.id.common_title_center);
+        common_title_center.setOnClickListener(this);
+        cctv_common_title_center = (TextView) findViewById(R.id.cctv_common_title_center);
+        cctv_common_title_center.setOnClickListener(this);
+        common_title_right = (TextView) findViewById(R.id.common_title_right);
+        common_title_right.setOnClickListener(this);
+        common_title_right2 = (TextView) findViewById(R.id.common_title_right2);
+        common_title_right2.setOnClickListener(this);
+        jieshao = (TextView) findViewById(R.id.jieshao);
+        jieshao.setOnClickListener(this);
+        video_img = (ImageView) findViewById(R.id.video_img);
+
+        video_img1 = (TextView) findViewById(R.id.video_img1);
+
+        pe_listview_item_detail_bottom = (LinearLayout) findViewById(R.id.pe_listview_item_detail_bottom);
+        pe_listview_item_detail_bottom.setOnClickListener(this);
+        video_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(flag==true){
+                    video_img.setImageResource(R.drawable.collect_yes);
+//                  look.insert(new KanDian(null,title,data,intExtra,name));
+                    flag=false;
+                }
+            }
+        });
     }
 
     @Override
@@ -154,5 +214,18 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     @Override
     public void onClick(View view) {
         finish();
+    }
+
+    private void submit() {
+        // validate
+        String search = et_search.getText().toString().trim();
+        if (TextUtils.isEmpty(search)) {
+            Toast.makeText(this, "search不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // TODO validate success, do something
+
+
     }
 }

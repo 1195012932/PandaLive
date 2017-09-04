@@ -14,16 +14,19 @@ public class KanDian {
     Long id;
     @Property
     String title;
-    int data;
+    String data;
     String img;
     String url;
-    @Generated(hash = 605204551)
-    public KanDian(Long id, String title, int data, String img, String url) {
+    String time;
+    @Generated(hash = 1646213248)
+    public KanDian(Long id, String title, String data, String img, String url,
+            String time) {
         this.id = id;
         this.title = title;
         this.data = data;
         this.img = img;
         this.url = url;
+        this.time = time;
     }
     @Generated(hash = 1994106233)
     public KanDian() {
@@ -40,10 +43,10 @@ public class KanDian {
     public void setTitle(String title) {
         this.title = title;
     }
-    public int getData() {
+    public String getData() {
         return this.data;
     }
-    public void setData(int data) {
+    public void setData(String data) {
         this.data = data;
     }
     public String getImg() {
@@ -58,6 +61,12 @@ public class KanDian {
     public void setUrl(String url) {
         this.url = url;
     }
- 
+    public String getTime() {
+        return this.time;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+   
     
 }

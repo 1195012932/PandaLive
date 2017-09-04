@@ -49,6 +49,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         personal_login_forget_pwd.getPaint().setAntiAlias(true);//抗锯齿
         personal_login_forget_pwd.setTextColor(Color.parseColor("#1f539e"));
         initListener();
+        llqqlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent it=new Intent(LoginActivity.this,qq_login.class);
+                startActivity(it);
+            }
+        });
     }
 
     private void initListener() {

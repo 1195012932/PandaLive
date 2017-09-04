@@ -19,10 +19,9 @@
 
         <ImageView
             android:id="@+id/livebase_image"
+
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:layout_width="100sp"
-            android:layout_height="60sp"
             android:scaleType="fitXY"
             android:src="@mipmap/panda_sign" />
 

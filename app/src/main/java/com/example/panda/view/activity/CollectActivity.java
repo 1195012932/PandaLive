@@ -38,7 +38,7 @@ public class CollectActivity extends AppCompatActivity {
         shou_tab = (TabLayout) findViewById(R.id.shou_tab);
         shou_text= (TextView) findViewById(R.id.shou_text);
         shou_pager = (ViewPager) findViewById(R.id.shou_pager);
-//        shou_text.setVisibility(View.GONE);
+
         shou_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

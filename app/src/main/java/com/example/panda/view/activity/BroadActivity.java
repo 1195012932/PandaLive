@@ -23,7 +23,7 @@ public class BroadActivity extends AppCompatActivity {
     private KanDianDao look;
     private String name;
     private String title;
-    private int data;
+    private String data;
     private String intExtra;
     boolean flag=true;
     @Override
@@ -40,7 +40,7 @@ public class BroadActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
         title = intent.getStringExtra("title");
-        data = intent.getIntExtra("data", 1);
+        data = intent.getStringExtra("data");
         intExtra = intent.getStringExtra("img");
         WebSettings settings = broadcast_web.getSettings();
         settings.setDefaultTextEncodingName("utf-8");
@@ -67,7 +67,7 @@ public class BroadActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(flag==true){
                     broadcast_sc.setImageResource(R.drawable.collect_yes);
-                    look.insert(new KanDian(null,title,data,intExtra,name));
+                    look.insert(new KanDian(null,title,data,intExtra,name,null));
                     flag=false;
                 }
 

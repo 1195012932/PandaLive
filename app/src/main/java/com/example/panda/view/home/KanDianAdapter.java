@@ -51,7 +51,7 @@ class KanDianAdapter extends BaseAdapter{
             viewHoudler.imageView= (ImageView) convertView.findViewById(R.id.kan_img);
             viewHoudler.textView= (TextView) convertView.findViewById(R.id.kan_name);
             viewHoudler.textView1= (TextView) convertView.findViewById(R.id.kan_data);
-
+            viewHoudler.textView2= (TextView) convertView.findViewById(R.id.kan_time);
             convertView.setTag(viewHoudler);
         }else{
             viewHoudler = (ViewHoudler) convertView.getTag();
@@ -65,5 +65,6 @@ class KanDianAdapter extends BaseAdapter{
         ImageView imageView;
         TextView textView;
         TextView textView1;
+        TextView textView2;
     }
 }
