@@ -30,6 +30,8 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
         vm = new VideoTopImpl();
     }
 
+
+
     @Override
     public void getData(Map<String, String> map) {
         vm.RequestTop(map,this);
@@ -45,7 +47,7 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
         VideoTopBean top = value;
         video = value.getVideo();
         chapters = video.getChapters();
-        videoView.onShowTop(chapters);
+        videoView.onShowTop3(chapters);
         videoView.onShowTop2(video);
         videoView.OnShow(value);
     }

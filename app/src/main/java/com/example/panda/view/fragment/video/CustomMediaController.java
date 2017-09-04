@@ -27,7 +27,10 @@ import android.widget.Toast;
 import com.example.panda.R;
 
 import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.utils.StringUtils;
 import io.vov.vitamio.widget.MediaController;
+
+import static android.R.attr.endX;
 
 /**
  * Created by lenovo on 2017/8/30.
@@ -115,9 +118,10 @@ public class CustomMediaController extends MediaController {
     private int mDuration;
     private boolean mDragging;
     private TextView mCurrentTime;
-    private long currentPosition;
+    private int currentPosition;
     private Handler mHandler = new Handler();
     private TextView current;
+    private int index;
 
     //videoview 用于对视频进行控制的等，activity为了退出
     public CustomMediaController(Context context, io.vov.vitamio.widget.VideoView videoView, Activity activity) {
@@ -155,12 +159,12 @@ public class CustomMediaController extends MediaController {
         mediacontroller_seekbar = v.findViewById(getResources().getIdentifier("mediacontroller_seekbar", "id", context.getPackageName()));
         mCurrentTime = v.findViewById(getResources().getIdentifier("current", "id", context.getPackageName()));
         //当前位置
-        currentPosition = videoView.getCurrentPosition();
+        currentPosition = (int) videoView.getCurrentPosition();
         //获取总时长
         mDuration = (int) videoView.getDuration();
+
         current.setText(currentPosition + "");
         if (mFileName != null) {
-
             mFileName.setText(videoname);
         }
         //声音控制
@@ -177,6 +181,7 @@ public class CustomMediaController extends MediaController {
         // mIvScale.setOnClickListener(scaleListener);
         shoucang.setOnClickListener(shouCang);
         share.setOnClickListener(Share);
+
         //seekBar控制播放音量
         seek_sheng.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -186,14 +191,11 @@ public class CustomMediaController extends MediaController {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                int yingliang = seekBar.getProgress();
-                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, yingliang, 0);
+                int yingliang = seek_sheng.getProgress();
+                index = yingliang;
+                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, index, 0);
                 mOperationTv.setText(yingliang + "%");
-                if (yingliang == 0) {
-                    shengying_icon.setImageResource(R.drawable.ic_volume_off_white_36dp);
-                } else {
-                    shengying_icon.setImageResource(R.drawable.ic_volume_up_white_36dp);
-                }
+                shengying_icon.setImageResource(R.drawable.ic_volume_up_white_36dp);
             }
 
             @Override
@@ -201,7 +203,7 @@ public class CustomMediaController extends MediaController {
 
             }
         });
-        // videoView.setOnCompletionListener(dismiss);
+        videoView.setOnCompletionListener(dismiss);
         return v;
     }
 
@@ -222,11 +224,8 @@ public class CustomMediaController extends MediaController {
 
             View view1 = View.inflate(activity, R.layout.pop_share_fullscreen, null);
             final PopupWindow window = new PopupWindow(view1, controllerWidth, height);
-<<<<<<< Updated upstream
-=======
-            window.showAsDropDown(view1);
 
->>>>>>> Stashed changes
+            window.showAsDropDown(view1);
             final TextView cancelTv = view1.findViewById(R.id.cancelTv);
             window.showAsDropDown(view1);
             cancelTv.setOnClickListener(new OnClickListener() {
@@ -317,7 +316,7 @@ public class CustomMediaController extends MediaController {
 
         @Override
         public boolean onDown(MotionEvent e) {
-            //progress = getProgress();
+            progress = getProgress();
             return true;
         }
 
@@ -336,9 +335,9 @@ public class CustomMediaController extends MediaController {
                 onVolumeSlide((mOldY - y) / windowHeight);
             } else if (mOldX < windowWidth * 1.0 / 4.0) {// 左边滑动 屏幕 1/4
                 onBrightnessSlide((mOldY - y) / windowHeight);
-            } /*else {//左右滑动
+            } else {//左右滑动
                 onSeekTo((endX - beginX) / 20);
-            }*/
+            }
             return super.onScroll(e1, e2, distanceX, distanceY);
         }
 
@@ -371,7 +370,7 @@ public class CustomMediaController extends MediaController {
             mOperationTv.setVisibility(VISIBLE);
         }
 
-        int index = (int) (percent * mMaxVolume) + mVolume;
+        index = (int) (percent * mMaxVolume) + mVolume;
         if (index > mMaxVolume)
             index = mMaxVolume;
         else if (index < 0)
@@ -449,11 +448,12 @@ public class CustomMediaController extends MediaController {
 
     }
 
-  /*  *//**
-     * 滑动改变播放进度
-     *
-     * @param percent
-     *//*
+    /*
+    *滑动改变播放进度
+    *
+    *@parampercent
+    */
+
     private void onSeekTo(float percent) {
         //计算并显示 前进后退
         if (!progress_turn) {
@@ -478,7 +478,7 @@ public class CustomMediaController extends MediaController {
             mOperationTv.setText(setSeekBarChange(0) + "/" + StringUtils.generateTime(videoView.getDuration()));
 
         }
-    }*/
+    }
 
 
     /**
@@ -518,23 +518,23 @@ public class CustomMediaController extends MediaController {
         }
     }
 
-  /*  *//**
+    /*
      * 获取进度条进度
      *
-     * @return
-     *//*
+     * @return*/
+
     public int getProgress() {
         if (mediacontroller_seekbar != null)
             return mediacontroller_seekbar.getProgress();
         return 0;
-    }*/
-/*
-    *//**
+    }
+
+    /**
      * 改变进度条进度
      *
      * @param progress
      * @return
-     *//*
+     */
     public String setSeekBarChange(int progress) {
 
         if (mediacontroller_seekbar == null) return "";
@@ -554,9 +554,10 @@ public class CustomMediaController extends MediaController {
         return time;
     }
 
-    *//**
+
+    /**
      * 进度条开始改变
-     *//*
+     */
     public void onStartSeekBar() {
         if (mAudioManager == null) {
             return;
@@ -569,11 +570,11 @@ public class CustomMediaController extends MediaController {
         if (mCurrentTime != null) {
             mCurrentTime.setText("");
         }
-    }*/
+    }
 
-/*    *//**
+    /**
      * 进度条变化停止
-     *//*
+     */
     public void onFinishSeekBar() {
         if (mediacontroller_seekbar == null) {
             return;
@@ -589,12 +590,12 @@ public class CustomMediaController extends MediaController {
             mCurrentTime.setText("");
             mCurrentTime.setVisibility(View.GONE);
         }
-        int sDefaultTimeout=1000;
+        int sDefaultTimeout = 1000;
         show(sDefaultTimeout);
         mHandler.removeMessages(SHOW_PROGRESS);
         mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
         mDragging = false;
         mHandler.sendEmptyMessageDelayed(SHOW_PROGRESS, 1000);
-    }*/
+    }
 
 }

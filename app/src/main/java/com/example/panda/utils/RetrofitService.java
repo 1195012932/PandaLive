@@ -179,7 +179,7 @@ public interface RetrofitService {
     /**
      * 滚滚视频顶部的图片
      */
-    @GET("getVideoInfoForCBox.do?pid=e6c80dae83884dc3a18bbf279b1815b0")
+    @GET("getVideoInfoForCBox.do?pid= 8ff497729f7e4d9881d643f41f90d378")
     Observable<VideoTopBean> getVideoTop(@QueryMap Map<String,String> map);
 
     /**

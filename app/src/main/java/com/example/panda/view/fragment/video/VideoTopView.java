@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public interface VideoTopView {
-    void onShowTop(List<VideoTopBean.VideoBean.ChaptersBean> been);
+    void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been);
     void onShowTop2(VideoTopBean.VideoBean been);
     void OnShow(VideoTopBean videoTopBean);
     void onError(String e);

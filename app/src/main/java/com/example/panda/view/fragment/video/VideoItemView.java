@@ -11,5 +11,6 @@ import java.util.List;
 public interface VideoItemView {
     void onShowTop(List<VideoItemBean.VideoBean> been);
     void onShowTop2(VideoItemBean.VideosetBean bean);
+
     void onError(String e);
 }
