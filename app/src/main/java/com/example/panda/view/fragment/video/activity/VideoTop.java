@@ -85,7 +85,7 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
     private void initView() {
         videoTop = new VideoTopPreImpl(this);
         Map<String, String> map = new HashMap<>();
-        map.put("param", "http://115.182.35.91/api/");
+        map.put("param", "http://115.182.9.189/api/");
         map.put("pid", urls);
         mVideoView = (VideoView) findViewById(R.id.buffer);
         mCustomMediaController =new CustomMediaController(this, mVideoView,this);
@@ -131,6 +131,7 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
             }
         }
     };
+
     @Override
     public boolean onInfo(MediaPlayer mp, int what, int extra) {
         switch (what) {
@@ -159,7 +160,7 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
     }
 
     @Override
-    public void onShowTop(List<VideoTopBean.VideoBean.ChaptersBean> been) {
+    public void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been) {
         String url = been.get(0).getUrl();
         Log.e(TAG, "视频地址1" + url);
         initData(url);

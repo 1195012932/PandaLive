@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <include layout="@layout/common_title"></include>
 
         <TextView
@@ -22,10 +23,73 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/item_video"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp">
+
+        <io.vov.vitamio.widget.CenterLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+
+            <io.vov.vitamio.widget.VideoView
+                android:id="@+id/item_video"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+        </io.vov.vitamio.widget.CenterLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/probar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/download_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/load_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/custom_listener2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/custom_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_play_circle_outline_white_36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="再看一遍"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/item_shou"
@@ -37,12 +101,12 @@
         android:textSize="15sp" />
 
     <RelativeLayout
-        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
         android:background="#fff"
-        android:paddingLeft="20dp">
+        android:paddingLeft="20dp"
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/jieshao"
@@ -59,7 +123,6 @@
     </RelativeLayout>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/item_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,8 +130,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
+        android:textSize="14sp"
 
-        android:textSize="14sp" />
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,13 +164,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">-->
 
-                <com.example.panda.view.fragment.xListview.MyXListView
-                    android:id="@+id/item_listView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:divider="@color/cctv_grey2"
-                    android:dividerHeight="1dp"
-                    android:scrollbars="none"></com.example.panda.view.fragment.xListview.MyXListView>
+            <com.example.panda.view.fragment.xListview.MyXListView
+                android:id="@+id/item_listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/cctv_grey2"
+                android:dividerHeight="1dp"
+                android:scrollbars="none"></com.example.panda.view.fragment.xListview.MyXListView>
             <!--</com.chanven.lib.cptr.PtrClassicFrameLayout>-->
         </LinearLayout>
     </LinearLayout>

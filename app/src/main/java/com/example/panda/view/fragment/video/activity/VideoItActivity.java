@@ -3,26 +3,19 @@ package com.example.panda.view.fragment.video.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
 import com.example.panda.R;
-import com.example.panda.model.entity.home.KanDianDao;
 import com.example.panda.presenter.video.VideoItemPre;
 import com.example.panda.presenter.video.VideoItemPreImpl;
 import com.example.panda.view.fragment.video.VideoItemView;
 import com.example.panda.view.fragment.video.adapter.MyAdapter;
 import com.example.panda.view.fragment.video.entity.VideoItemBean;
 import com.example.panda.view.fragment.xListview.MyXListView;
-import com.example.panda.view.home.KanDianUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,21 +43,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private int page = 1;
     private Map<String, String> map;
     List<VideoItemBean.VideoBean> videoBeen = new ArrayList<>();
-    private TextView tv_search_btn;
-    private ImageView iv_search;
-    private EditText et_search;
-    private ImageView iv_clear_searchedit;
-    private RelativeLayout layout_search;
-    private TextView common_title_center;
-    private TextView cctv_common_title_center;
-    private TextView common_title_right;
-    private TextView common_title_right2;
-    private TextView jieshao;
-    private ImageView video_img;
-    private TextView video_img1;
-    private LinearLayout pe_listview_item_detail_bottom;
-    boolean flag=true;
-    private KanDianDao look;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +83,66 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         lpanda_show = (ImageView) findViewById(R.id.lpanda_show);
         item_listView = (MyXListView) findViewById(R.id.item_listView);
         itemPre.getData(map);
+
+    }
+
+    //初始化数据
+    private void initData(String url) {
+
+        uri = Uri.parse(url);
+        Log.e(TAG, "initData: " + uri);
+        item_video.setVideoURI(uri);//设置视频播放地址
+        mCustomMediaController.show(5000);
+        item_video.setMediaController(mCustomMediaController);
+        item_video.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);//高画质
+        item_video.requestFocus();
+        item_video.setOnInfoListener(this);
+        item_video.setOnBufferingUpdateListener(this);
+        item_video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setPlaybackSpeed(1.0f);
+            }
+        });
+        item_video.setOnCompletionListener(dismiss);
+    }
+
+    //注册在媒体文件播放完毕时调用的回调函数。
+    private MediaPlayer.OnCompletionListener dismiss = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            custom_listener.setVisibility(View.VISIBLE);
+            if (item_video.isPlaying()) {
+                custom_listener.setVisibility(View.GONE);
+            }
+        }
+    };
+
+    @Override
+    public boolean onInfo(MediaPlayer mp, int what, int extra) {
+        switch (what) {
+            case MediaPlayer.MEDIA_INFO_BUFFERING_START:
+                if (item_video.isPlaying()) {
+                    item_video.pause();
+                    pb.setVisibility(View.VISIBLE);
+                    downloadRateView.setText("");
+                    loadRateView.setText("");
+                    downloadRateView.setVisibility(View.VISIBLE);
+                    loadRateView.setVisibility(View.VISIBLE);
+
+                }
+                break;
+            case MediaPlayer.MEDIA_INFO_BUFFERING_END:
+                item_video.start();
+                pb.setVisibility(View.GONE);
+                downloadRateView.setVisibility(View.GONE);
+                loadRateView.setVisibility(View.GONE);
+                break;
+            case MediaPlayer.MEDIA_INFO_DOWNLOAD_RATE_CHANGED:
+                downloadRateView.setText("" + extra + "kb/s" + "  ");
+                break;
+        }
+        return true;
         tv_search_btn = (TextView) findViewById(R.id.tv_search_btn);
         tv_search_btn.setOnClickListener(this);
         iv_search = (ImageView) findViewById(R.id.iv_search);
@@ -146,38 +184,63 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     @Override
     public void onShowTop(final List<VideoItemBean.VideoBean> been) {
         videoBeen.addAll(been);
-        final MyAdapter myAdapter = new MyAdapter(VideoItActivity.this, videoBeen);
+        myAdapter = new MyAdapter(VideoItActivity.this, videoBeen);
         item_listView.setAdapter(myAdapter);
         item_listView.setPullLoadEnable(true);
         item_listView.setPullRefreshEnable(true);
         item_listView.setXListViewListener(new MyXListView.IXListViewListener() {
             @Override
             public void onRefresh() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        myAdapter.notifyDataSetChanged();
-                        item_listView.stopRefresh();
-                    }
-                });
+                Refresh();
             }
 
             @Override
             public void onLoadMore() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        page++;
-                        map.put("param", "http://api.cntv.cn/video/");
-                        map.put("vsid", id);
-                        map.put("p", page + "");
-                        itemPre.getData(map);
-                        videoBeen.clear();
-                        videoBeen.addAll(been);
-                        myAdapter.notifyDataSetChanged();
-                        item_listView.stopRefresh();
-                    }
-                });
+                LoadMore(been);
+            }
+        });
+        item_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                t = videoBeen.get(i).getT();
+                 Toast.makeText(VideoItActivity.this, been.get(i).getVid(), Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "onItemClick: " +been.get(i-1).getVid());
+                videoTop = new VideoTopPreImpl(VideoItActivity.this);
+                Map<String, String> map = new HashMap<>();
+                map.put("param", "http://115.182.9.189/api/");
+                map.put("pid", been.get(i-1).getVid());
+                videoTop.getData(map);
+            }
+        });
+    }
+
+    private void LoadMore(final List<VideoItemBean.VideoBean> been) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                videoBeen.clear();
+                page++;
+
+                map.put("param", "http://api.cntv.cn/video/");
+                map.put("vsid", id);
+                map.put("p", page + "");
+                itemPre.getData(map);
+                for (int i = 0; i < page; i++) {
+                    videoBeen.addAll(been);
+                }
+                Log.e(TAG, "run: " + videoBeen.size());
+
+                item_listView.stopRefresh();
+            }
+        });
+    }
+
+    private void Refresh() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                myAdapter.notifyDataSetChanged();
+                item_listView.stopRefresh();
             }
         });
     }
@@ -207,6 +270,23 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     }
 
     @Override
+    public void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been) {
+        Log.e(TAG, "onShowTop3: "+been.get(0).getUrl());
+        String urls=been.get(0).getUrl();
+        initData(urls);
+    }
+
+    @Override
+    public void onShowTop2(VideoTopBean.VideoBean been) {
+
+    }
+
+    @Override
+    public void OnShow(VideoTopBean videoTopBean) {
+
+    }
+
+    @Override
     public void onError(String e) {
 
     }
@@ -216,16 +296,18 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         finish();
     }
 
-    private void submit() {
-        // validate
-        String search = et_search.getText().toString().trim();
-        if (TextUtils.isEmpty(search)) {
-            Toast.makeText(this, "search不能为空", Toast.LENGTH_SHORT).show();
-            return;
+    @Override
+    public void onBufferingUpdate(MediaPlayer mp, int percent) {
+        loadRateView.setText(percent + "%");
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        //屏幕切换时，设置全屏
+        if (item_video != null) {
+            item_video.setVideoLayout(VideoView.VIDEO_LAYOUT_SCALE, 0);
         }
-
-        // TODO validate success, do something
-
-
+        super.onConfigurationChanged(newConfig);
     }
 }
