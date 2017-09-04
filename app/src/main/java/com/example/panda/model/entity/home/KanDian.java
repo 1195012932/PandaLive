@@ -10,6 +10,7 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class KanDian {
+
     @Id
     Long id;
     @Property

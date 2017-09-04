@@ -534,7 +534,7 @@ public class CustomMediaController extends MediaController {
      *
      * @param progress
      * @return
-     *//*
+     */
     public String setSeekBarChange(int progress) {
 
         if (mediacontroller_seekbar == null) return "";
