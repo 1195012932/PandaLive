@@ -165,6 +165,7 @@ public class Programs extends BaseFragment implements ProView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         ProBean notBean=gson.fromJson(string1,ProBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();

@@ -86,32 +86,12 @@ String url="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&n=7&ser
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                     xiahua();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(NotBeen);
-//                        adapter.notifyDataSetChanged();
-//                        ori_ptr.refreshComplete();
-//                        if(!ori_ptr.isLoadMoreEnable()){
-//                            ori_ptr.setLoadMoreEnable(true);
-//
-//                        }
-//                    }
-//                });
             }
         });
         ori_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void loadMore() {
                 shangla();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(NotBeen);
-//                        adapter.notifyDataSetChanged();
-//                        ori_ptr.loadMoreComplete(true);
-//                    }
-//                });
             }
         });
     }
@@ -164,6 +144,7 @@ String url="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&n=7&ser
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         OriBean notBean=gson.fromJson(string1,OriBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();

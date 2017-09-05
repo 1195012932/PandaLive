@@ -165,6 +165,7 @@ public class Roll extends BaseFragment implements RollView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         RollBean notBean=gson.fromJson(string1,RollBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();

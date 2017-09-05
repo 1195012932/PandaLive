@@ -30,6 +30,8 @@ public class Shoukandian extends Fragment {
     private RecyclerView kandian_list;
     List<KanDian> list = new ArrayList<>();
     private KanDianDao look;
+    private List<KanDian> lists;
+    private Long id;
 
     @Nullable
     @Override
@@ -40,11 +42,18 @@ public class Shoukandian extends Fragment {
     }
 
     private void initView(View inflate) {
+
         KanDianUtils ss = KanDianUtils.ss();
         look = ss.look(getActivity());
         kandian_img = (ImageView) inflate.findViewById(R.id.kandian_img);
         kandian_list = (RecyclerView) inflate.findViewById(R.id.kandian_list);
-        kandian_img.setVisibility(View.GONE);
+//        kandian_img.setVisibility(View.GONE);
+        if(id==null){
+            kandian_img.setVisibility(View.GONE);
+        }else {
+            kandian_img.setVisibility(View.VISIBLE);
+        }
+
         getlist();
         kandian_list.setLayoutManager(new GridLayoutManager(getActivity(),1));
         KanDianAdapter adapter=new KanDianAdapter(getActivity(),list);
@@ -68,9 +77,11 @@ public class Shoukandian extends Fragment {
 
     }
 
+
     public List<KanDian> getlist() {
-        List<KanDian> lists = look.queryBuilder().build().list();
+        lists = look.queryBuilder().build().list();
         list.addAll(lists);
+        id = list.get(0).getId();
         return list;
     }
 }

@@ -105,6 +105,7 @@ public class NotLet extends BaseFragment implements NotView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         NotBean notBean=gson.fromJson(string1,NotBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();
