@@ -1,20 +1,29 @@
 package com.example.panda.view.fragment.video.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.chanven.lib.cptr.PtrClassicFrameLayout;
 import com.example.panda.R;
 import com.example.panda.presenter.video.VideoItemPre;
 import com.example.panda.presenter.video.VideoItemPreImpl;
+import com.example.panda.presenter.video.VideoTopPreImpl;
+import com.example.panda.view.fragment.video.CustomMediaController;
 import com.example.panda.view.fragment.video.VideoItemView;
+import com.example.panda.view.fragment.video.VideoTopView;
 import com.example.panda.view.fragment.video.adapter.MyAdapter;
 import com.example.panda.view.fragment.video.entity.VideoItemBean;
+import com.example.panda.view.fragment.video.entity.VideoTopBean;
 import com.example.panda.view.fragment.xListview.MyXListView;
 
 import java.util.ArrayList;
@@ -22,9 +31,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.VideoView;
 
-public class VideoItActivity extends AppCompatActivity implements VideoItemView, View.OnClickListener {
+public class VideoItActivity extends AppCompatActivity implements VideoItemView, VideoTopView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
 
     private static final String TAG = "VideoItActivity";
     private TextView common_title_left;
@@ -32,7 +42,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private VideoView item_video;
     private TextView item_shou, item_info;
     private MyXListView item_listView;
-    private PtrClassicFrameLayout item_ptr;
     private Intent intent;
     private String id;
 
@@ -43,6 +52,15 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private int page = 1;
     private Map<String, String> map;
     List<VideoItemBean.VideoBean> videoBeen = new ArrayList<>();
+    private MyAdapter myAdapter;
+    private Uri uri;
+    private CustomMediaController mCustomMediaController;
+    private ProgressBar pb;
+    private TextView downloadRateView;
+    private TextView loadRateView;
+    private String t;
+    LinearLayout custom_listener;
+    private VideoTopPreImpl videoTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +69,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         intent = getIntent();
         id = intent.getStringExtra("id");
         initView();
-        initData();
         initListener();
     }
 
@@ -59,16 +76,8 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         common_title_left.setOnClickListener(this);
     }
 
-    private void initData() {
-
-    }
-
-
     private void initView() {
-        KanDianUtils ss = KanDianUtils.ss();
-        look = ss.look(VideoItActivity.this);
         itemPre = new VideoItemPreImpl(this);
-        page++;
         map = new HashMap();
         map.put("param", "http://api.cntv.cn/video/");
         map.put("vsid", id);
@@ -82,6 +91,12 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         item_info = (TextView) findViewById(R.id.item_info);
         lpanda_show = (ImageView) findViewById(R.id.lpanda_show);
         item_listView = (MyXListView) findViewById(R.id.item_listView);
+        mCustomMediaController = new CustomMediaController(this, item_video, this);
+        pb = (ProgressBar) findViewById(R.id.probar);
+        downloadRateView = (TextView) findViewById(R.id.download_rate);
+        loadRateView = (TextView) findViewById(R.id.load_rate);
+        custom_listener = (LinearLayout) findViewById(R.id.custom_listener2);
+        mCustomMediaController.setVideoName(t);
         itemPre.getData(map);
 
     }
@@ -129,7 +144,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                     loadRateView.setText("");
                     downloadRateView.setVisibility(View.VISIBLE);
                     loadRateView.setVisibility(View.VISIBLE);
-
                 }
                 break;
             case MediaPlayer.MEDIA_INFO_BUFFERING_END:
@@ -143,42 +157,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                 break;
         }
         return true;
-        tv_search_btn = (TextView) findViewById(R.id.tv_search_btn);
-        tv_search_btn.setOnClickListener(this);
-        iv_search = (ImageView) findViewById(R.id.iv_search);
-        iv_search.setOnClickListener(this);
-        et_search = (EditText) findViewById(R.id.et_search);
-        et_search.setOnClickListener(this);
-        iv_clear_searchedit = (ImageView) findViewById(R.id.iv_clear_searchedit);
-        iv_clear_searchedit.setOnClickListener(this);
-        layout_search = (RelativeLayout) findViewById(R.id.layout_search);
-        layout_search.setOnClickListener(this);
-        common_title_center = (TextView) findViewById(R.id.common_title_center);
-        common_title_center.setOnClickListener(this);
-        cctv_common_title_center = (TextView) findViewById(R.id.cctv_common_title_center);
-        cctv_common_title_center.setOnClickListener(this);
-        common_title_right = (TextView) findViewById(R.id.common_title_right);
-        common_title_right.setOnClickListener(this);
-        common_title_right2 = (TextView) findViewById(R.id.common_title_right2);
-        common_title_right2.setOnClickListener(this);
-        jieshao = (TextView) findViewById(R.id.jieshao);
-        jieshao.setOnClickListener(this);
-        video_img = (ImageView) findViewById(R.id.video_img);
-
-        video_img1 = (TextView) findViewById(R.id.video_img1);
-
-        pe_listview_item_detail_bottom = (LinearLayout) findViewById(R.id.pe_listview_item_detail_bottom);
-        pe_listview_item_detail_bottom.setOnClickListener(this);
-        video_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(flag==true){
-                    video_img.setImageResource(R.drawable.collect_yes);
-//                  look.insert(new KanDian(null,title,data,intExtra,name));
-                    flag=false;
-                }
-            }
-        });
     }
 
     @Override
@@ -203,12 +181,12 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 t = videoBeen.get(i).getT();
-                 Toast.makeText(VideoItActivity.this, been.get(i).getVid(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onItemClick: " +been.get(i-1).getVid());
+//                Toast.makeText(VideoItActivity.this, been.get(i).getVid(), Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "onItemClick: " + been.get(i - 1).getVid());
                 videoTop = new VideoTopPreImpl(VideoItActivity.this);
                 Map<String, String> map = new HashMap<>();
                 map.put("param", "http://115.182.9.189/api/");
-                map.put("pid", been.get(i-1).getVid());
+                map.put("pid", been.get(i - 1).getVid());
                 videoTop.getData(map);
             }
         });
@@ -218,14 +196,14 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                videoBeen.clear();
                 page++;
-
-                map.put("param", "http://api.cntv.cn/video/");
-                map.put("vsid", id);
-                map.put("p", page + "");
-                itemPre.getData(map);
+                // videoBeen.addAll(been);
                 for (int i = 0; i < page; i++) {
+                    map.put("param", "http://api.cntv.cn/video/");
+                    map.put("vsid", id);
+                    map.put("p", page + "");
+                    itemPre.getData(map);
+                    //videoBeen.clear();
                     videoBeen.addAll(been);
                 }
                 Log.e(TAG, "run: " + videoBeen.size());
@@ -271,8 +249,8 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
     @Override
     public void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been) {
-        Log.e(TAG, "onShowTop3: "+been.get(0).getUrl());
-        String urls=been.get(0).getUrl();
+        Log.e(TAG, "onShowTop3: " + been.get(0).getUrl());
+        String urls = been.get(0).getUrl();
         initData(urls);
     }
 

@@ -285,7 +285,7 @@ public class CustomMediaController extends MediaController {
         myHandler.removeMessages(HIDEFRAM);
         myHandler.sendEmptyMessageDelayed(HIDEFRAM, 1);
         if (progress_turn) {
-            //onFinishSeekBar();
+            onFinishSeekBar();
             progress_turn = false;
         }
     }

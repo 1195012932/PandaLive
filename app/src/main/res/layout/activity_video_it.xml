@@ -174,26 +174,25 @@
             <!--</com.chanven.lib.cptr.PtrClassicFrameLayout>-->
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/pe_listview_item_detail_bottom"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorWhite"
-        android:gravity="center"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/video_img"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/collect_no" />
-
-        <TextView
-            android:id="@+id/video_img1"
+            android:id="@+id/collect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/pe_share_img" />
-    </LinearLayout>
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="121dp"
+            android:src="@drawable/collect_no" />
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/collect"
+            android:src="@drawable/share" />
+    </RelativeLayout>
 </LinearLayout>

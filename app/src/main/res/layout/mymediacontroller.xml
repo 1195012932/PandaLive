@@ -176,7 +176,6 @@
                 android:layout_weight="6"
                 android:focusable="true"
                 android:max="100" />
-
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
