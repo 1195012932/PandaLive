@@ -165,6 +165,7 @@ public class Record extends BaseFragment implements RecView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         RecBean notBean=gson.fromJson(string1,RecBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();

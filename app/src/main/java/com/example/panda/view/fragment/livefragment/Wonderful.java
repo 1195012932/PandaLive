@@ -163,6 +163,7 @@ public class Wonderful extends BaseFragment implements WonView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         WonBean notBean=gson.fromJson(string1,WonBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();

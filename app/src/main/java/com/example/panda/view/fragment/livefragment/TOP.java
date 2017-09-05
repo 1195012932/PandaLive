@@ -165,6 +165,7 @@ public class TOP extends BaseFragment implements TopView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         TopBean notBean=gson.fromJson(string1,TopBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();

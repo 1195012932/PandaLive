@@ -3,9 +3,9 @@ package com.example.panda.view.home;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.panda.model.entity.home.DaoMaster;
-import com.example.panda.model.entity.home.DaoSession;
 import com.example.panda.model.entity.home.KanDianDao;
+import com.example.panda.model.live.bean.DaoMaster;
+import com.example.panda.model.live.bean.DaoSession;
 
 
 /**
@@ -26,7 +26,7 @@ public class KanDianUtils {
     }
     public KanDianDao look(Context context){
 
-        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(context.getApplicationContext(), "kandb", null);
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(context.getApplicationContext(), "wretrdgdsfawd", null);
         SQLiteDatabase db = openHelper.getWritableDatabase();
         DaoMaster mDaoMaster = new DaoMaster(db);
         daoSession = mDaoMaster.newSession();

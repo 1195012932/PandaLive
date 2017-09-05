@@ -87,18 +87,7 @@ public class Those extends BaseFragment implements ThoseView {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
             xiahua();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(ThoBeen);
-//                        adapter.notifyDataSetChanged();
-//                        tho_ptr.refreshComplete();
-//                        if(!tho_ptr.isLoadMoreEnable()){
-//                            tho_ptr.setLoadMoreEnable(true);
-//
-//                        }
-//                    }
-//                });
+
             }
         });
         tho_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
@@ -165,6 +154,7 @@ public class Those extends BaseFragment implements ThoseView {
                     @Override
                     public void run() {
                         Gson gson=new Gson();
+                        list.clear();
                         ThoBean notBean=gson.fromJson(string1,ThoBean.class);
                         list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();
