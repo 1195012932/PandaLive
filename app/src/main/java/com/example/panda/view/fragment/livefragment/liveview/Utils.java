@@ -3,8 +3,8 @@ package com.example.panda.view.fragment.livefragment.liveview;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.panda.model.live.bean.DaoMaster;
-import com.example.panda.model.live.bean.DaoSession;
+import com.example.panda.model.entity.home.DaoMaster;
+import com.example.panda.model.entity.home.DaoSession;
 import com.example.panda.model.live.bean.LookBeanDao;
 
 /**

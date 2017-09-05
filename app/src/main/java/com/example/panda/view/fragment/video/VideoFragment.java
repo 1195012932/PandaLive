@@ -82,7 +82,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onClick(View view) {
         startActivity(new Intent(getActivity(), PersonActivity.class));
-}
+    }
 
     @Override
     public void onShowBigImage(List<VideoBean.BigImgBean> list) {
@@ -91,12 +91,12 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         tv_videoTitle = (TextView) view2.findViewById(R.id.tv_videoTitle);
         pid = list.get(0).getPid();
         title = list.get(0).getTitle();
-        System.out.println("6666660"+pid);
-        urls = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid="+pid;
+        System.out.println("6666660" + pid);
+        urls = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid=" + pid;
         tv_videoTitle.setText(title);
         Glide.with(getActivity()).load(list.get(0).getImage()).error(R.mipmap.panda_sign).into(banner);
         list.get(0).getPid();
-        Log.e(TAG, "onShowBigImage: "+pid);
+        Log.e(TAG, "onShowBigImage: " + pid);
     }
 
     @Override
@@ -138,21 +138,21 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
         myAdapter.setOnItemClickListener(new MyAdapter.Listener() {
             @Override
             public void click(View v, int position) {
-                String id=been.get(position).getId();
-                String name=been.get(position).getBrief();
-                String img=been.get(position).getImage();
-                String title=been.get(position).getTitle();
-                String time=been.get(position).getVideoLength();
-                String url=been.get(position).getUrl();
+                String id = been.get(position).getId();
+                String name = been.get(position).getBrief();
+                String img = been.get(position).getImage();
+                String title = been.get(position).getTitle();
+                String time = been.get(position).getVideoLength();
+                String url = been.get(position).getUrl();
                 Intent starter = new Intent(getActivity(), VideoItActivity.class);
-               starter.putExtra("id",id);
-               starter.putExtra("name",name);
-               starter.putExtra("img",img);
-               starter.putExtra("title",title);
-               starter.putExtra("time",time);
-               starter.putExtra("url",url);
+                starter.putExtra("id", id);
+                starter.putExtra("name", name);
+                starter.putExtra("img", img);
+                starter.putExtra("title", title);
+                starter.putExtra("time", time);
+                starter.putExtra("url", url);
                 startActivity(starter);
-                Log.e(TAG, "click: "+id);
+                Log.e(TAG, "click: " + id);
             }
         });
         view2.setOnClickListener(new View.OnClickListener() {
