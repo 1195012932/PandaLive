@@ -34,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 使屏幕处于横屏 -->
         <activity
             android:name=".view.activity.CollectActivity"
             android:screenOrientation="portrait" />
@@ -44,6 +43,9 @@
         <activity
             android:name=".view.fragment.video.activity.VideoItActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.fragment.video.activity.VideoTop"
+            android:screenOrientation="landscape" /> <!-- 使屏幕处于横屏 -->
         <activity
             android:name=".view.activity.HistoryActivity"
             android:screenOrientation="portrait" />

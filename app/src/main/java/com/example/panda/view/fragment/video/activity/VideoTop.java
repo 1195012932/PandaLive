@@ -18,9 +18,11 @@ import android.widget.Toast;
 import com.example.panda.R;
 import com.example.panda.presenter.video.VideoTopPre;
 import com.example.panda.presenter.video.VideoTopPreImpl;
+import com.example.panda.utils.OkHttpsManner;
 import com.example.panda.view.fragment.video.CustomMediaController;
 import com.example.panda.view.fragment.video.VideoTopView;
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +32,7 @@ import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 
-public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
+public class VideoTop extends AppCompatActivity implements VideoTopView, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
 
     private static final String TAG = "VdieoTop";
     private AudioManager am;
@@ -50,8 +52,9 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
     private TextView loadRateView;
     private Uri uri;
     private String mapurl;
-    String path = "http://vod.cntv.lxdns.com/flash/mp4video60/TMS/2017/06/14/c1777f2df24441f8aa475df6554c232e_h264818000nero_aac32.mp4";//路径
     private LinearLayout custom_listener;
+    private VideoTopBean videoTopBean;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,16 +82,17 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
     protected void onDestroy() {
         super.onDestroy();
         if (mVideoView != null) {
-        mVideoView.pause();
+            mVideoView.pause();
         }
     }
+
     private void initView() {
         videoTop = new VideoTopPreImpl(this);
         Map<String, String> map = new HashMap<>();
         map.put("param", "http://115.182.9.189/api/");
         map.put("pid", urls);
         mVideoView = (VideoView) findViewById(R.id.buffer);
-        mCustomMediaController =new CustomMediaController(this, mVideoView,this);
+        mCustomMediaController = new CustomMediaController(this, mVideoView, this);
         mCustomMediaController.setVideoName(title);
         pb = (ProgressBar) findViewById(R.id.probar);
         downloadRateView = (TextView) findViewById(R.id.download_rate);
@@ -96,16 +100,28 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
         custom_listener = (LinearLayout) findViewById(R.id.custom_listener2);
         videoTop.getData(map);
         Toast.makeText(VideoTop.this, urls, Toast.LENGTH_SHORT).show();
-        System.out.println("12346789"+urls);
+        System.out.println("12346789" + urls);
 
-        //http://115.182.35.91/api/getVideoInfoForCBox.do?pid=ddded68aa4c1430691ee0fb48c6118d1
+        String mapurl = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid=" + urls;
+        OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
+            @Override
+            public void getString(String ss) {
+                Gson gson = new Gson();
+                videoTopBean = gson.fromJson(ss, VideoTopBean.class);
+                videoTopBean.getTitle();
+                url = videoTopBean.getVideo().getChapters().get(0).getUrl();
+                Log.e(TAG, "getString:" + url);
+                initData(url);
+            }
+        });
 
     }
+
     //初始化数据
     private void initData(String url) {
 
         uri = Uri.parse(url);
-        Log.e(TAG, "initData: " +uri);
+        Log.e(TAG, "initData: " + uri);
         mVideoView.setVideoURI(uri);//设置视频播放地址
         mCustomMediaController.show(5000);
         mVideoView.setMediaController(mCustomMediaController);
@@ -121,8 +137,9 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
         });
         mVideoView.setOnCompletionListener(dismiss);
     }
+
     //注册在媒体文件播放完毕时调用的回调函数。
-    private MediaPlayer.OnCompletionListener dismiss=new MediaPlayer.OnCompletionListener() {
+    private MediaPlayer.OnCompletionListener dismiss = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
             custom_listener.setVisibility(View.VISIBLE);
@@ -161,24 +178,23 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
 
     @Override
     public void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been) {
-        String url = been.get(0).getUrl();
+      /*  String url = been.get(0).getUrl();
         Log.e(TAG, "视频地址1" + url);
-        initData(url);
+        initData(url);*/
     }
 
     @Override
     public void onShowTop2(VideoTopBean.VideoBean been) {
         mapurl = been.getChapters()
                 .get(0).getUrl();
-       // String duration = been.getChapters2().get(0).getDuration();
-        Toast.makeText(this, mapurl, Toast.LENGTH_SHORT).show();
-        Log.e(TAG, "视频地址2" + mapurl);
+        //Toast.makeText(this, mapurl, Toast.LENGTH_SHORT).show();
+//        Log.e(TAG, "视频地址2" + mapurl);
     }
 
     @Override
     public void OnShow(VideoTopBean videoTopBean) {
 
-        Log.e("hahahahha------", "OnShow: "+videoTopBean.getTitle());
+        Log.e("hahahahha------", "OnShow: " + videoTopBean.getTitle());
     }
 
     @Override
@@ -195,7 +211,7 @@ public class VideoTop extends AppCompatActivity implements VideoTopView,MediaPla
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         //屏幕切换时，设置全屏
-        if (mVideoView != null){
+        if (mVideoView != null) {
             mVideoView.setVideoLayout(VideoView.VIDEO_LAYOUT_SCALE, 0);
         }
         super.onConfigurationChanged(newConfig);

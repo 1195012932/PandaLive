@@ -47,7 +47,6 @@ public class VideoTopPreImpl implements VideoTopPre, Observer<VideoTopBean> {
         VideoTopBean top = value;
         video = value.getVideo();
         chapters = video.getChapters();
-        videoView.onShowTop3(chapters);
         videoView.onShowTop2(video);
         videoView.OnShow(value);
     }
