@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.panda.R;
 import com.example.panda.model.entity.home.KanDian;
@@ -35,6 +36,8 @@ import java.util.Map;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.VideoView;
+
+import static com.example.panda.R.id.broadcast_sc;
 
 public class VideoItActivity extends AppCompatActivity implements VideoItemView, VideoTopView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
 
@@ -122,7 +125,14 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                 if(flag==true){
                     collect.setImageResource(R.drawable.collect_yes);
                     look.insert(new KanDian(null,name,title,img,id,time));
+                    Toast.makeText(VideoItActivity.this, "已添加请到【我的收藏】中查看", Toast.LENGTH_SHORT).show();
                     flag=false;
+                }else {
+                    KanDian unique = look.queryBuilder().where(KanDianDao.Properties.Title.eq(title)).build().unique();
+                    look.delete(unique);
+                    collect.setImageResource(R.drawable.collect_no);
+                    Toast.makeText(VideoItActivity.this, "已取消收藏", Toast.LENGTH_SHORT).show();
+                    flag=true;
                 }
             }
         });
