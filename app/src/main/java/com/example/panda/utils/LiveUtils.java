@@ -51,6 +51,14 @@ public class LiveUtils {
         }
         return liveutils;
     }
+    public void getNot(Map<String, String> map, Observer observer) {
+        Observable<NotBean> observable = service.getNot(map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    public void getNots(Observer observer) {
+        Observable<NotBean> observable = service.getNots();
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 
     public void getBroads2(Observer observer) {
         Observable<BroadBean2> observable = service.getBroad2();
@@ -111,18 +119,6 @@ public class LiveUtils {
         Observable<RollBean> observable = service.getRolls();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
-
-    public void getNot(Map<String, String> map, Observer observer) {
-        Observable<NotBean> observable = service.getNot(map);
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-
-    public void getNots(Observer observer) {
-
-        Observable<NotBean> observable = service.getNots();
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-
     public void getVideoItem2(Map<String,String> map,Observer observer) {
 
         Observable<VideoItemBean> observable = service.getItem2(map);

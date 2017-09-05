@@ -34,14 +34,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 使屏幕处于横屏 -->
         <activity
-            android:name=".view.fragment.video.activity.VideoTop"
-            android:screenOrientation="landscape" /> <!-- 使屏幕处于横屏 -->
-        <activity
-            android:name=".view.fragment.video.activity.VideoItActivity"
+            android:name=".view.activity.CollectActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.BroadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.fragment.video.activity.VideoItActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.HistoryActivity"
@@ -50,11 +51,9 @@
             android:name=".view.activity.SetActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activity.CollectActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".view.activity.MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".view.activity.PersonActivity"
             android:screenOrientation="portrait" />
@@ -71,7 +70,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".view.activity.Forget"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.home.Interaction"
             android:screenOrientation="portrait" />
@@ -82,8 +81,10 @@
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".view.activity.qq_login"></activity>
     </application>
 
 </manifest>

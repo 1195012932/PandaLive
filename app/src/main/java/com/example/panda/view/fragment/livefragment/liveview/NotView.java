@@ -11,3 +11,4 @@ import java.util.List;
 public interface NotView {
     void NotView(List<NotBean.VideoBean> NotBeen);
 }
+

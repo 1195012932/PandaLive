@@ -15,8 +15,8 @@ import com.bumptech.glide.Glide;
 import com.example.panda.R;
 import com.example.panda.adapter.MyBroadAdapter;
 import com.example.panda.base.BaseFragment;
-import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.BroadBean2;
+import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.presenter.broadcast.BroadPreImpl;
 import com.example.panda.presenter.broadcast.BroadPreImpl2;
 import com.example.panda.presenter.broadcast.BroadPresenter;
@@ -27,6 +27,7 @@ import com.example.panda.view.activity.BroadActivity;
 import com.example.panda.view.activity.PersonActivity;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -149,8 +150,15 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
         myAdapter.setOnItemClickListener(new MyBroadAdapter.Listener() {
             @Override
             public void click(View v, int position) {
+                long focus_date = been.get(position).getFocus_date();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                String ss = sdf.format(focus_date);
+
                 Intent intent = new Intent(getActivity(), BroadActivity.class);
                 intent.putExtra("name", been.get(position).getUrl());
+                intent.putExtra("title", been.get(position).getTitle());
+                intent.putExtra("img", been.get(position).getPicurl());
+                intent.putExtra("data",ss);
                 startActivity(intent);
             }
         });

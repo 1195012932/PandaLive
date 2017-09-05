@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\AndroidStudio_Work4\PandaLive\vitamio2\src\main\assets"/><source path="D:\AndroidStudio_Work4\PandaLive\vitamio2\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\AndroidStudio_Work4\PandaLive\vitamio2\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\dashixun\day11\RetrofitRxjava\PandaLive\vitamio2\src\main\assets"/><source path="D:\dashixun\day11\RetrofitRxjava\PandaLive\vitamio2\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\dashixun\day11\RetrofitRxjava\PandaLive\vitamio2\src\release\assets"/></dataSet></merger>

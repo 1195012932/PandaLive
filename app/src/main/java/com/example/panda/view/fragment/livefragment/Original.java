@@ -14,11 +14,19 @@ import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.OriPtr;
 import com.example.panda.view.fragment.livefragment.liveview.OriginView;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by admin on 2017/8/24.
@@ -26,12 +34,13 @@ import java.util.Map;
 
 public class Original extends BaseFragment implements OriginView {
     private LivePresenter livePresenter;
-
+String url="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&n=7&serviceId=panda&o=desc&of=time&p=";
     List<OriBean.VideoBean> list = new ArrayList<>();
     private ListView ori_list;
     private PtrClassicFrameLayout ori_ptr;
     Handler handler=new Handler();
     private OriAdapter adapter;
+    int i=2;
     @Override
     protected void loadData() {
 
@@ -76,31 +85,93 @@ public class Original extends BaseFragment implements OriginView {
         ori_ptr.setPtrHandler(new PtrDefaultHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        list.addAll(NotBeen);
-                        adapter.notifyDataSetChanged();
-                        ori_ptr.refreshComplete();
-                        if(!ori_ptr.isLoadMoreEnable()){
-                            ori_ptr.setLoadMoreEnable(true);
-
-                        }
-                    }
-                });
+                    xiahua();
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        list.addAll(NotBeen);
+//                        adapter.notifyDataSetChanged();
+//                        ori_ptr.refreshComplete();
+//                        if(!ori_ptr.isLoadMoreEnable()){
+//                            ori_ptr.setLoadMoreEnable(true);
+//
+//                        }
+//                    }
+//                });
             }
         });
         ori_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void loadMore() {
+                shangla();
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        list.addAll(NotBeen);
+//                        adapter.notifyDataSetChanged();
+//                        ori_ptr.loadMoreComplete(true);
+//                    }
+//                });
+            }
+        });
+    }
 
-                handler.post(new Runnable() {
+    private void shangla() {
+        final String string=url+i;
+        OkHttpClient client=new OkHttpClient();
+        final Request request=new Request.Builder().url(string).build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final  String string1 = response.body().string();
+                getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        list.addAll(NotBeen);
+                        Gson gson=new Gson();
+                        OriBean notBean=gson.fromJson(string1,OriBean.class);
+                        list.addAll(notBean.getVideo());
                         adapter.notifyDataSetChanged();
                         ori_ptr.loadMoreComplete(true);
+                        i++;
+                    }
+                });
+            }
+        });
+    }
+
+    private void xiahua() {
+        i=2;
+        final String string=url+i;
+        OkHttpClient client=new OkHttpClient();
+        final Request request=new Request.Builder().url(string).build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final  String string1 = response.body().string();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson=new Gson();
+                        OriBean notBean=gson.fromJson(string1,OriBean.class);
+                        list.addAll(notBean.getVideo());
+                        adapter.notifyDataSetChanged();
+                        ori_ptr.refreshComplete();
+                        if(!ori_ptr.isLoadMoreEnable()){
+                            ori_ptr.setLoadMoreEnable(true);
+                            i=3;
+                        }
                     }
                 });
             }

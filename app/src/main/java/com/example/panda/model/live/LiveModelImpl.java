@@ -1,5 +1,6 @@
 package com.example.panda.model.live;
 
+import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
@@ -21,10 +22,14 @@ import io.reactivex.Observer;
  */
 
 public class LiveModelImpl implements LiveModel{
-
     @Override
     public void liveget(Observer<LiveStreaing> observer) {
         RetrofitUtils.getRetrofitUtils().getLives(observer);
+    }
+
+    @Override
+    public void brodget(Observer<Brod> observer) {
+        RetrofitUtils.getRetrofitUtils().getBroads(observer);
     }
 
     @Override

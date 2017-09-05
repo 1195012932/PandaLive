@@ -47,7 +47,7 @@ public class TopUtils {
      * @param observer
      */
     public void getVideoTop(Map<String,String> map, Observer observer) {
-        Observable<VideoTopBean> observable = service.getVideoTop(map);
+        Observable<VideoTopBean> observable = service.getVideoTop();
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }

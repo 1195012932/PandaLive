@@ -2,6 +2,7 @@ package com.example.panda.view.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,7 +16,8 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
     private RelativeLayout personal_history_layout;
     private RelativeLayout personal_shoucang_layout;
     private RelativeLayout personal_set_layout;
-
+    TextView personal_login_view;
+    ImageView personal_img;
     @Override
     protected void loadData() {
 
@@ -37,13 +39,15 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initView() {
+        personal_img= (ImageView) findViewById(R.id.personal_img);
+        personal_login_view= (TextView) findViewById(R.id.personal_login_view);
         common_title_left = (TextView) findViewById(R.id.common_title_left);
         person_no_login_layout = (RelativeLayout) findViewById(R.id.person_no_login_layout);
         personal_history_layout = (RelativeLayout) findViewById(R.id.personal_history_layout);
         personal_shoucang_layout = (RelativeLayout) findViewById(R.id.personal_shoucang_layout);
         personal_set_layout = (RelativeLayout) findViewById(R.id.personal_set_layout);
-    }
 
+    }
     @Override
     protected int getLayout() {
         return R.layout.activity_person;
@@ -52,7 +56,6 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-
             case R.id.common_title_left:
                 finish();
                 break;

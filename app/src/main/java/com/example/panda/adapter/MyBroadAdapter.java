@@ -18,6 +18,7 @@ public class MyBroadAdapter extends RecyclerView.Adapter {
     private final Context context;
     private List<BroadBean2.ListBean> list ;
     private Listener listener;
+    private ViewHordle viewHordle;
 
     public MyBroadAdapter(Context context, List<BroadBean2.ListBean> list3) {
         this.context = context;
@@ -27,19 +28,19 @@ public class MyBroadAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(context, R.layout.broaditem, null);
-        ViewHordle holder = new ViewHordle(view);
-        return holder;
+        viewHordle = new ViewHordle(view);
+        return viewHordle;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ViewHordle holder1 = (ViewHordle) holder;
-        Glide.with(context).load(list.get(position).getPicurl()).into(holder1.img);
-        holder1.name.setText(list.get(position).getTitle());
+        viewHordle = (ViewHordle) holder;
+        Glide.with(context).load(list.get(position).getPicurl()).into(viewHordle.img);
+        viewHordle.name.setText(list.get(position).getTitle());
         long focus_date = list.get(position).getFocus_date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         String ss = sdf.format(focus_date);
-        holder1.data.setText(ss);
+        viewHordle.data.setText(ss);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

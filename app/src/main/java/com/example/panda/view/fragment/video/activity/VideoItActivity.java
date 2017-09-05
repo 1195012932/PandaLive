@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.panda.R;
+import com.example.panda.model.entity.home.KanDian;
+import com.example.panda.model.entity.home.KanDianDao;
 import com.example.panda.presenter.video.VideoItemPre;
 import com.example.panda.presenter.video.VideoItemPreImpl;
 import com.example.panda.presenter.video.VideoTopPreImpl;
@@ -24,6 +26,7 @@ import com.example.panda.view.fragment.video.adapter.MyAdapter;
 import com.example.panda.view.fragment.video.entity.VideoItemBean;
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
 import com.example.panda.view.fragment.xListview.MyXListView;
+import com.example.panda.view.home.KanDianUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +46,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private MyXListView item_listView;
     private Intent intent;
     private String id;
-
+    private ImageView collect;
     private String url = "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=" + 1;
     private VideoItemPre itemPre;
     private boolean isChecked = true;
@@ -60,6 +63,13 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private String t;
     LinearLayout custom_listener;
     private VideoTopPreImpl videoTop;
+    boolean flag=true;
+    private KanDianDao look;
+    private String name;
+    private String title;
+    private String urls;
+    private String time;
+    private String img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +77,12 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         setContentView(R.layout.activity_video_it);
         intent = getIntent();
         id = intent.getStringExtra("id");
+        name = intent.getStringExtra("name");
+        title = intent.getStringExtra("title");
+        urls = intent.getStringExtra("url");
+        time = intent.getStringExtra("time");
+        img = intent.getStringExtra("img");
+
         initView();
         initListener();
     }
@@ -76,6 +92,8 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     }
 
     private void initView() {
+        KanDianUtils ss = KanDianUtils.ss();
+        look = ss.look(VideoItActivity.this);
         itemPre = new VideoItemPreImpl(this);
         map = new HashMap();
         map.put("param", "http://api.cntv.cn/video/");
@@ -97,7 +115,17 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         custom_listener = (LinearLayout) findViewById(R.id.custom_listener2);
         mCustomMediaController.setVideoName(t);
         itemPre.getData(map);
-
+        collect= (ImageView) findViewById(R.id.collect);
+        collect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(flag==true){
+                    collect.setImageResource(R.drawable.collect_yes);
+                    look.insert(new KanDian(null,name,title,img,id,time));
+                    flag=false;
+                }
+            }
+        });
     }
 
     //初始化数据

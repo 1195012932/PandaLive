@@ -316,7 +316,7 @@ public class CustomMediaController extends MediaController {
 
         @Override
         public boolean onDown(MotionEvent e) {
-            progress = getProgress();
+            //progress = getProgress();
             return true;
         }
 

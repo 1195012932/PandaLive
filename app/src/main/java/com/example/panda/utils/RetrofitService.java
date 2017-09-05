@@ -9,6 +9,7 @@ import com.example.panda.model.entity.home.BroadBean;
 import com.example.panda.model.entity.home.InteraBean;
 import com.example.panda.model.entity.home.MarvellousBean;
 import com.example.panda.model.entity.home.VitmioBean;
+import com.example.panda.model.live.bean.Brod;
 import com.example.panda.model.live.bean.LiveStreaing;
 import com.example.panda.model.live.bean.NotBean;
 import com.example.panda.model.live.bean.OriBean;
@@ -39,8 +40,7 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST()
     Observable<HomeBean> getData(@FieldMap Map<String, String> map);
-
-    @GET("PAGE1450172284887217/index.json")
+    @GET("shouye/index.json")
     Observable<HomeBean> getDataGet();
 
     /**
@@ -55,6 +55,12 @@ public interface RetrofitService {
 
     @GET("PAGE14501769230331752/index.json")
     Observable<LiveStreaing> getLiveStreaing();
+    @FormUrlEncoded
+
+    @POST()
+    Observable<Brod> getBrod(@FieldMap Map<String, String> map);
+    @GET("PAGE14501769230331752/PAGE14501787896813312/index.json")
+    Observable<Brod> getBrods();
 
     /**
      * 滚滚视频
@@ -65,7 +71,11 @@ public interface RetrofitService {
 
     @GET("video/index.json")
     Observable<VideoBean> getVideo();
-
+    @FormUrlEncoded
+    @POST()
+    Observable<BroadBean> getBroad(@FieldMap Map<String, String> map);
+    @GET("PAGE14503485387528442/index.json")
+    Observable<BroadBean> getBroad();
     //精彩一刻
     @FormUrlEncoded
     @POST()
@@ -141,12 +151,6 @@ public interface RetrofitService {
     /**
      * 熊猫播报
      */
-    @FormUrlEncoded
-    @POST()
-    Observable<BroadBean> getBroad(@FieldMap Map<String, String> map);
-
-    @GET("PAGE14503485387528442/index.json")
-    Observable<BroadBean> getBroad();
 
     @FormUrlEncoded
     @POST()
@@ -179,13 +183,15 @@ public interface RetrofitService {
     /**
      * 滚滚视频顶部的图片
      */
-    @GET("getVideoInfoForCBox.do?pid= 8ff497729f7e4d9881d643f41f90d378")
-    Observable<VideoTopBean> getVideoTop(@QueryMap Map<String,String> map);
+    @GET("getVideoInfoForCBox.do?pid=7d826d24b4e443ad88dd59ad03d50dfe")
+    Observable<VideoTopBean> getVideoTop();
 
     /**
      * 滚滚视频item
      * @return
      */
+    @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
+    Observable<VideoItemBean> getItem();
     @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<VideoItemBean> getItem2(@QueryMap Map<String,String> map);
 

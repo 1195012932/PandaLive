@@ -24,12 +24,10 @@ public class RecPtr implements LivePresenter,Observer<RecBean> {
         this.recView = recView;
         liveModel=new LiveModelImpl();
     }
-
     @Override
     public void url(Map<String, String> map) {
         liveModel.Recget(this);
     }
-
     @Override
     public void onSubscribe(Disposable d) {
 

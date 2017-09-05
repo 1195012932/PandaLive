@@ -1,16 +1,19 @@
 package com.example.panda.view.fragment;
 
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.panda.R;
 import com.example.panda.base.BaseFragment;
 import com.example.panda.model.live.NoScrollViewPager;
+import com.example.panda.view.activity.PersonActivity;
 import com.example.panda.view.fragment.livefragment.LiveStreaming;
 import com.example.panda.view.fragment.livefragment.NotLet;
 import com.example.panda.view.fragment.livefragment.Original;
@@ -30,7 +33,7 @@ import java.util.List;
 public class LiveFragment extends BaseFragment {
     private Toolbar toolbar;
     private TabLayout tab;
-
+    private ImageView liveimageview;
     List<Fragment> list = new ArrayList<>();
     List<String> lists = new ArrayList<>();
     private NoScrollViewPager pager;
@@ -56,7 +59,14 @@ public class LiveFragment extends BaseFragment {
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         tab = (TabLayout) view.findViewById(R.id.tab);
         pager= (NoScrollViewPager) view.findViewById(R.id.pager);
-
+        liveimageview=view.findViewById(R.id.live_img);
+        liveimageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it=new Intent(getActivity(), PersonActivity.class);
+                startActivity(it);
+            }
+        });
         lists.add("直播");
         lists.add("精彩一刻");
         lists.add("当熊不让");
@@ -108,6 +118,7 @@ public class LiveFragment extends BaseFragment {
         public int getCount() {
             return list.size();
         }
+
 
         @Override
         public CharSequence getPageTitle(int position) {

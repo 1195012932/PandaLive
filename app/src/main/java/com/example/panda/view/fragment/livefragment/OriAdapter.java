@@ -20,6 +20,8 @@ import java.util.List;
 
 class OriAdapter extends BaseAdapter{
         private Context context;
+
+
         List<OriBean.VideoBean> list = new ArrayList<>();
         private ViewHoudler viewHoudler;
 
