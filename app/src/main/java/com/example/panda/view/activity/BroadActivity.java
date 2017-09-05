@@ -9,6 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.panda.R;
 import com.example.panda.model.entity.home.KanDian;
@@ -68,7 +69,14 @@ public class BroadActivity extends AppCompatActivity {
                 if(flag==true){
                     broadcast_sc.setImageResource(R.drawable.collect_yes);
                     look.insert(new KanDian(null,title,data,intExtra,name,null));
-                    flag=false;
+                    Toast.makeText(BroadActivity.this, "已添加请到【我的收藏】中查看", Toast.LENGTH_SHORT).show();
+                   flag=false;
+                }else {
+                    KanDian unique = look.queryBuilder().where(KanDianDao.Properties.Title.eq(title)).build().unique();
+                    look.delete(unique);
+                    Toast.makeText(BroadActivity.this, "已取消收藏", Toast.LENGTH_SHORT).show();
+                    broadcast_sc.setImageResource(R.drawable.collect_no);
+                    flag=true;
                 }
 
             }
