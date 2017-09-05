@@ -19,14 +19,15 @@ import com.example.panda.model.entity.home.KanDianDao;
 import com.example.panda.presenter.video.VideoItemPre;
 import com.example.panda.presenter.video.VideoItemPreImpl;
 import com.example.panda.presenter.video.VideoTopPreImpl;
+import com.example.panda.utils.OkHttpsManner;
 import com.example.panda.view.fragment.video.CustomMediaController;
 import com.example.panda.view.fragment.video.VideoItemView;
-import com.example.panda.view.fragment.video.VideoTopView;
 import com.example.panda.view.fragment.video.adapter.MyAdapter;
 import com.example.panda.view.fragment.video.entity.VideoItemBean;
 import com.example.panda.view.fragment.video.entity.VideoTopBean;
 import com.example.panda.view.fragment.xListview.MyXListView;
 import com.example.panda.view.home.KanDianUtils;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ import java.util.Map;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.VideoView;
 
-public class VideoItActivity extends AppCompatActivity implements VideoItemView, VideoTopView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
+public class VideoItActivity extends AppCompatActivity implements VideoItemView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
 
     private static final String TAG = "VideoItActivity";
     private TextView common_title_left;
@@ -63,13 +64,16 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private String t;
     LinearLayout custom_listener;
     private VideoTopPreImpl videoTop;
-    boolean flag=true;
+    boolean flag = true;
     private KanDianDao look;
     private String name;
     private String title;
     private String urls;
     private String time;
     private String img;
+    private VideoTopBean videoTopBean;
+    private String urlss;
+    private String title1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +99,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         KanDianUtils ss = KanDianUtils.ss();
         look = ss.look(VideoItActivity.this);
         itemPre = new VideoItemPreImpl(this);
-        map = new HashMap();
-        map.put("param", "http://api.cntv.cn/video/");
-        map.put("vsid", id);
-        map.put("p", 1 + "");
-        Log.e("hahahhhhhhhhhhhhhh", "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=1");
+        loadData(page);
 
         common_title_left = (TextView) findViewById(R.id.common_title_left);
         item_title = (TextView) findViewById(R.id.item_title);
@@ -113,19 +113,28 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         downloadRateView = (TextView) findViewById(R.id.download_rate);
         loadRateView = (TextView) findViewById(R.id.load_rate);
         custom_listener = (LinearLayout) findViewById(R.id.custom_listener2);
-        mCustomMediaController.setVideoName(t);
-        itemPre.getData(map);
-        collect= (ImageView) findViewById(R.id.collect);
+        mCustomMediaController.setVideoName(title1);
+
+        collect = (ImageView) findViewById(R.id.collect);
         collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flag==true){
+                if (flag == true) {
                     collect.setImageResource(R.drawable.collect_yes);
-                    look.insert(new KanDian(null,name,title,img,id,time));
-                    flag=false;
+                    look.insert(new KanDian(null, name, title, img, id, time));
+                    flag = false;
                 }
             }
         });
+    }
+
+    private void loadData(int page) {
+        map = new HashMap();
+        map.put("param", "http://api.cntv.cn/video/");
+        map.put("vsid", id);
+        map.put("p", page + "");
+        Log.e("hahahhhhhhhhhhhhhh", "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=" + page);
+        itemPre.getData(map);
     }
 
     //初始化数据
@@ -196,55 +205,52 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         item_listView.setXListViewListener(new MyXListView.IXListViewListener() {
             @Override
             public void onRefresh() {
-                Refresh();
+                refresh();
             }
 
             @Override
             public void onLoadMore() {
-                LoadMore(been);
+                loadMore();
             }
         });
         item_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                t = videoBeen.get(i).getT();
-//                Toast.makeText(VideoItActivity.this, been.get(i).getVid(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onItemClick: " + been.get(i - 1).getVid());
-                videoTop = new VideoTopPreImpl(VideoItActivity.this);
-                Map<String, String> map = new HashMap<>();
-                map.put("param", "http://115.182.9.189/api/");
-                map.put("pid", been.get(i - 1).getVid());
-                videoTop.getData(map);
+                Log.e(TAG, "onItemClick: " + videoBeen.get(i - 1).getVid());
+                String mapurl = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=" + videoBeen.get(i - 1).getVid();
+                OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
+                    @Override
+                    public void getString(String ss) {
+                        Gson gson = new Gson();
+                        videoTopBean = gson.fromJson(ss, VideoTopBean.class);
+                        urlss = videoTopBean.getVideo().getChapters().get(0).getUrl();
+                        title1 = videoTopBean.getTitle();
+                        Log.e(TAG, "getString: " + urlss);
+                        initData(urlss);
+                    }
+                });
             }
         });
     }
 
-    private void LoadMore(final List<VideoItemBean.VideoBean> been) {
+    private void loadMore() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 page++;
-                // videoBeen.addAll(been);
-                for (int i = 0; i < page; i++) {
-                    map.put("param", "http://api.cntv.cn/video/");
-                    map.put("vsid", id);
-                    map.put("p", page + "");
-                    itemPre.getData(map);
-                    //videoBeen.clear();
-                    videoBeen.addAll(been);
-                }
-                Log.e(TAG, "run: " + videoBeen.size());
-
+                loadData(page);
                 item_listView.stopRefresh();
+                return;
             }
         });
     }
 
-    private void Refresh() {
+    private void refresh() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                myAdapter.notifyDataSetChanged();
+                page = 1;
+                loadData(page);
                 item_listView.stopRefresh();
             }
         });
@@ -272,23 +278,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
             }
         });
-    }
-
-    @Override
-    public void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been) {
-        Log.e(TAG, "onShowTop3: " + been.get(0).getUrl());
-        String urls = been.get(0).getUrl();
-        initData(urls);
-    }
-
-    @Override
-    public void onShowTop2(VideoTopBean.VideoBean been) {
-
-    }
-
-    @Override
-    public void OnShow(VideoTopBean videoTopBean) {
-
     }
 
     @Override

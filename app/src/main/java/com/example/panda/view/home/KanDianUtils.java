@@ -3,9 +3,10 @@ package com.example.panda.view.home;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.panda.model.entity.home.DaoMaster;
+import com.example.panda.model.entity.home.DaoSession;
 import com.example.panda.model.entity.home.KanDianDao;
-import com.example.panda.model.live.bean.DaoMaster;
-import com.example.panda.model.live.bean.DaoSession;
+
 
 /**
  * Created by admin on 2017/8/31.
