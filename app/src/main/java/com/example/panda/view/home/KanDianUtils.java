@@ -25,7 +25,7 @@ public class KanDianUtils {
     }
     public KanDianDao look(Context context){
 
-        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(context.getApplicationContext(), "ssdb", null);
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(context.getApplicationContext(), "kandb", null);
         SQLiteDatabase db = openHelper.getWritableDatabase();
         DaoMaster mDaoMaster = new DaoMaster(db);
         daoSession = mDaoMaster.newSession();

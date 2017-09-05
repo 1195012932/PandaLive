@@ -139,8 +139,18 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
             @Override
             public void click(View v, int position) {
                 String id=been.get(position).getId();
+                String name=been.get(position).getBrief();
+                String img=been.get(position).getImage();
+                String title=been.get(position).getTitle();
+                String time=been.get(position).getVideoLength();
+                String url=been.get(position).getUrl();
                 Intent starter = new Intent(getActivity(), VideoItActivity.class);
                starter.putExtra("id",id);
+               starter.putExtra("name",name);
+               starter.putExtra("img",img);
+               starter.putExtra("title",title);
+               starter.putExtra("time",time);
+               starter.putExtra("url",url);
                 startActivity(starter);
                 Log.e(TAG, "click: "+id);
             }

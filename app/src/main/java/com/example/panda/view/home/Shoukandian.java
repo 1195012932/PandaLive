@@ -4,17 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 
+import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 import com.example.panda.R;
 import com.example.panda.model.entity.home.KanDian;
 import com.example.panda.model.entity.home.KanDianDao;
 import com.example.panda.view.activity.BroadActivity;
+import com.example.panda.view.fragment.video.activity.VideoItActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ import java.util.List;
 
 public class Shoukandian extends Fragment {
     private ImageView kandian_img;
-    private ListView kandian_list;
+    private RecyclerView kandian_list;
     List<KanDian> list = new ArrayList<>();
     private KanDianDao look;
 
@@ -41,19 +43,29 @@ public class Shoukandian extends Fragment {
         KanDianUtils ss = KanDianUtils.ss();
         look = ss.look(getActivity());
         kandian_img = (ImageView) inflate.findViewById(R.id.kandian_img);
-        kandian_list = (ListView) inflate.findViewById(R.id.kandian_list);
+        kandian_list = (RecyclerView) inflate.findViewById(R.id.kandian_list);
         kandian_img.setVisibility(View.GONE);
         getlist();
+        kandian_list.setLayoutManager(new GridLayoutManager(getActivity(),1));
         KanDianAdapter adapter=new KanDianAdapter(getActivity(),list);
-        kandian_list.setAdapter(adapter);
-        kandian_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        RecyclerAdapterWithHF hf = new RecyclerAdapterWithHF(adapter);
+        kandian_list.setAdapter(hf);
+        hf.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), BroadActivity.class);
-                intent.putExtra("name", list.get(i).getUrl());
-                startActivity(intent);
+            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+               if(list.get(position).getTime()==null){
+                   Intent intent = new Intent(getActivity(), BroadActivity.class);
+                   intent.putExtra("name", list.get(position).getUrl());
+                   startActivity(intent);
+               }else{
+                   Intent intent = new Intent(getActivity(), VideoItActivity.class);
+                   intent.putExtra("id", list.get(position).getUrl());
+                   startActivity(intent);
+               }
+
             }
         });
+
     }
 
     public List<KanDian> getlist() {
