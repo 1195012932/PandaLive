@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.panda.R;
 import com.example.panda.presenter.video.VideoItemPre;
@@ -34,7 +33,7 @@ import java.util.Map;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.VideoView;
 
-public class VideoItActivity extends AppCompatActivity implements VideoItemView,VideoTopView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
+public class VideoItActivity extends AppCompatActivity implements VideoItemView, VideoTopView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
 
     private static final String TAG = "VideoItActivity";
     private TextView common_title_left;
@@ -69,18 +68,12 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         intent = getIntent();
         id = intent.getStringExtra("id");
         initView();
-        initData();
         initListener();
     }
 
     private void initListener() {
         common_title_left.setOnClickListener(this);
     }
-
-    private void initData() {
-
-    }
-
 
     private void initView() {
         itemPre = new VideoItemPreImpl(this);
@@ -150,7 +143,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                     loadRateView.setText("");
                     downloadRateView.setVisibility(View.VISIBLE);
                     loadRateView.setVisibility(View.VISIBLE);
-
                 }
                 break;
             case MediaPlayer.MEDIA_INFO_BUFFERING_END:
@@ -188,12 +180,12 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 t = videoBeen.get(i).getT();
-                 Toast.makeText(VideoItActivity.this, been.get(i).getVid(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onItemClick: " +been.get(i-1).getVid());
+//                Toast.makeText(VideoItActivity.this, been.get(i).getVid(), Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "onItemClick: " + been.get(i - 1).getVid());
                 videoTop = new VideoTopPreImpl(VideoItActivity.this);
                 Map<String, String> map = new HashMap<>();
                 map.put("param", "http://115.182.9.189/api/");
-                map.put("pid", been.get(i-1).getVid());
+                map.put("pid", been.get(i - 1).getVid());
                 videoTop.getData(map);
             }
         });
@@ -203,14 +195,14 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                videoBeen.clear();
                 page++;
-
-                map.put("param", "http://api.cntv.cn/video/");
-                map.put("vsid", id);
-                map.put("p", page + "");
-                itemPre.getData(map);
+                // videoBeen.addAll(been);
                 for (int i = 0; i < page; i++) {
+                    map.put("param", "http://api.cntv.cn/video/");
+                    map.put("vsid", id);
+                    map.put("p", page + "");
+                    itemPre.getData(map);
+                    //videoBeen.clear();
                     videoBeen.addAll(been);
                 }
                 Log.e(TAG, "run: " + videoBeen.size());
@@ -256,8 +248,8 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
     @Override
     public void onShowTop3(List<VideoTopBean.VideoBean.ChaptersBean> been) {
-        Log.e(TAG, "onShowTop3: "+been.get(0).getUrl());
-        String urls=been.get(0).getUrl();
+        Log.e(TAG, "onShowTop3: " + been.get(0).getUrl());
+        String urls = been.get(0).getUrl();
         initData(urls);
     }
 
