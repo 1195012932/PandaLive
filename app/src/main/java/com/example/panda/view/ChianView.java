@@ -1,6 +1,6 @@
 package com.example.panda.view;
 
-import com.example.panda.model.entity.ChianBean;
+import com.example.panda.model.entity.chian.ChianBean;
 
 import java.util.List;
 

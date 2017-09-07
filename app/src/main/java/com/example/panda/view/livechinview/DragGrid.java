@@ -221,7 +221,7 @@ public class DragGrid extends GridView {
 					dragViewGroup.destroyDrawingCache();
 					dragViewGroup.setDrawingCacheEnabled(true);
 					Bitmap dragBitmap = Bitmap.createBitmap(dragViewGroup.getDrawingCache());
-					mVibrator.vibrate(50);//设置震动时间
+//					mVibrator.vibrate(50);//设置震动时间
 					startDrag(dragBitmap, (int)ev.getRawX(),  (int)ev.getRawY());
 					//hideDropItem();
 					dragViewGroup.setVisibility(View.INVISIBLE);

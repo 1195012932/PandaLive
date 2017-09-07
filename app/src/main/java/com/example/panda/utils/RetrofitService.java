@@ -2,7 +2,7 @@ package com.example.panda.utils;
 
 
 import com.example.panda.model.entity.BroadBean2;
-import com.example.panda.model.entity.ChianBean;
+import com.example.panda.model.entity.chian.ChianBean;
 import com.example.panda.model.entity.HomeBean;
 import com.example.panda.model.entity.VideoBean;
 import com.example.panda.model.entity.home.BroadBean;

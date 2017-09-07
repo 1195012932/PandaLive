@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.panda.model.china.ChinaModel;
 import com.example.panda.model.china.ChinaModelImpl;
-import com.example.panda.model.entity.ChianBean;
+import com.example.panda.model.entity.chian.ChianBean;
 import com.example.panda.view.ChianView;
 
 import java.util.List;

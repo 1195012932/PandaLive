@@ -1,23 +1,24 @@
-package com.example.panda.adapter;
+package com.example.panda.adapter.china;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.panda.model.entity.chian.ChianBean;
+
 import java.util.ArrayList;
 
 /**
- * Created by huang on 2017/5/18.
+ * Created by ASUS on 2017/7/29.
  */
 
-public class ChinaAdapter extends FragmentPagerAdapter {
+public class LiveChinaViewPagerAdapter extends FragmentPagerAdapter{
     private ArrayList<Fragment> list;
-    private ArrayList<String> list1;
-
-    public ChinaAdapter(FragmentManager fm, ArrayList<Fragment> list, ArrayList<String> list1) {
+    private ArrayList<ChianBean.TablistBean> tablist;
+    public LiveChinaViewPagerAdapter(FragmentManager fm, ArrayList<Fragment> list, ArrayList<ChianBean.TablistBean> tablist) {
         super(fm);
-        this.list = list;
-        this.list1 = list1;
+        this.list=list;
+        this.tablist=tablist;
     }
 
     @Override
@@ -32,7 +33,6 @@ public class ChinaAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return list1.get(position);
+        return tablist.get(position).getTitle();
     }
-
 }

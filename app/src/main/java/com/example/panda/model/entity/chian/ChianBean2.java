@@ -1,4 +1,4 @@
-package com.example.panda.model.entity;
+package com.example.panda.model.entity.chian;
 
 import java.util.List;
 

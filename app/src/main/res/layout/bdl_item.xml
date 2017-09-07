@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/att_lv"
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/badaling_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </ListView>
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 </LinearLayout>

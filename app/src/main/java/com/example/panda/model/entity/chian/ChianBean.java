@@ -1,12 +1,13 @@
-package com.example.panda.model.entity;
+package com.example.panda.model.entity.chian;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by admin on 2017/8/30.
  */
 
-public class ChianBean {
+public class ChianBean implements Serializable {
 
     private List<TablistBean> tablist;
     private List<AlllistBean> alllist;
@@ -39,6 +40,13 @@ public class ChianBean {
         private String url;
         private String type;
         private String order;
+
+        public TablistBean(String title, String url, String type, String order) {
+            this.title = title;
+            this.url = url;
+            this.type = type;
+            this.order = order;
+        }
 
         public String getTitle() {
             return title;
@@ -85,6 +93,13 @@ public class ChianBean {
         private String url;
         private String type;
         private String order;
+
+        public AlllistBean(String title, String url, String type, String order) {
+            this.title = title;
+            this.url = url;
+            this.type = type;
+            this.order = order;
+        }
 
         public String getTitle() {
             return title;

@@ -1,6 +1,6 @@
 package com.example.panda.model.china;
 
-import com.example.panda.model.entity.ChianBean;
+import com.example.panda.model.entity.chian.ChianBean;
 
 import io.reactivex.Observer;
 
