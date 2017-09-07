@@ -1,9 +1,11 @@
 package com.example.panda.view.fragment.video.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.example.panda.model.entity.home.KanDianDao;
 import com.example.panda.presenter.video.VideoItemPre;
 import com.example.panda.presenter.video.VideoItemPreImpl;
 import com.example.panda.presenter.video.VideoTopPreImpl;
+import com.example.panda.utils.Netwoke;
 import com.example.panda.utils.OkHttpsManner;
 import com.example.panda.view.fragment.video.CustomMediaController;
 import com.example.panda.view.fragment.video.VideoItemView;
@@ -78,6 +81,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private VideoTopBean videoTopBean;
     private String urlss;
     private String title1;
+    private Netwoke netwoke;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +106,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         initView();
         initListener();
     }
+
     /**
      * 销毁播放
      */
@@ -112,6 +117,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
             item_video.pause();
         }
     }
+
     private void initListener() {
         common_title_left.setOnClickListener(this);
     }
@@ -144,12 +150,12 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                     collect.setImageResource(R.drawable.collect_yes);
                     look.insert(new KanDian(null, name, title, img, id, time));
                     flag = false;
-                }else {
+                } else {
                     KanDian unique = look.queryBuilder().where(KanDianDao.Properties.Title.eq(title)).build().unique();
-                  look.delete(unique);
+                    look.delete(unique);
                     collect.setImageResource(R.drawable.collect_no);
                     Toast.makeText(VideoItActivity.this, "已取消收藏", Toast.LENGTH_SHORT).show();
-                    flag=true;
+                    flag = true;
                 }
             }
         });
@@ -165,23 +171,22 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     }
 
     //初始化数据
-    private void initData(String url) {
+    private void initData(String urlss) {
 
 
-        uri = Uri.parse(url);
+        uri = Uri.parse(urlss);
         Log.e(TAG, "initData: " + uri);
-        item_video.setVideoPath(url);//设置视频播放地址
-       // item_video.setVideoURI(uri);
+        item_video.setVideoPath(urlss);//设置视频播放地址
         mCustomMediaController.show(5000);
         item_video.setMediaController(mCustomMediaController);
         item_video.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);//高画质
         item_video.requestFocus();
         item_video.setOnInfoListener(this);
         item_video.setOnBufferingUpdateListener(this);
-        View v = View.inflate(VideoItActivity.this,R.layout.mymediacontroller,null);
+        View v = View.inflate(VideoItActivity.this, R.layout.mymediacontroller, null);
         int currentPosition = (int) item_video.getCurrentPosition();
         TextView current = (TextView) v.findViewById(R.id.current);
-        current.setText(currentPosition+"");
+        current.setText(currentPosition + "");
         item_video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -190,6 +195,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         });
         item_video.setOnCompletionListener(dismiss);
     }
+
     //注册在媒体文件播放完毕时调用的回调函数。
     private MediaPlayer.OnCompletionListener dismiss = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -242,6 +248,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
             public void onRefresh() {
                 refresh();
             }
+
             @Override
             public void onLoadMore() {
                 loadMore();
@@ -251,25 +258,15 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         item_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 Log.e(TAG, "onItemClick: " + videoBeen.get(i - 1).getVid());
-                String mapurl = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=" + videoBeen.get(i - 1).getVid();
-              /*  OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
-                    @Override
-                    public void getString(String ss) {
-                        Gson gson = new Gson();
-                        videoTopBean = gson.fromJson(ss, VideoTopBean.class);
-                        urlss = videoTopBean.getVideo().getChapters().get(0).getUrl();
-                        title1 = videoTopBean.getTitle();
-                        Log.e(TAG, "getString: " + urlss);
-                        initData(urlss);
-                    }
-                });*/
-              getUrl(i-1);
+                getUrl(i - 1);
             }
         });
     }
 
     private void getUrl(final int i) {
+        getnetwoke();
         String mapurl = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=" + videoBeen.get(i).getVid();
         OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
             @Override
@@ -279,9 +276,9 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                 urlss = videoTopBean.getVideo().getChapters().get(0).getUrl();
                 title1 = videoTopBean.getTitle();
                 Log.e(TAG, "getString: " + urlss);
-                Toast.makeText(VideoItActivity.this, "当前条目数"+i, Toast.LENGTH_SHORT).show();
+                Toast.makeText(VideoItActivity.this, "当前条目数" + i, Toast.LENGTH_SHORT).show();
                 initData(urlss);
-                Log.e(TAG, "getString: "+urlss);
+                Log.e(TAG, "getString: " + urlss);
             }
         });
     }
@@ -336,7 +333,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
     @Override
     public void onError(String e) {
-
+        Toast.makeText(this, "错误原因:"+e, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -358,4 +355,54 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         }
         super.onConfigurationChanged(newConfig);
     }
+
+    //判断网络状态
+    private void getnetwoke() {
+
+
+        if (netwoke == null) {
+            netwoke = new Netwoke();
+        }
+
+        String getnetwoke = netwoke.getnetwoke(this);
+
+        Toast.makeText(this, getnetwoke, Toast.LENGTH_SHORT).show();
+
+        if (!getnetwoke.equals("您现在的网络状态是WIFI")) {
+            item_video.pause();
+            setNetwork();
+
+        }
+    }
+
+    private void setNetwork() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setCancelable(false);
+
+        builder.setMessage("您正在使用移动数据网络,所产生的流量费由当地运营商收取,是否继续?");
+
+        builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+
+            @Override
+
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                item_video.pause();
+            }
+
+        });
+        builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+
+            @Override
+
+            public void onClick(DialogInterface dialog, int which) {
+                item_video.start();
+            }
+        });
+        builder.create();
+        builder.show();
+    }
+
 }
