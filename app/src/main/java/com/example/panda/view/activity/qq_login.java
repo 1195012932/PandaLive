@@ -12,9 +12,6 @@ import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ZoomButtonsController;
 
@@ -23,17 +20,8 @@ import com.example.panda.R;
 import java.lang.reflect.Field;
 
 public class qq_login extends AppCompatActivity {
-    int  s=1;
+    int s = 1;
     private TextView common_title_left;
-    private TextView tv_search_btn;
-    private ImageView iv_search;
-    private EditText et_search;
-    private ImageView iv_clear_searchedit;
-    private RelativeLayout layout_search;
-    private TextView common_title_center;
-    private TextView cctv_common_title_center;
-    private TextView common_title_right;
-    private TextView common_title_right2;
     private TextView qq_zhuce;
     private WebView wv_qqlogin;
     private String userSeqId;
@@ -43,6 +31,7 @@ public class qq_login extends AppCompatActivity {
     private String userFace;
     private String back_url = "http://my.cntv.cn";
     private String mPath = "http://oauth.passport.cntv.cn/OAuthQzoneClient/OAuthQZoneClientServlet.do?method=login&cntv_callback=my";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,17 +41,9 @@ public class qq_login extends AppCompatActivity {
 
     private void initView() {
         common_title_left = (TextView) findViewById(R.id.common_title_left);
-        tv_search_btn = (TextView) findViewById(R.id.tv_search_btn);
-        iv_search = (ImageView) findViewById(R.id.iv_search);
-        et_search = (EditText) findViewById(R.id.et_search);
-        iv_clear_searchedit = (ImageView) findViewById(R.id.iv_clear_searchedit);
-        layout_search = (RelativeLayout) findViewById(R.id.layout_search);
-        common_title_center = (TextView) findViewById(R.id.common_title_center);
-        cctv_common_title_center = (TextView) findViewById(R.id.cctv_common_title_center);
-        common_title_right = (TextView) findViewById(R.id.common_title_right);
-        common_title_right2 = (TextView) findViewById(R.id.common_title_right2);
         qq_zhuce = (TextView) findViewById(R.id.qq_zhuce);
         wv_qqlogin = (WebView) findViewById(R.id.wv_qqlogin);
+
         String ua = wv_qqlogin.getSettings().getUserAgentString();
         wv_qqlogin.getSettings().setUserAgentString(ua + ";cntv_app_client_cbox_mobile");
         wv_qqlogin.getSettings().setJavaScriptEnabled(true);
@@ -70,6 +51,12 @@ public class qq_login extends AppCompatActivity {
         wv_qqlogin.getSettings().setSupportZoom(true);
         wv_qqlogin.getSettings().setUseWideViewPort(true);
         wv_qqlogin.getSettings().setLoadWithOverviewMode(true);
+        common_title_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         if (Integer.parseInt(Build.VERSION.SDK) >= 11) {// 用于判断是否为Android 3.0系统,
 
             wv_qqlogin.getSettings().setDisplayZoomControls(false);
@@ -83,6 +70,7 @@ public class qq_login extends AppCompatActivity {
         wv_qqlogin.loadUrl(mPath);
 
     }
+
     public void setZoomControlGone(View view) {
         Class classType;
         Field field;
@@ -138,12 +126,11 @@ public class qq_login extends AppCompatActivity {
 //    }
 
 
-
     private class MyWebViewClient extends WebViewClient {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.i("QQQQ","login_url"+url);
+            Log.i("QQQQ", "login_url" + url);
             if (!TextUtils.isEmpty(userSeqId) && !TextUtils.isEmpty(verifycode)) {
 
                 return true;
@@ -197,11 +184,11 @@ public class qq_login extends AppCompatActivity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             Log.e("malus", "start url:" + url);
-            Log.i("AAA","onPageStarted");
-            if(s!=4){
+            Log.i("AAA", "onPageStarted");
+            if (s != 4) {
                 s++;
-            }else{
-                Intent it=new Intent(qq_login.this,PersonActivity.class);
+            } else {
+                Intent it = new Intent(qq_login.this, PersonActivity.class);
                 startActivity(it);
                 finish();
             }
@@ -216,7 +203,7 @@ public class qq_login extends AppCompatActivity {
 
         public void onPageFinished(WebView view, String url) {
 
-            Log.i("AAA","onPageFinished");
+            Log.i("AAA", "onPageFinished");
             Log.e("sunzn", "onPageFinished url = " + url);
 
 

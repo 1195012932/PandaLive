@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
 
 public class VideoItActivity extends AppCompatActivity implements VideoItemView, View.OnClickListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener {
@@ -80,6 +83,14 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_it);
+        //定义全屏参数
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        //获得当前窗体对象
+        Window window = VideoItActivity.this.getWindow();
+        //设置当前窗体为全屏显示
+        window.setFlags(flag, flag);
+        //必须写这个，初始化加载库文件
+        Vitamio.isInitialized(this);
         intent = getIntent();
         id = intent.getStringExtra("id");
         name = intent.getStringExtra("name");
@@ -91,7 +102,16 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         initView();
         initListener();
     }
-
+    /**
+     * 销毁播放
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (item_video != null) {
+            item_video.pause();
+        }
+    }
     private void initListener() {
         common_title_left.setOnClickListener(this);
     }
@@ -126,7 +146,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                     flag = false;
                 }else {
                     KanDian unique = look.queryBuilder().where(KanDianDao.Properties.Title.eq(title)).build().unique();
-                    look.delete(unique);
+                  look.delete(unique);
                     collect.setImageResource(R.drawable.collect_no);
                     Toast.makeText(VideoItActivity.this, "已取消收藏", Toast.LENGTH_SHORT).show();
                     flag=true;
@@ -147,15 +167,21 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     //初始化数据
     private void initData(String url) {
 
+
         uri = Uri.parse(url);
         Log.e(TAG, "initData: " + uri);
-        item_video.setVideoURI(uri);//设置视频播放地址
+        item_video.setVideoPath(url);//设置视频播放地址
+       // item_video.setVideoURI(uri);
         mCustomMediaController.show(5000);
         item_video.setMediaController(mCustomMediaController);
         item_video.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);//高画质
         item_video.requestFocus();
         item_video.setOnInfoListener(this);
         item_video.setOnBufferingUpdateListener(this);
+        View v = View.inflate(VideoItActivity.this,R.layout.mymediacontroller,null);
+        int currentPosition = (int) item_video.getCurrentPosition();
+        TextView current = (TextView) v.findViewById(R.id.current);
+        current.setText(currentPosition+"");
         item_video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -164,14 +190,15 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         });
         item_video.setOnCompletionListener(dismiss);
     }
-
     //注册在媒体文件播放完毕时调用的回调函数。
     private MediaPlayer.OnCompletionListener dismiss = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
             custom_listener.setVisibility(View.VISIBLE);
+            pb.setVisibility(View.GONE);
             if (item_video.isPlaying()) {
                 custom_listener.setVisibility(View.GONE);
+                pb.setVisibility(View.VISIBLE);
             }
         }
     };
@@ -205,6 +232,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     @Override
     public void onShowTop(final List<VideoItemBean.VideoBean> been) {
         videoBeen.addAll(been);
+        getUrl(0);
         myAdapter = new MyAdapter(VideoItActivity.this, videoBeen);
         item_listView.setAdapter(myAdapter);
         item_listView.setPullLoadEnable(true);
@@ -214,18 +242,18 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
             public void onRefresh() {
                 refresh();
             }
-
             @Override
             public void onLoadMore() {
                 loadMore();
             }
         });
+
         item_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.e(TAG, "onItemClick: " + videoBeen.get(i - 1).getVid());
                 String mapurl = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=" + videoBeen.get(i - 1).getVid();
-                OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
+              /*  OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
                     @Override
                     public void getString(String ss) {
                         Gson gson = new Gson();
@@ -235,7 +263,25 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                         Log.e(TAG, "getString: " + urlss);
                         initData(urlss);
                     }
-                });
+                });*/
+              getUrl(i-1);
+            }
+        });
+    }
+
+    private void getUrl(final int i) {
+        String mapurl = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=" + videoBeen.get(i).getVid();
+        OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
+            @Override
+            public void getString(String ss) {
+                Gson gson = new Gson();
+                videoTopBean = gson.fromJson(ss, VideoTopBean.class);
+                urlss = videoTopBean.getVideo().getChapters().get(0).getUrl();
+                title1 = videoTopBean.getTitle();
+                Log.e(TAG, "getString: " + urlss);
+                Toast.makeText(VideoItActivity.this, "当前条目数"+i, Toast.LENGTH_SHORT).show();
+                initData(urlss);
+                Log.e(TAG, "getString: "+urlss);
             }
         });
     }
@@ -256,6 +302,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                videoBeen.clear();
                 page = 1;
                 loadData(page);
                 item_listView.stopRefresh();
@@ -273,16 +320,16 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
             @Override
             public void onClick(View view) {
                 if (isChecked == true) {
-                    lpanda_show.setImageResource(R.drawable.lpanda_off);
+                    lpanda_show.setImageResource(R.drawable.lpanda_show);
                     item_info.setVisibility(View.GONE);
                     isChecked = false;
                 } else {
-                    lpanda_show.setImageResource(R.drawable.lpanda_show);
+                    lpanda_show.setImageResource(R.drawable.lpanda_off);
+
                     item_info.setVisibility(View.VISIBLE);
                     item_info.setText(bean.get_$0().getDesc());
                     isChecked = true;
                 }
-
             }
         });
     }

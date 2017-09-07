@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.panda.R;
 
 import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.utils.Log;
 import io.vov.vitamio.utils.StringUtils;
 import io.vov.vitamio.widget.MediaController;
 
@@ -151,7 +152,7 @@ public class CustomMediaController extends MediaController {
         //分享
         share = v.findViewById(getResources().getIdentifier("mediacontroller_share", "id", context.getPackageName()));
         //缩放控件
-        //mIvScale = (ImageView) v.findViewById(getResources().getIdentifier("mediacontroller_scale", "id", context.getPackageName()));
+        mIvScale = (ImageView) v.findViewById(getResources().getIdentifier("mediacontroller_scale", "id", context.getPackageName()));
         current = v.findViewById(getResources().getIdentifier("current", "id", context.getPackageName()));
 
         //PopupWindo位置
@@ -162,8 +163,8 @@ public class CustomMediaController extends MediaController {
         currentPosition = (int) videoView.getCurrentPosition();
         //获取总时长
         mDuration = (int) videoView.getDuration();
-
-        current.setText(currentPosition + "");
+//        Log.e(TAG, "makeControllerView: "+currentPosition+"============"+mDuration);
+//        mCurrentTime.setText(currentPosition + "");
         if (mFileName != null) {
             mFileName.setText(videoname);
         }
@@ -178,10 +179,16 @@ public class CustomMediaController extends MediaController {
 
         //注册事件监听
         img_back.setOnClickListener(backListener);
-        // mIvScale.setOnClickListener(scaleListener);
+        mIvScale.setOnClickListener(scaleListener);
         shoucang.setOnClickListener(shouCang);
         share.setOnClickListener(Share);
-
+        custom_listener.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                custom_listener.setVisibility(GONE);
+                videoView.start();
+            }
+        });
         //seekBar控制播放音量
         seek_sheng.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -217,6 +224,23 @@ public class CustomMediaController extends MediaController {
             }
         }
     };
+
+    @Override
+
+    public void onConfigurationChanged(Configuration newConfig) {
+
+        super.onConfigurationChanged(newConfig);
+
+        Log.i("--Main--", "onConfigurationChanged");
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(activity, "当前屏幕为横屏", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "当前屏幕为竖屏", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     // 分享监听
     private OnClickListener Share = new OnClickListener() {
         @Override

@@ -114,15 +114,15 @@ public class VideoTop extends AppCompatActivity implements VideoTopView, MediaPl
                 initData(url);
             }
         });
-
     }
 
     //初始化数据
     private void initData(String url) {
-
+        String s="http://3811.liveplay.myqcloud.com/live/m3u8/3811_channel1519.m3u8?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==LIVE-FLV-CDN-FW";
         uri = Uri.parse(url);
         Log.e(TAG, "initData: " + uri);
-        mVideoView.setVideoURI(uri);//设置视频播放地址
+        mVideoView.setVideoPath(url);//设置视频播放地址
+        //mVideoView.setVideoURI(uri);
         mCustomMediaController.show(5000);
         mVideoView.setMediaController(mCustomMediaController);
         mVideoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);//高画质
@@ -143,8 +143,10 @@ public class VideoTop extends AppCompatActivity implements VideoTopView, MediaPl
         @Override
         public void onCompletion(MediaPlayer mp) {
             custom_listener.setVisibility(View.VISIBLE);
+            pb.setVisibility(View.GONE);
             if (mVideoView.isPlaying()) {
                 custom_listener.setVisibility(View.GONE);
+                pb.setVisibility(View.VISIBLE);
             }
         }
     };

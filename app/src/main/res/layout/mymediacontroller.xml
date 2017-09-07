@@ -5,12 +5,6 @@
     android:background="@drawable/video_player_bg_color"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#000" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -107,7 +101,6 @@
                 android:textSize="10sp"
                 android:visibility="gone" />
         </RelativeLayout>
-        <!--android:id="@+id/mediacontroller_time_current"-->
         <LinearLayout
 
             android:layout_width="match_parent"
@@ -176,6 +169,13 @@
                 android:layout_weight="6"
                 android:focusable="true"
                 android:max="100" />
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/mediacontroller_scale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/lpanda_live_screen"/>
         </LinearLayout>
+
     </RelativeLayout>
 </LinearLayout>

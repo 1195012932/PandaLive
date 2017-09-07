@@ -190,9 +190,7 @@ public interface RetrofitService {
      * 滚滚视频item
      * @return
      */
-    @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
-    Observable<VideoItemBean> getItem();
-    @GET("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
+    @POST("videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1")
     Observable<VideoItemBean> getItem2(@QueryMap Map<String,String> map);
 
     /**
