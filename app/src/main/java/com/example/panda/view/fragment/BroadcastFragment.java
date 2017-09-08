@@ -127,13 +127,17 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
         xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
+                showLoadingDialog();
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         myAdapter.notifyDataSetChanged();
+                        dismissLoadDialog();
                         xrecy.refreshComplete();
                         xrecy.setLoadingMoreEnabled(true);
+
                     }
                 }, 1000);
+
             }
 
             @Override
@@ -153,7 +157,6 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
                 long focus_date = been.get(position).getFocus_date();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
                 String ss = sdf.format(focus_date);
-
                 Intent intent = new Intent(getActivity(), BroadActivity.class);
                 intent.putExtra("name", been.get(position).getUrl());
                 intent.putExtra("title", been.get(position).getTitle());

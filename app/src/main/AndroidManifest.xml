@@ -17,7 +17,18 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
+<!--/////////////////////////////////////微信分享-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
@@ -87,6 +98,21 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".view.activity.qq_login" />
+        <activity android:name=".view.activity.FenXiangActivity"></activity>
+        <!--//微信-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="fce891bb7d181766f92172395802a21f24de93e4"></meta-data>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <receiver
+            android:name=".view.fragment.livefragment.LiveStreaming$MyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
         <activity android:name=".view.activity.AboutPandaActivity" />
         <activity android:name=".view.activity.LivePandaActivity"
             android:screenOrientation="landscape" ></activity>

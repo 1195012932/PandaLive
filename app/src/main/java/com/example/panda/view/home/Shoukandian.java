@@ -24,7 +24,6 @@ import java.util.List;
 /**
  * Created by admin on 2017/8/31.
  */
-
 public class Shoukandian extends Fragment {
     private ImageView kandian_img;
     private RecyclerView kandian_list;
@@ -32,6 +31,7 @@ public class Shoukandian extends Fragment {
     private KanDianDao look;
     private List<KanDian> lists;
     private Long id;
+    private RecyclerAdapterWithHF hf;
 
     @Nullable
     @Override
@@ -57,18 +57,30 @@ public class Shoukandian extends Fragment {
         getlist();
         kandian_list.setLayoutManager(new GridLayoutManager(getActivity(),1));
         KanDianAdapter adapter=new KanDianAdapter(getActivity(),list);
-        RecyclerAdapterWithHF hf = new RecyclerAdapterWithHF(adapter);
+        hf = new RecyclerAdapterWithHF(adapter);
         kandian_list.setAdapter(hf);
         hf.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
             @Override
             public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
                if(list.get(position).getTime()==null){
+                   String focus_date = list.get(position).getData();
                    Intent intent = new Intent(getActivity(), BroadActivity.class);
                    intent.putExtra("name", list.get(position).getUrl());
+                   intent.putExtra("title", list.get(position).getTitle());
+                   intent.putExtra("img", list.get(position).getImg());
+                   intent.putExtra("data",focus_date);
+                   intent.putExtra("id",list.get(position).getId());
+                   intent.putExtra("time",list.get(position).getTime());
                    startActivity(intent);
+
                }else{
                    Intent intent = new Intent(getActivity(), VideoItActivity.class);
-                   intent.putExtra("id", list.get(position).getUrl());
+                   intent.putExtra("id", list.get(position).getId());
+                   intent.putExtra("title", list.get(position).getData());
+                   intent.putExtra("img", list.get(position).getImg());
+                   intent.putExtra("url",list.get(position).getUrl());
+                   intent.putExtra("name",list.get(position).getTitle());
+                   intent.putExtra("time",list.get(position).getTime());
                    startActivity(intent);
                }
 
@@ -79,9 +91,11 @@ public class Shoukandian extends Fragment {
 
 
     public List<KanDian> getlist() {
+
         lists = look.queryBuilder().build().list();
         list.addAll(lists);
         id = list.get(0).getId();
+
         return list;
     }
 }

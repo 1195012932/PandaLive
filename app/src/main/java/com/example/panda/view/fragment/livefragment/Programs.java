@@ -1,7 +1,9 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
@@ -14,6 +16,7 @@ import com.example.panda.model.live.bean.ProBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.ProPtr;
 import com.example.panda.view.fragment.livefragment.liveview.ProView;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,6 +70,15 @@ public class Programs extends BaseFragment implements ProView {
         pro_list= (ListView) view.findViewById(R.id.pro_list);
         adapter = new ProAdapter(getActivity(), list);
         pro_list.setAdapter(adapter);
+        pro_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it=new Intent(getActivity(), VideoTop.class);
+                it.putExtra("title",list.get(i).getT());
+                it.putExtra("url_top",list.get(i).getVid());
+                startActivity(it);
+            }
+        });
     }
 
     @Override
@@ -87,32 +99,12 @@ public class Programs extends BaseFragment implements ProView {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 xiahua();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(ProBeen);
-//                        adapter.notifyDataSetChanged();
-//                        pro_ptr.refreshComplete();
-//                        if(!pro_ptr.isLoadMoreEnable()){
-//                            pro_ptr.setLoadMoreEnable(true);
-//
-//                        }
-//                    }
-//                });
             }
         });
         pro_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void loadMore() {
             shangla();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(ProBeen);
-//                        adapter.notifyDataSetChanged();
-//                        pro_ptr.loadMoreComplete(true);
-//                    }
-//                });
             }
         });
     }

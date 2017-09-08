@@ -35,6 +35,14 @@ android {
             dirs 'libs' //就是你放aar的目录地址
         }
     }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a'
+            universalApk true
+        }
+    }
 }
 
 dependencies {
