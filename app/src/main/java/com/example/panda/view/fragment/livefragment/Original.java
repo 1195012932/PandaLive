@@ -1,7 +1,9 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
@@ -14,6 +16,7 @@ import com.example.panda.model.live.bean.OriBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.OriPtr;
 import com.example.panda.view.fragment.livefragment.liveview.OriginView;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -66,6 +69,15 @@ String url="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&n=7&ser
         ori_ptr= (PtrClassicFrameLayout) view.findViewById(R.id.ori_ptr);
         adapter = new OriAdapter(getActivity(), list);
         ori_list.setAdapter(adapter);
+        ori_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it=new Intent(getActivity(), VideoTop.class);
+                it.putExtra("url_top",list.get(i).getVid());
+                it.putExtra("title",list.get(i).getT());
+                startActivity(it);
+            }
+        });
     }
 
     @Override

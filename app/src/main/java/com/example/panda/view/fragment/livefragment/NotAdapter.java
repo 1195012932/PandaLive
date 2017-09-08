@@ -69,4 +69,5 @@ class NotAdapter extends BaseAdapter{
         TextView textView1;
         TextView textView2;
     }
+
 }
