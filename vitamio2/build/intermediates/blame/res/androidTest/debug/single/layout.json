@@ -1,27 +1,6 @@
 [
     {
-<<<<<<< Updated upstream
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
-=======
         "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
         "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
->>>>>>> Stashed changes
-    },
-    {
-        "merged": "D:\\dashixun\\day11\\RetrofitRxjava\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
-        "source": "D:\\dashixun\\day11\\RetrofitRxjava\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
     }
 ]

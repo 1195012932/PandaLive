@@ -1,193 +1,5 @@
 [
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
-=======
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
->>>>>>> Stashed changes
-    },
-    {
-=======
->>>>>>> origin/master
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
-    },
-    {
-<<<<<<< HEAD
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-    },
-    {
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
-    },
-    {
-        "merged": "D:\\dashixun\\day11\\RetrofitRxjava\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "D:\\dashixun\\day11\\RetrofitRxjava\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-=======
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
->>>>>>> Stashed changes
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
-<<<<<<< HEAD
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
-    },
-    {
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-=======
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
->>>>>>> Stashed changes
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-    },
-    {
         "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
         "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
     },
@@ -196,91 +8,35 @@
         "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
     },
     {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
     },
     {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
     },
     {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
-    },
-    {
-        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
     },
     {
         "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
         "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
     },
     {
-        "merged": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_play.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_play.png"
     },
     {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
     },
     {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
     },
     {
-        "merged": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
-        "source": "D:\\AndroidStudioCode\\VitamioDemo\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
-        "merged": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
-        "source": "D:\\Android\\Daima\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
-    },
-    {
-        "merged": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\mediacontroller_pause.png",
-        "source": "D:\\AndroidStudio_Work4\\VitamioDemo-master\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\mediacontroller_pause.png"
+        "merged": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png",
+        "source": "E:\\LongTiceHomeWork\\PandaLive\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
     }
 ]

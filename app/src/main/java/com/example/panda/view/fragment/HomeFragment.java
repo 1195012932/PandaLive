@@ -36,21 +36,29 @@ import com.example.panda.presenter.home.marvell.MarvellPreImpl;
 import com.example.panda.presenter.home.marvell.MarvellPresenter;
 import com.example.panda.presenter.home.viomio.VitmioPreImpl;
 import com.example.panda.presenter.home.viomio.VitmioPresenter;
+import com.example.panda.utils.OkHttpsManner;
+import com.example.panda.view.activity.LivePandaActivity;
 import com.example.panda.view.activity.PersonActivity;
 import com.example.panda.view.activity.home.Interaction;
+import com.example.panda.view.fragment.home.LivePandaBean;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.example.panda.view.home.HomeView;
 import com.example.panda.view.home.MarvellView;
 import com.example.panda.view.home.VitmioView;
+import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,6 +98,9 @@ public class HomeFragment extends BaseFragment implements HomeView,
     private LiveBroadcastAdapter liveBroadcastAdapter;
     private MarvellousAdpater marvellousAdpater;
     private VitmioAdapter vitmioAdapter;
+    private String cdn_code;
+    private String hls1;
+    private LivePandaBean livePandaBean;
 
     @Override
     protected int getLayout() {
@@ -133,6 +144,7 @@ public class HomeFragment extends BaseFragment implements HomeView,
 
         xRecyclerView.setRefreshProgressStyle(ProgressStyle.SysProgress);
         xRecyclerView.setArrowImageView(R.drawable.xlistview_arrowdown);
+        xRecyclerView.setLoadingMoreEnabled(false);
 
         xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
@@ -148,8 +160,8 @@ public class HomeFragment extends BaseFragment implements HomeView,
 
             @Override
             public void onLoadMore() {
+                xRecyclerView.refreshComplete();
                 Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -194,7 +206,7 @@ public class HomeFragment extends BaseFragment implements HomeView,
     @Override
     public void OnSuccess(HomeBean homeBean) {
         HomeBean.DataBean data = homeBean.getData();
-        List<HomeBean.DataBean.BigImgBean> bigImg = data.getBigImg();
+        final List<HomeBean.DataBean.BigImgBean> bigImg = data.getBigImg();
         for (HomeBean.DataBean.BigImgBean bannerimages : bigImg) {
             String image = bannerimages.getImage();
             String title = bannerimages.getTitle();
@@ -209,12 +221,12 @@ public class HomeFragment extends BaseFragment implements HomeView,
         frame_home_banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                pid = bigImg.get(position).getPid();
-                title = bigImg.get(position).getTitle();
-                Log.e(TAG, "OnBannerClick: "+pid+title);
+                String pid = bigImg.get(position).getPid();
+                String title = bigImg.get(position).getTitle();
+                Log.e(TAG, "OnBannerClick: " + pid + title);
                 Intent bannerintent = new Intent(getActivity(), VideoTop.class);
-                bannerintent.putExtra("title",title);
-                bannerintent.putExtra("url_top",pid);
+                bannerintent.putExtra("title", title);
+                bannerintent.putExtra("url_top", pid);
                 startActivity(bannerintent);
             }
         });
@@ -243,19 +255,19 @@ public class HomeFragment extends BaseFragment implements HomeView,
         liveBroadcastAdapter.setOnClickListenerss(new LiveBroadcastAdapter.OnClickListeners() {
             @Override
             public void onClickLiseteners(int position) {
-                final String titless=list.get(position).getTitle();
-                String urlsss="http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + list.get(position).getId() + "&client=androidapp";
+                final String titless = list.get(position).getTitle();
+                String urlsss = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + list.get(position).getId() + "&client=androidapp";
                 OkHttpsManner.getInstance().getNetData(urlsss, new OkHttpsManner.CallBacks() {
                     @Override
                     public void getString(String ss) {
-                        Gson gson=new Gson();
-                        livePandaBean = gson.fromJson(ss, LivePandaBean.class);
+                        Gson gson = new Gson();
+                        LivePandaBean livePandaBean = gson.fromJson(ss, LivePandaBean.class);
                         cdn_code = livePandaBean.getHls_cdn_info().getCdn_code();
                         hls1 = livePandaBean.getHls_url().getHls1();
-                        Log.e(TAG, "getString: "+hls1+cdn_code);
+                        Log.e(TAG, "getString: " + hls1 + cdn_code);
                         Intent chinaintent = new Intent(getActivity(), LivePandaActivity.class);
-                        chinaintent.putExtra("liveurl",hls1+cdn_code);
-                        chinaintent.putExtra("titles",titless);
+                        chinaintent.putExtra("liveurl", hls1 + cdn_code);
+                        chinaintent.putExtra("titles", titless);
                         startActivity(chinaintent);
                     }
                 });
@@ -269,24 +281,24 @@ public class HomeFragment extends BaseFragment implements HomeView,
         xRecyclerView.setAdapter(chinaAdapter);
         xRecyclerView.setLayoutManager(manager);
         chinaAdapter.notifyDataSetChanged();
-        chinaAdapter.setOnClickListeners(new  ChinaAdapter.OnClickListeners() {
+        chinaAdapter.setOnClickListeners(new ChinaAdapter.OnClickListeners() {
             @Override
             public void onClickLiseteners(final int pos) {
 
-                Log.e(TAG, "onClickLiseteners: "+chinalist1.get(pos).getTitle());
-                String urlsss="http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + chinalist1.get(pos).getId() + "&client=androidapp";
-                Log.e(TAG, "onClickLiseteners: "+"http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + chinalist1.get(pos).getId() + "&client=androidapp");
+                Log.e(TAG, "onClickLiseteners: " + chinalist1.get(pos).getTitle());
+                String urlsss = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + chinalist1.get(pos).getId() + "&client=androidapp";
+                Log.e(TAG, "onClickLiseteners: " + "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + chinalist1.get(pos).getId() + "&client=androidapp");
                 OkHttpsManner.getInstance().getNetData(urlsss, new OkHttpsManner.CallBacks() {
                     @Override
                     public void getString(String ss) {
-                        Gson gson=new Gson();
+                        Gson gson = new Gson();
                         livePandaBean = gson.fromJson(ss, LivePandaBean.class);
                         cdn_code = livePandaBean.getHls_cdn_info().getCdn_code();
                         hls1 = livePandaBean.getHls_url().getHls1();
-                        Log.e(TAG, "getString: "+hls1+cdn_code);
+                        Log.e(TAG, "getString: " + hls1 + cdn_code);
                         Intent chinaintent = new Intent(getActivity(), LivePandaActivity.class);
-                        chinaintent.putExtra("liveurl",hls1+cdn_code);
-                        chinaintent.putExtra("titles",chinalist1.get(pos).getTitle());
+                        chinaintent.putExtra("liveurl", hls1 + cdn_code);
+                        chinaintent.putExtra("titles", chinalist1.get(pos).getTitle());
                         startActivity(chinaintent);
                     }
                 });
@@ -310,11 +322,11 @@ public class HomeFragment extends BaseFragment implements HomeView,
         homeb_video_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String title=list.get(i).getTitle();
-                String pid=list.get(i).getPid();
-                Intent videointent = new Intent(getActivity(),VideoTop.class);
-                videointent.putExtra("title",title);
-                videointent.putExtra("url_top",pid);
+                String title = list.get(i).getTitle();
+                String pid = list.get(i).getPid();
+                Intent videointent = new Intent(getActivity(), VideoTop.class);
+                videointent.putExtra("title", title);
+                videointent.putExtra("url_top", pid);
                 startActivity(videointent);
             }
         });
@@ -337,11 +349,11 @@ public class HomeFragment extends BaseFragment implements HomeView,
         marvellousAdpater.setOnClickListeners(new MarvellousAdpater.OnClickListeners() {
             @Override
             public void onClickLiseteners(int pos) {
-                String pid=list.get(pos).getPid();
-                String title=list.get(pos).getTitle();
+                String pid = list.get(pos).getPid();
+                String title = list.get(pos).getTitle();
                 Intent jinIntent = new Intent(getActivity(), VideoTop.class);
-                jinIntent.putExtra("title",title);
-                jinIntent.putExtra("url_top",pid);
+                jinIntent.putExtra("title", title);
+                jinIntent.putExtra("url_top", pid);
                 startActivity(jinIntent);
             }
         });
@@ -367,8 +379,7 @@ public class HomeFragment extends BaseFragment implements HomeView,
                 break;
             case R.id.homer_banners:
                 Intent bannerintent = new Intent(getActivity(), VideoTop.class);
-                bannerintent.putExtra("title",title);
-                bannerintent.putExtra("url_top",pid);
+
                 startActivity(bannerintent);
                 break;
         }
@@ -386,5 +397,15 @@ public class HomeFragment extends BaseFragment implements HomeView,
         super.onStop();
         //结束轮播
         frame_home_banner.stopAutoPlay();
+    }
+
+    @Override
+    public void onclicklistener(int pos) {
+
+    }
+
+    @Override
+    public void onClickLiseteners(int position) {
+
     }
 }

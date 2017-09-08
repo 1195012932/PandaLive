@@ -91,11 +91,6 @@ public class LiveStreaming extends BaseFragment implements LiveView {
         live_img = (ImageView) view.findViewById(R.id.live_img);
         live_text.setVisibility(View.GONE);
         Log.i("s", "wwwwwwwwwwwwwwww");
-        live_tab.addTab(live_tab.newTab().setText(lists.get(0)));
-        live_tab.addTab(live_tab.newTab().setText(lists.get(1)));
-        LivePagerAdapter pager = new LivePagerAdapter(getActivity().getSupportFragmentManager());
-        live_pager.setAdapter(pager);
-        live_tab.setupWithViewPager(live_pager);
         JCVideoPlayer jCVideoPlayer =view.findViewById(R.id.videocontroller1);
 
         jCVideoPlayer.setUp("http://3811.liveplay.myqcloud.com/live/m3u8/3811_channel424.m3u8?AUTH=svk2SFBSOMK8hj7rplD4SAVPNNfxs8Y8ArIZp4djcTL131+DVHRPcdh99jfoErCCfTcma+/QbabYn+djWEgIwA==LIVE-HLS-CDN-CNC","视频/MP3标题");
