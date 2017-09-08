@@ -82,9 +82,11 @@ public class CustomMediaController extends MediaController {
             if (activity != null) {
                 switch (activity.getResources().getConfiguration().orientation) {
                     case Configuration.ORIENTATION_LANDSCAPE://横屏
+                        mIvScale.setVisibility(GONE);
                         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                         break;
                     case Configuration.ORIENTATION_PORTRAIT://竖屏
+
                         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         break;
                 }
@@ -123,6 +125,7 @@ public class CustomMediaController extends MediaController {
     private Handler mHandler = new Handler();
     private TextView current;
     private int index;
+    private View v;
 
     //videoview 用于对视频进行控制的等，activity为了退出
     public CustomMediaController(Context context, io.vov.vitamio.widget.VideoView videoView, Activity activity) {
@@ -139,7 +142,7 @@ public class CustomMediaController extends MediaController {
     @Override
     protected View makeControllerView() {
         //此处的   mymediacontroller  为我们自定义控制器的布局文件名称
-        View v = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("mymediacontroller", "layout", getContext().getPackageName()), this);
+        v = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(getResources().getIdentifier("mymediacontroller", "layout", getContext().getPackageName()), this);
         v.setMinimumHeight(controllerWidth);
         //获取控件
         img_back = (ImageButton) v.findViewById(getResources().getIdentifier("mediacontroller_top_back", "id", context.getPackageName()));
@@ -182,13 +185,6 @@ public class CustomMediaController extends MediaController {
         mIvScale.setOnClickListener(scaleListener);
         shoucang.setOnClickListener(shouCang);
         share.setOnClickListener(Share);
-        custom_listener.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                custom_listener.setVisibility(GONE);
-                videoView.start();
-            }
-        });
         //seekBar控制播放音量
         seek_sheng.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -210,7 +206,7 @@ public class CustomMediaController extends MediaController {
 
             }
         });
-        videoView.setOnCompletionListener(dismiss);
+       // videoView.setOnCompletionListener(dismiss);
         return v;
     }
 
@@ -228,11 +224,8 @@ public class CustomMediaController extends MediaController {
     @Override
 
     public void onConfigurationChanged(Configuration newConfig) {
-
         super.onConfigurationChanged(newConfig);
-
         Log.i("--Main--", "onConfigurationChanged");
-
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Toast.makeText(activity, "当前屏幕为横屏", Toast.LENGTH_SHORT).show();
         } else {
@@ -535,9 +528,6 @@ public class CustomMediaController extends MediaController {
         if (videoView != null) {
             if (videoView.isPlaying()) {
                 videoView.pause();
-                //custom_listener.setVisibility(VISIBLE);
-            } else {
-                videoView.start();
             }
         }
     }

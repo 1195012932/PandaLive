@@ -17,7 +17,7 @@ public class MarvellousBean {
     public void setList(List<ListBean> list) {
         this.list = list;
     }
-
+//http://115.182.9.189/api/getVideoInfoForCBox.do?pid=26bb0b9e822a42f9959aa450cfa2fc47
     public static class ListBean {
         /**
          * url : http://live.ipanda.com/2017/08/27/VIDElG9n8wL27GLG9tKV29TA170827.shtml

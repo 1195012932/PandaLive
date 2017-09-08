@@ -87,7 +87,9 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".view.activity.qq_login" />
-        <activity android:name=".view.activity.AboutPandaActivity"></activity>
+        <activity android:name=".view.activity.AboutPandaActivity" />
+        <activity android:name=".view.activity.LivePandaActivity"
+            android:screenOrientation="landscape" ></activity>
     </application>
 
 </manifest>

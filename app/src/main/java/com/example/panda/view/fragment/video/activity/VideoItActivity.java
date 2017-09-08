@@ -55,7 +55,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private Intent intent;
     private String id;
     private ImageView collect;
-    private String url = "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=" + 1;
+    // private String url = "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=" + 1;
     private VideoItemPre itemPre;
     private boolean isChecked = true;
     private ImageView lpanda_show;
@@ -172,8 +172,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
     //初始化数据
     private void initData(String urlss) {
-
-
         uri = Uri.parse(urlss);
         Log.e(TAG, "initData: " + uri);
         item_video.setVideoPath(urlss);//设置视频播放地址
@@ -193,7 +191,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                 mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
-        item_video.setOnCompletionListener(dismiss);
+       // item_video.setOnCompletionListener(dismiss);
     }
 
     //注册在媒体文件播放完毕时调用的回调函数。
@@ -266,7 +264,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     }
 
     private void getUrl(final int i) {
-        getnetwoke();
+        //getnetwoke(i);
         String mapurl = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=" + videoBeen.get(i).getVid();
         OkHttpsManner.getInstance().getNetData(mapurl, new OkHttpsManner.CallBacks() {
             @Override
@@ -333,7 +331,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
 
     @Override
     public void onError(String e) {
-        Toast.makeText(this, "错误原因:"+e, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "错误原因:" + e, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -357,48 +355,38 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     }
 
     //判断网络状态
-    private void getnetwoke() {
-
-
+    private void getnetwoke(int i) {
         if (netwoke == null) {
             netwoke = new Netwoke();
         }
-
         String getnetwoke = netwoke.getnetwoke(this);
-
         Toast.makeText(this, getnetwoke, Toast.LENGTH_SHORT).show();
-
         if (!getnetwoke.equals("您现在的网络状态是WIFI")) {
             item_video.pause();
-            setNetwork();
-
+            setNetwork(i);
         }
     }
 
-    private void setNetwork() {
-
+    private void setNetwork(final int i) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setCancelable(false);
-
         builder.setMessage("您正在使用移动数据网络,所产生的流量费由当地运营商收取,是否继续?");
-
         builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
-
             @Override
-
             public void onClick(DialogInterface dialog, int which) {
                 finish();
                 item_video.pause();
             }
-
         });
         builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
-
             @Override
-
             public void onClick(DialogInterface dialog, int which) {
-                item_video.start();
+                finish();
+                if (i>0){
+                    getUrl(i-1);
+                }else {
+                    getUrl(0);
+                }
             }
         });
         builder.create();

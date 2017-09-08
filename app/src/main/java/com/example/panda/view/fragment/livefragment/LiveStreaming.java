@@ -74,7 +74,6 @@ public class LiveStreaming extends BaseFragment implements LiveView {
         live_img1=view.findViewById(R.id.live_img1);
         live_text.setVisibility(View.GONE);
         Log.i("s", "wwwwwwwwwwwwwwww");
-//        live_pager.setOffscreenPageLimit(5);
 
 
     }

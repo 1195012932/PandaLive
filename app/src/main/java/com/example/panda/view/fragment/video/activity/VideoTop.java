@@ -41,7 +41,6 @@ public class VideoTop extends AppCompatActivity implements VideoTopView, MediaPl
 
     private String urls;
     private VideoTopPre videoTop;
-    private VideoView buffer;
     private ProgressBar probar;
     private TextView download_rate;
     private TextView load_rate;
@@ -135,7 +134,7 @@ public class VideoTop extends AppCompatActivity implements VideoTopView, MediaPl
                 mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
-        mVideoView.setOnCompletionListener(dismiss);
+       // mVideoView.setOnCompletionListener(dismiss);
     }
 
     //注册在媒体文件播放完毕时调用的回调函数。

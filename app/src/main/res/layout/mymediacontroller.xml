@@ -48,7 +48,7 @@
                 android:background="@null"
                 android:src="@drawable/play_fullsrcee_collect" />
         </RelativeLayout>
-
+<!--
         <LinearLayout
             android:id="@+id/custom_listener"
             android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                 android:layout_marginTop="10dp"
                 android:text="再看一遍"
                 android:textColor="#fff" />
-        </LinearLayout>
+        </LinearLayout>-->
 
         <RelativeLayout
             android:id="@+id/operation_volume_brightness"
