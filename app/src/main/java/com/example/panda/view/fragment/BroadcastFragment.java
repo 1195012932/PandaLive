@@ -127,13 +127,17 @@ public class BroadcastFragment extends BaseFragment implements BroadView,BroadVi
         xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
+                showLoadingDialog();
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         myAdapter.notifyDataSetChanged();
+                        dismissLoadDialog();
                         xrecy.refreshComplete();
                         xrecy.setLoadingMoreEnabled(true);
+
                     }
                 }, 1000);
+
             }
 
             @Override

@@ -15,6 +15,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl"
                 android:layout_width="match_parent"
                 android:layout_height="220dp">
 
@@ -25,13 +26,6 @@
                     android:layout_height="220dp"
                     android:scaleType="fitXY" />
 
-                <io.vov.vitamio.widget.VideoView
-                    android:id="@+id/vv"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:visibility="gone"
-                    android:background="@drawable/def_no_iv"
-                    />
                 <ImageView
                     android:id="@+id/btn_play"
                     android:layout_width="30dp"

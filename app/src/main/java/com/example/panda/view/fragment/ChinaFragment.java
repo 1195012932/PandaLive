@@ -163,14 +163,19 @@ public class ChinaFragment extends BaseFragment implements ChianView, View.OnCli
         userGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String title = tablistBean.get(i).getTitle();
-                String order = tablistBean.get(i).getOrder();
-                String url = tablistBean.get(i).getUrl();
-                String type = tablistBean.get(i).getType();
-                alllistBean.add(new ChianBean.AlllistBean(title, url, type, order));
-                tablistBean.remove(i);
-                adapter2.notifyDataSetChanged();
-                adapter1.notifyDataSetChanged();
+                if(tablistBean.size()>=5){
+                    String title = tablistBean.get(i).getTitle();
+                    String order = tablistBean.get(i).getOrder();
+                    String url = tablistBean.get(i).getUrl();
+                    String type = tablistBean.get(i).getType();
+                    alllistBean.add(new ChianBean.AlllistBean(title, url, type, order));
+                    tablistBean.remove(i);
+                    adapter2.notifyDataSetChanged();
+                    adapter1.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(getActivity(), "至少四条数据", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         adapter2 = new ChinaGvAdapter2(getActivity(), alllistBean);
