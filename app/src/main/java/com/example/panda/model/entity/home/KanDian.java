@@ -68,7 +68,7 @@ public class KanDian {
     public void setTime(String time) {
         this.time = time;
     }
-    
+
 
     
 }

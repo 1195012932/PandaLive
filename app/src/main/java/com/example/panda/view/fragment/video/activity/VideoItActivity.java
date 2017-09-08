@@ -55,7 +55,7 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     private Intent intent;
     private String id;
     private ImageView collect;
-    // private String url = "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=" + 1;
+    private String url = "http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=7&serviceId=panda&o=desc&of=time&p=" + 1;
     private VideoItemPre itemPre;
     private boolean isChecked = true;
     private ImageView lpanda_show;
@@ -236,7 +236,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
     @Override
     public void onShowTop(final List<VideoItemBean.VideoBean> been) {
         videoBeen.addAll(been);
-        getUrl(0);
         myAdapter = new MyAdapter(VideoItActivity.this, videoBeen);
         item_listView.setAdapter(myAdapter);
         item_listView.setPullLoadEnable(true);
@@ -252,7 +251,6 @@ public class VideoItActivity extends AppCompatActivity implements VideoItemView,
                 loadMore();
             }
         });
-
         item_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

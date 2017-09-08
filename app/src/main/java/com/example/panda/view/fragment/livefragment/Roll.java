@@ -1,7 +1,9 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
@@ -14,6 +16,7 @@ import com.example.panda.model.live.bean.RollBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.RollPtr;
 import com.example.panda.view.fragment.livefragment.liveview.RollView;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,6 +70,15 @@ public class Roll extends BaseFragment implements RollView {
         roll_ptr= (PtrClassicFrameLayout) view.findViewById(R.id.roll_ptr);
         adapter = new RollAdapter(getActivity(),list);
         roll_list.setAdapter(adapter);
+        roll_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it=new Intent(getActivity(), VideoTop.class);
+                it.putExtra("url_top",list.get(i).getVid());
+                it.putExtra("title",list.get(i).getT());
+                startActivity(it);
+            }
+        });
     }
 
     @Override
@@ -87,32 +99,14 @@ public class Roll extends BaseFragment implements RollView {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 xiahua();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(RollBeen);
-//                        adapter.notifyDataSetChanged();
-//                        roll_ptr.refreshComplete();
-//                        if(!roll_ptr.isLoadMoreEnable()){
-//                            roll_ptr.setLoadMoreEnable(true);
-//
-//                        }
-//                    }
-//                });
+
             }
         });
         roll_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void loadMore() {
         shangla();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(RollBeen);
-//                        adapter.notifyDataSetChanged();
-//                        roll_ptr.loadMoreComplete(true);
-//                    }
-//                });
+
             }
         });
     }
