@@ -60,6 +60,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
                 finish();
                 break;
             case R.id.person_no_login_layout:
+
                 startActivity(new Intent(PersonActivity.this, LoginActivity.class));
 
                 break;
@@ -74,7 +75,6 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
             case R.id.personal_set_layout:
                 startActivity(new Intent(PersonActivity.this, SetActivity.class));
                 break;
-
         }
     }
 }

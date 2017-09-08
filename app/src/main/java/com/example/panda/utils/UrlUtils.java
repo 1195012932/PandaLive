@@ -64,14 +64,24 @@ public class UrlUtils {
     // 首页  滚滚视频
     public static final String HOME_ROLL = "http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";
 
+
+    //个人中心
+    public static final String PHONE_URL_FROM = "http://cbox_mobile.regclientuser.cntv.cn";
+
     //图形验证码
     public static final String IMAGE_YZM = "http://reg.cntv.cn/simple/verificationCode.action";
     //手机验证码
     public static final String PHONE_URL = "http://reg.cntv.cn/regist/getVerifiCode.action";
+
+
     //登录
     public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
-    //个人中心
-    public static final String PHONE_URL_FROM = "http://cbox_mobile.regclientuser.cntv.cn";
+
+    //注册url
+    public static final String Zcurl = "https://reg.cntv.cn/regist/mobileRegist.do";
+
+    //邮箱注册url
+    public static final String EMILEREGIS = "https://reg.cntv.cn/api/register.action";
 
 }
 

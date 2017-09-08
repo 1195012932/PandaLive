@@ -15,6 +15,4 @@ public interface HomeModel {
 
     void RequestPost(Map<String, String> map, Observer<HomeBean> observer);
 
-
-
 }

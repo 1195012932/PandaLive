@@ -199,4 +199,6 @@ public interface RetrofitService {
     @GET("PAGE14501775094142282/index.json")
     Observable<ChianBean> getChian();
 
+
+
 }

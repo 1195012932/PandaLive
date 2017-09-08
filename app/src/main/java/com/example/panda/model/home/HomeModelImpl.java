@@ -16,7 +16,7 @@ public class HomeModelImpl implements HomeModel {
     @Override
     public void RequestGet(Observer<HomeBean> observer) {
         RetrofitUtils.getRetrofitUtils().getHome(observer);
-    }
+}
 
     @Override
     public void RequestPost(Map<String, String> map, Observer<HomeBean> observer) {

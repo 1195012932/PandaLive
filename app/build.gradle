@@ -4,6 +4,7 @@ android {
 
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.example.panda"
         minSdkVersion 15
@@ -12,6 +13,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            keyAlias 'mykey'
+            keyPassword 'cntvandroid'
+            storePassword 'cntvandroid'
+            storeFile file('../panda.keystore')
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,13 +42,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('libs/MobCommons-2017.0607.1736.jar')
-    compile files('libs/MobTools-2017.0607.1736.jar')
     compile name: 'SMSSDK-3.0.0', ext: 'aar'
     compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
     compile project(':vitamio2')
     compile files('libs/MobileAppTracker.jar')
-
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.3.1'
@@ -56,8 +65,17 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'in.srain.cube:ptr-load-more:1.0.6'
     compile 'com.android.support:percent:26.0.0-alpha1'
-    compile 'com.squareup.okhttp3:okhttp:3.3.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
     testCompile 'junit:junit:4.12'
-    compile 'fm.jiecao:jiecaovideoplayer:2.0'
+    compile 'com.android.support:percent:22.2.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    testCompile 'org.mockito:mockito-core:1.9.5'
+    compile 'javax.inject:javax.inject:1'
+    compile files('libs/umeng-analytics-v5.5.3.jar')
+    compile files('libs/VDTracker.jar')
+    compile files('libs/MobCommons-2017.0607.1736.jar')
+    compile files('libs/MobileAppTracker.jar')
+    compile files('libs/MobTools-2017.0607.1736.jar')
+    compile files('libs/com.umeng.message_v2.8.1.jar')
 }

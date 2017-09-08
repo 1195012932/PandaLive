@@ -132,7 +132,7 @@ public class VideoFragment extends BaseFragment implements View.OnClickListener,
                         dismissLoadDialog();
                         xrecy.setLoadingMoreEnabled(false);
                     }
-                }, 1);
+                }, 1000);
             }
         });
         myAdapter.setOnItemClickListener(new MyAdapter.Listener() {

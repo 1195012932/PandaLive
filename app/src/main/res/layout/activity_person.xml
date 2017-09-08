@@ -50,9 +50,11 @@
                 android:id="@+id/personal_login_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text="@string/personal_login"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
 
 

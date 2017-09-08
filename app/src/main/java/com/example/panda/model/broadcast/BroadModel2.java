@@ -10,5 +10,4 @@ import io.reactivex.Observer;
 
 public interface BroadModel2 {
     void RequestGet2(Observer<BroadBean2> observer);
-    
 }

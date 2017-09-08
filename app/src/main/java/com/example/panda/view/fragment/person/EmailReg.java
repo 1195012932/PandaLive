@@ -3,10 +3,7 @@ package com.example.panda.view.fragment.person;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -142,6 +139,7 @@ public class EmailReg extends BaseFragment {
         edit_again_password = (EditText) view.findViewById(R.id.edit_again_password);
         hint_again_passord = (TextView) view.findViewById(R.id.hint_again_passord);
         edit_yanzhengma = (EditText) view.findViewById(R.id.edit_yanzhengma);
+        //验证码图片
         personal_reg_imgcheck = (ImageView) view.findViewById(R.id.personal_reg_imgcheck);
         hint_yanzhengma = (TextView) view.findViewById(R.id.hint_yanzhengma);
         xieyi_check = (CheckBox) view.findViewById(R.id.xieyi_check);
@@ -160,9 +158,13 @@ public class EmailReg extends BaseFragment {
     }
 
     private void sendCaptchaHttpMessage() {
-        personal_reg_imgcheck.setImageBitmap(EmailReg.getInstance().createBitmap());
-        realCode = EmailReg.getInstance().getCode().toLowerCase();
-        Log.v("TAG", "realCode" + realCode);
+
+//       图片验证码
+// personal_reg_imgcheck.setImageBitmap(EmailReg.getInstance().createBitmap());
+//        realCode = EmailReg.getInstance().getCode().toLowerCase();
+//        Log.v("TAG", "realCode" + realCode);
+
+
     }
 
     @Override
@@ -297,72 +299,72 @@ public class EmailReg extends BaseFragment {
     }
 
 
-    //验证码图片
-    public Bitmap createBitmap() {
-        padding_left = 0;
-
-        Bitmap bp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bp);
-
-        code = createCode();
-
-        c.drawColor(Color.WHITE);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setTextSize(font_size);
-        //画验证码
-        for (int i = 0; i < code.length(); i++) {
-            randomTextStyle(paint);
-            randomPadding();
-            c.drawText(code.charAt(i) + "", padding_left, padding_top, paint);
-        }
-
-        c.save(Canvas.ALL_SAVE_FLAG);//保存
-        c.restore();//
-        return bp;
-    }
-
-
-    public String getCode() {
-        return code;
-    }
-
-    //生成验证码
-    private String createCode() {
-        StringBuilder buffer = new StringBuilder();
-        for (int i = 0; i < codeLength; i++) {
-            buffer.append(CHARS[random.nextInt(CHARS.length)]);
-        }
-        return buffer.toString();
-    }
-
-    //生成随机颜色
-    private int randomColor() {
-        return randomColor(1);
-    }
-
-    private int randomColor(int rate) {
-        int red = random.nextInt(256) / rate;
-        int green = random.nextInt(256) / rate;
-        int blue = random.nextInt(256) / rate;
-        return Color.rgb(red, green, blue);
-    }
-
-    //随机生成文字样式，颜色，粗细，倾斜度
-    private void randomTextStyle(Paint paint) {
-        int color = randomColor();
-        paint.setColor(color);
-        paint.setFakeBoldText(random.nextBoolean());  //true为粗体，false为非粗体
-        float skewX = random.nextInt(11) / 10;
-        skewX = random.nextBoolean() ? skewX : -skewX;
-        paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
-    }
-
-    //随机生成padding值
-    private void randomPadding() {
-        padding_left += base_padding_left + random.nextInt(range_padding_left);
-        padding_top = base_padding_top + random.nextInt(range_padding_top);
-    }
+//    //验证码图片
+//    public Bitmap createBitmap() {
+//        padding_left = 0;
+//
+//        Bitmap bp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//        Canvas c = new Canvas(bp);
+//
+//        code = createCode();
+//
+//        c.drawColor(Color.WHITE);
+//        Paint paint = new Paint();
+//        paint.setAntiAlias(true);
+//        paint.setTextSize(font_size);
+//        //画验证码
+//        for (int i = 0; i < code.length(); i++) {
+//            randomTextStyle(paint);
+//            randomPadding();
+//            c.drawText(code.charAt(i) + "", padding_left, padding_top, paint);
+//        }
+//
+//        c.save(Canvas.ALL_SAVE_FLAG);//保存
+//        c.restore();//
+//        return bp;
+//    }
+//
+//
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    //生成验证码
+//    private String createCode() {
+//        StringBuilder buffer = new StringBuilder();
+//        for (int i = 0; i < codeLength; i++) {
+//            buffer.append(CHARS[random.nextInt(CHARS.length)]);
+//        }
+//        return buffer.toString();
+//    }
+//
+//    //生成随机颜色
+//    private int randomColor() {
+//        return randomColor(1);
+//    }
+//
+//    private int randomColor(int rate) {
+//        int red = random.nextInt(256) / rate;
+//        int green = random.nextInt(256) / rate;
+//        int blue = random.nextInt(256) / rate;
+//        return Color.rgb(red, green, blue);
+//    }
+//
+//    //随机生成文字样式，颜色，粗细，倾斜度
+//    private void randomTextStyle(Paint paint) {
+//        int color = randomColor();
+//        paint.setColor(color);
+//        paint.setFakeBoldText(random.nextBoolean());  //true为粗体，false为非粗体
+//        float skewX = random.nextInt(11) / 10;
+//        skewX = random.nextBoolean() ? skewX : -skewX;
+//        paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
+//    }
+//
+//    //随机生成padding值
+//    private void randomPadding() {
+//        padding_left += base_padding_left + random.nextInt(range_padding_left);
+//        padding_top = base_padding_top + random.nextInt(range_padding_top);
+//    }
 
     //检查邮箱
     private boolean checkEmail() {

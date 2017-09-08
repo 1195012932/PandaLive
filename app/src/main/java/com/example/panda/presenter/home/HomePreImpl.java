@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
  * Created by lenovo on 2017/8/23.
  */
 
-public class HomePreImpl implements HomePresenter, Observer<HomeBean>{
+public class HomePreImpl implements HomePresenter, Observer<HomeBean> {
     private HomeModel homeModel;
     private HomeView homeView;
 
@@ -26,6 +26,7 @@ public class HomePreImpl implements HomePresenter, Observer<HomeBean>{
 
     /**
      * 观察者
+     *
      * @param d
      */
     @Override
