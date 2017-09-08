@@ -1,5 +1,8 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.panda.R;
 import com.example.panda.base.BaseFragment;
@@ -22,11 +26,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import io.vov.vitamio.widget.VideoView;
+
 /**
  * Created by admin on 2017/8/24.
  */
 
 public class LiveStreaming extends BaseFragment implements LiveView {
+    public static class MyReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String aaa = intent.getStringExtra("name");
+            String title = intent.getStringExtra("title");
+            Toast.makeText(context, "闯过取得广播"+aaa, Toast.LENGTH_SHORT).show();
+
+
+        }
+    }
     private LivePresenter livePresenter;
     private TabLayout live_tab;
     private ViewPager live_pager;
@@ -36,8 +54,8 @@ public class LiveStreaming extends BaseFragment implements LiveView {
     boolean flag = true;
     List<Fragment> list = new ArrayList<>();
     List<String> lists = new ArrayList<>();
-    private ImageView live_img1;
-
+    private VideoView live_video;
+    String urls="";
     @Override
     protected void loadData() {
 
@@ -71,12 +89,28 @@ public class LiveStreaming extends BaseFragment implements LiveView {
         live_text = (TextView) view.findViewById(R.id.live_text);
         live_text1 = (TextView) view.findViewById(R.id.live_text1);
         live_img = (ImageView) view.findViewById(R.id.live_img);
-        live_img1=view.findViewById(R.id.live_img1);
         live_text.setVisibility(View.GONE);
         Log.i("s", "wwwwwwwwwwwwwwww");
+        live_tab.addTab(live_tab.newTab().setText(lists.get(0)));
+        live_tab.addTab(live_tab.newTab().setText(lists.get(1)));
+        LivePagerAdapter pager = new LivePagerAdapter(getActivity().getSupportFragmentManager());
+        live_pager.setAdapter(pager);
+        live_tab.setupWithViewPager(live_pager);
+        JCVideoPlayer jCVideoPlayer =view.findViewById(R.id.videocontroller1);
 
+        jCVideoPlayer.setUp("http://3811.liveplay.myqcloud.com/live/m3u8/3811_channel424.m3u8?AUTH=svk2SFBSOMK8hj7rplD4SAVPNNfxs8Y8ArIZp4djcTL131+DVHRPcdh99jfoErCCfTcma+/QbabYn+djWEgIwA==LIVE-HLS-CDN-CNC","视频/MP3标题");
+//        String name = intent.getExtras().getString("name");
+////        Log.i("Recevier1", "接收到:"+name);
+//        Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
+    }
+
 
     @Override
     protected int getLayout() {

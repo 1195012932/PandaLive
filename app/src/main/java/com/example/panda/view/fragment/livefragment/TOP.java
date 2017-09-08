@@ -1,7 +1,9 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
@@ -14,6 +16,7 @@ import com.example.panda.model.live.bean.TopBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.TopPtr;
 import com.example.panda.view.fragment.livefragment.liveview.TopView;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,6 +70,15 @@ public class TOP extends BaseFragment implements TopView {
         top_ptr= (PtrClassicFrameLayout) view.findViewById(R.id.top_ptr);
         adapter = new TopAdapter(getActivity(), list);
         top_list.setAdapter(adapter);
+        top_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it=new Intent(getActivity(), VideoTop.class);
+                it.putExtra("url_top",list.get(i).getVid());
+                it.putExtra("title",list.get(i).getT());
+                startActivity(it);
+            }
+        });
     }
 
     @Override
@@ -87,32 +99,14 @@ public class TOP extends BaseFragment implements TopView {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
             xiahua();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(TopBeen);
-//                        adapter.notifyDataSetChanged();
-//                        top_ptr.refreshComplete();
-//                        if(!top_ptr.isLoadMoreEnable()){
-//                            top_ptr.setLoadMoreEnable(true);
-//
-//                        }
-//                    }
-//                });
+
             }
         });
         top_ptr.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void loadMore() {
             shangla();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(TopBeen);
-//                        adapter.notifyDataSetChanged();
-//                        top_ptr.loadMoreComplete(true);
-//                    }
-//                });
+
             }
         });
     }

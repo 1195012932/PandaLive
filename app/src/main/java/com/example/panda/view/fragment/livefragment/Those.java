@@ -1,7 +1,9 @@
 package com.example.panda.view.fragment.livefragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.chanven.lib.cptr.PtrClassicFrameLayout;
@@ -14,6 +16,7 @@ import com.example.panda.model.live.bean.ThoBean;
 import com.example.panda.presenter.live.LivePresenter;
 import com.example.panda.presenter.live.ThoPtr;
 import com.example.panda.view.fragment.livefragment.liveview.ThoseView;
+import com.example.panda.view.fragment.video.activity.VideoTop;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,6 +70,15 @@ public class Those extends BaseFragment implements ThoseView {
         tho_ptr= (PtrClassicFrameLayout) view.findViewById(R.id.tho_ptr);
         adapter = new ThoAdapter(getActivity(), list);
         tho_list.setAdapter(adapter);
+        tho_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it=new Intent(getActivity(), VideoTop.class);
+                it.putExtra("url_top",list.get(i).getVid());
+                it.putExtra("title",list.get(i).getT());
+                startActivity(it);
+            }
+        });
     }
 
     @Override
@@ -94,14 +106,7 @@ public class Those extends BaseFragment implements ThoseView {
             @Override
             public void loadMore() {
             shangla();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        list.addAll(ThoBeen);
-//                        adapter.notifyDataSetChanged();
-//                        tho_ptr.loadMoreComplete(true);
-//                    }
-//                });
+
             }
         });
     }
